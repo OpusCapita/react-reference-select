@@ -1,0 +1,5 @@
+/**
+ * @providesModule CSSStub
+ */
+
+module.exports = {};

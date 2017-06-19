@@ -1,0 +1,19 @@
+{
+  "examples": [
+    {
+      "id": "1",
+      "name": "example1",
+      "_objectLabel": "example1"
+    },
+    {
+      "id": "2",
+      "name": "example2",
+      "_objectLabel": "example2"
+    },
+    {
+      "id": "3",
+      "name": "example3",
+      "_objectLabel": "example3"
+    }
+  ]
+}
