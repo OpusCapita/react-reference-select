@@ -3,24 +3,20 @@
 ## Implemented components
 
 * ReferenceAutocomplete
-
 * ReferenceSearchDialog
-
 * ReferenceSearchInput
-
 * PaginationPanel
-
 * SortableColumn
 
 ## Demo and documentation
 
 Online demo and components reference available here: https://opuscapita.github.io/react-reference-select
 
-> Demo powered by [react-showroom](https://github.com/OpusCapitaBES/js-react-showroom-client)
+> Demo powered by [react-showroom](https://github.com/OpusCapita/react-showroom-client)
 
 ## Installation
 
-`yarn add opuscapita-react-reference-select`
+`yarn add @opuscapita/react-reference-select`
 
 ## Contributors
 
