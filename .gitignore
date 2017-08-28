@@ -1,9 +1,9 @@
 *.iml
+*.log
 .idea
 coverage
 lib
 node_modules
-npm-debug.log
 .gh-pages-tmp
 target
 test-reports
