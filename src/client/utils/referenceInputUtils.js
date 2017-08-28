@@ -18,21 +18,11 @@ Promise.config({
 function _getObjectWithFallback(object, keyProperty, labelProperty) {
   if (_.hasIn(object, labelProperty)) {
     return object;
-  } else if (Array.isArray(keyProperty)) {
-    let labelPropertyValue = '';
-    keyProperty.forEach((key) => {
-      if (_.hasIn(object, key)) {
-        labelPropertyValue += `${_.get(object, key)} `
-      }
-    });
-    return labelPropertyValue ? _.assignIn({}, object, { [labelProperty]: labelPropertyValue }) : object;
+  } else if (_.hasIn(object, keyProperty)) {
+    // in case when key property is defined then we overwrite label property value
+    return _.assignIn({}, object, { [labelProperty]: object[keyProperty] });
   } else {
-    if (_.hasIn(object, keyProperty)) {
-      // in case when key property is defined then we overwrite label property value
-      return _.assignIn({}, object, { [labelProperty]: _.get(object, keyProperty) });
-    } else {
-      return object;
-    }
+    return object;
   }
 }
 
@@ -50,25 +40,19 @@ function _getObjectWithFallback(object, keyProperty, labelProperty) {
  * @private
  */
 function _loadSingleObject(object, keyProperty, labelProperty, objectLoader) {
-  let keyValues = [];
   if (_.hasIn(object, labelProperty)) {
     // label exists -> return object as it is
     return Promise.resolve(object);
-  } else if (Array.isArray(keyProperty)) {
-    keyValues = keyProperty.map((key) => { return _.get(object, key) });
+  } else if (object[keyProperty] === undefined) {
+    // key property is not specified -> return object as it is
+    return Promise.resolve(object);
   } else {
-    if (_.get(object, keyProperty) === undefined) {
-      // key property is not specified -> return object as it is
-      return Promise.resolve(object);
-    } else {
-      keyValues = [_.get(object, keyProperty)];
-    }
+    return objectLoader(object[keyProperty]).then((response) => {
+      return _getObjectWithFallback(response.body, keyProperty, labelProperty)
+    }).catch((error) => {
+      return _getObjectWithFallback(object, keyProperty, labelProperty)
+    })
   }
-  return objectLoader(...keyValues).then((response) => {
-    return _getObjectWithFallback(response.body, keyProperty, labelProperty)
-  }).catch((error) => {
-    return _getObjectWithFallback(object, keyProperty, labelProperty)
-  })
 }
 
 /*
@@ -83,7 +67,7 @@ function _loadSingleObject(object, keyProperty, labelProperty, objectLoader) {
  * @returns {*}
  */
 function loadObjectData(object, keyProperty, labelProperty, objectLoader,
-  onLoadingStart = () => {}, onLoadingEnd = () => {}) {
+                        onLoadingStart = () => {}, onLoadingEnd = () => {}) {
   if (_.isNil(object)) {
     return Promise.resolve(object);
   }

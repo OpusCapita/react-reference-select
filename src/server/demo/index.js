@@ -1,10 +1,8 @@
 import path from 'path';
 import express from 'express';
-import storage from 'lowdb/lib/file-async';
 import webpack from 'webpack';
 import bodyParser from 'body-parser';
 import webpackMiddleware from 'webpack-dev-middleware';
-import exampleRoutes from './restEndpoints/exampleRoutes.js';
 
 let componentsRoot = path.resolve(__dirname, '../../client/components');
 require('@opuscapita/react-showroom-server').makeLocalScan(componentsRoot);
@@ -24,8 +22,6 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
-
-app.use('/', exampleRoutes({ storage }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/static', express.static(__dirname + '../../../build/client'));
