@@ -1,0 +1,14 @@
+
+Release 1.0.0 Mon Aug 28 2017 17:34:26 GMT+0300 (+03)
+=======================================================
+
+ - (CMMN-5361) Fixing CircleCI tests reporting command. (Dmitriy Sanko <dsanko@scand.com>, Mon Aug 28 17:29:41 2017 +0300)
+ - (CMMN-5361) Fixing CircleCI artifacts uploading. (Dmitriy Sanko <dsanko@scand.com>, Mon Aug 28 16:39:04 2017 +0300)
+ - (CMMN-5361) Updating CircleCI configaration file to version 2. (Dmitriy Sanko <dsanko@scand.com>, Mon Aug 28 16:12:46 2017 +0300)
+ - (CMMN-5361) Merge dev branch. (73eb73e e40226e, Dmitriy Sanko <dsanko@scand.com>)
+ - (CMMN-5361) Removed unused dependency. (Dmitriy Sanko <dsanko@scand.com>, Mon Aug 28 13:42:28 2017 +0300)
+ - (CMMN-5361) Adjusting CircleCI build process. (Dmitriy Sanko <dsanko@scand.com>, Mon Aug 28 13:40:46 2017 +0300)
+ - (CMMN-5361) Removed example REST API. Refactoring code. (Dmitriy Sanko <dsanko@scand.com>, Mon Aug 28 13:06:43 2017 +0300)
+ - Update README.md (Alexey Sergeev <asergeev-sc@users.noreply.github.com>, Tue Aug 1 10:00:28 2017 +0300)
+ - Creating components. (Dmitriy Sanko <dsanko@scand.com>, Mon Jun 19 12:58:40 2017 +0300)
+ - Initial commit (Dmitriy Sanko <dsanko-sc@users.noreply.github.com>, Fri Jun 16 13:21:14 2017 +0300)
