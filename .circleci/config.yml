@@ -1,7 +1,40 @@
-machine:
-  node:
-    version: 6.9.4
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - gh-pages
+    docker:
+      - image: circleci/node:6
+    working_directory: ~/reference-select
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-{{ checksum "package.json" }}
 
-test:
-  pre:
-    - npm run lint
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          key: dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: lint
+          command: npm run lint
+
+      - run:
+          name: test
+          command: |
+            mkdir junit
+            npm test --ci --testResultsProcessor="./node_modules/jest-junit-reporter"
+          environment:
+            TEST_REPORT_PATH: junit/test-report.xml
+
+      - store_test_results:
+          path: junit
+
+      - store_artifacts:
+          path: junit
