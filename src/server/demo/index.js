@@ -1,6 +1,5 @@
 import path from 'path';
 import express from 'express';
-import storage from 'lowdb/lib/file-async';
 import webpack from 'webpack';
 import bodyParser from 'body-parser';
 import webpackMiddleware from 'webpack-dev-middleware';
