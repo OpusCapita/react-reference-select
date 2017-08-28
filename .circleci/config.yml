@@ -22,16 +22,17 @@ jobs:
             - node_modules
 
       - run:
-          name: lint
+          name: Lint
           command: npm run lint
 
       - run:
-          name: test
+          name: Test
           command: |
             mkdir junit
             npm test --ci --testResultsProcessor="./node_modules/jest-junit-reporter"
           environment:
-            TEST_REPORT_PATH: junit/test-report.xml
+            TEST_REPORT_PATH: junit
+            TEST_REPORT_FILENAME: test-results.xml
 
       - store_test_results:
           path: junit
