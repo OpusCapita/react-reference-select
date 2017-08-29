@@ -7,11 +7,11 @@
 
 ## Implemented components
 
-* ReferenceAutocomplete (https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/ReferenceAutocomplete/ReferenceAutocomplete.DOCUMENTATION.md)
-* ReferenceSearchDialog (https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/ReferenceSearchDialog/ReferenceSearchDialog.DOCUMENTATION.md)
-* ReferenceSearchInput (https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/ReferenceSearchInput/ReferenceSearchInput.DOCUMENTATION.md)
-* PaginationPanel (https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/PaginationPanel/PaginationPanel.DOCUMENTATION.md)
-* SortableColumn (https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/SortableColumn/SortableColumn.DOCUMENTATION.md)
+* [ReferenceAutocomplete](https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/ReferenceAutocomplete/ReferenceAutocomplete.DOCUMENTATION.md)
+* [ReferenceSearchDialog](https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/ReferenceSearchDialog/ReferenceSearchDialog.DOCUMENTATION.md)
+* [ReferenceSearchInput](https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/ReferenceSearchInput/ReferenceSearchInput.DOCUMENTATION.md)
+* [PaginationPanel](https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/PaginationPanel/PaginationPanel.DOCUMENTATION.md)
+* [SortableColumn](https://github.com/OpusCapita/react-reference-select/blob/master/src/client/components/SortableColumn/SortableColumn.DOCUMENTATION.md)
 
 ## Demo and documentation
 

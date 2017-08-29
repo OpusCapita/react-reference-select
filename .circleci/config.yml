@@ -39,3 +39,40 @@ jobs:
 
       - store_artifacts:
           path: junit
+  update-gh-pages:
+      branches:
+        only:
+          - master
+      docker:
+        - image: circleci/node:6
+      working_directory: ~/reference-select
+      steps:
+        - checkout
+        - restore_cache:
+            keys:
+            - dependencies-{{ checksum "package.json" }}
+
+        - run:
+            name: install-dependencies
+            command: npm install
+
+        - save_cache:
+            key: dependencies-{{ checksum "package.json" }}
+            paths:
+              - node_modules
+
+        - run:
+            name: build-gh-pages
+            command: ./scripts/gh-pages/build.sh
+
+        - run:
+            name: deploy-gh-pages
+            command: ./scripts/gh-pages/deploy.sh .gh-pages-tmp
+
+workflows:
+  version: 2
+  build-all:
+    jobs:
+      - update-gh-pages:
+          requires:
+            - build
