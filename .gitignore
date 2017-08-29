@@ -3,7 +3,6 @@
 .idea
 coverage
 /gh-pages-branch
-/static
 lib
 node_modules
 .gh-pages-tmp
