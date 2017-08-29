@@ -2,6 +2,7 @@
 *.log
 .idea
 coverage
+/gh-pages-branch
 /static
 lib
 node_modules
@@ -9,4 +10,3 @@ node_modules
 target
 test-reports
 yarn.lock
-
