@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf .gh-pages-tmp lib demo.tar.gz  &&
+rm -rf gh-pages-branch .gh-pages-tmp lib demo.tar.gz  &&
 mkdir .gh-pages-tmp &&
 
 node node_modules/webpack/bin/webpack.js --config ./webpack.docs.config.js --hide-modules &&
