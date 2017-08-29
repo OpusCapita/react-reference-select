@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      ignore:
-        - gh-pages
     docker:
       - image: circleci/node:6
     working_directory: ~/reference-select
@@ -40,9 +37,6 @@ jobs:
       - store_artifacts:
           path: junit
   update-gh-pages:
-      branches:
-        only:
-          - master
       docker:
         - image: circleci/node:6
       working_directory: ~/reference-select
@@ -73,7 +67,15 @@ workflows:
   version: 2
   build-all:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - update-gh-pages:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - master
