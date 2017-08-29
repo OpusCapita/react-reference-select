@@ -2,6 +2,20 @@
 
 ReferenceSearchDialog react component
 
+### Props Reference
+
+| Name                           | Type                    | Description                                                                               |
+| ------------------------------ | :---------------------- | -----------------------------------------------------------                               |
+| openDialog                     | bool                    | Show search popup                                                                         |
+| referenceSearchAction          | func                    | Callback fired when search action initiated.                                              |
+| onCloseDialog                  | func                    | Callback fired when the popup closes.                                                     |
+| onSelect                       | func                    | Callback fired when item is selected.                                                     |
+| multiple                       | bool                    | Allows to select several elements. *Note*: if *true*, **value** must be array of objects. |
+| objectIdentifier               | string                  | Field that uniquely identifies the object.                                                |
+| modalSpecificProps             | string                  | Specific for Modal component props like 'onHide', 'onEnter', etc.                         |
+| trimSearchParameters           | bool                    | Trim search parameters                                                                    |
+| ...ReferenceSearchDialogProps  |                         | See `ReferenceSearchDialogProps/index.js` file for details.                               |
+
 ### Code Example
 
 ```
@@ -23,32 +37,15 @@ ReferenceSearchDialog react component
 />
 ```
 
-### Props Reference
-
-| Name                          | Type                  | Description                                                |
-| ------------------------------|:----------------------| -----------------------------------------------------------|
-| openDialog | bool | Show search popup |
-| referenceSearchAction | func | Callback fired when search action initiated. |
-| onCloseDialog | func | Callback fired when the popup closes. |
-| onSelect | func | Callback fired when item is selected. |
-| multiple | bool | Allows to select several elements. *Note*: if *true*, **value** must be array of objects. |
-| objectIdentifier | string | Field that uniquely identifies the object. |
-| modalSpecificProps | string | Specific for Modal component props like 'onHide', 'onEnter', etc. |
-| trimSearchParameters | bool | Trim search parameters |
-| ...ReferenceSearchDialogProps || See `ReferenceSearchDialogProps/index.js` file for details. |
-
 ### Contributors
+
 Alexey Sergeev, Dmitriy Sanko
 
 ### Component Name
 
 ReferenceSearchDialog
 
-### Tags
-
-ReactReferenceSelect
-
 ### License
 
-Licensed by © 2016 OpusCapita 
+Licensed by © 2017 OpusCapita 
 
