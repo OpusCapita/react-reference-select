@@ -56,8 +56,8 @@ jobs:
               - node_modules
 
         - run:
-            name: build-gh-pages
-            command: ./scripts/gh-pages/build.sh
+            name: generate-gh-pages
+            command: ./scripts/gh-pages/generate.sh
 
         - run:
             name: deploy-gh-pages
