@@ -2,10 +2,12 @@
 *.log
 .idea
 coverage
+/gh-pages-branch
+/static
 lib
 node_modules
 .gh-pages-tmp
 target
 test-reports
 yarn.lock
-
+demo.tar.gz
