@@ -4,9 +4,6 @@ import webpack from 'webpack';
 import bodyParser from 'body-parser';
 import webpackMiddleware from 'webpack-dev-middleware';
 
-let componentsRoot = path.resolve(__dirname, '../../client/components');
-require('@opuscapita/react-showroom-server').makeLocalScan(componentsRoot);
-
 // create express app
 const app = express();
 

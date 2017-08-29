@@ -2,6 +2,7 @@
 *.log
 .idea
 coverage
+/static
 lib
 node_modules
 .gh-pages-tmp

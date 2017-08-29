@@ -56,12 +56,8 @@ jobs:
               - node_modules
 
         - run:
-            name: generate-gh-pages
-            command: ./scripts/gh-pages/generate.sh
-
-        - run:
             name: deploy-gh-pages
-            command: ./scripts/gh-pages/deploy.sh .gh-pages-tmp
+            command: npm run gh-pages-deploy
 
 workflows:
   version: 2

@@ -11,7 +11,7 @@
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "test": "jest --no-cache --colors",
-    "start": "nodemon --watch src/server src/server/demo/index --exec babel-node --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy,lodash",
+    "start": "showroom-scan src && nodemon --watch src/server src/server/demo/index --exec babel-node --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy,lodash",
     "gh-pages-generate": "showroom-scan src && sh scripts/gh-pages/generate.sh",
     "gh-pages-deploy": "npm run gh-pages-generate && sh scripts/gh-pages/deploy.sh",
     "npm-build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy,lodash --ignore __tests__,*.spec.js,demo src/client/components --out-dir lib",
