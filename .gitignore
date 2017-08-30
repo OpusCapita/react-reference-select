@@ -9,4 +9,5 @@ node_modules
 target
 test-reports
 yarn.lock
+package-lock.json
 demo.tar.gz
