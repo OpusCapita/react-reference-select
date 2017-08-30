@@ -55,20 +55,27 @@ class ReferenceAutocomplete extends React.Component {
     }
   }
 
+  /**
+   * force options reloading using '' term
+   */
+  reloadOptions = () => {
+    const selector = this.refs['Select.Async'];
+    if (selector !== undefined && selector.loadOptions !== undefined) {
+      selector.loadOptions('');
+    }
+  };
+
   onBlur = (event) => {
     if (this.props.onBlur) {
       this.props.onBlur(event);
     }
-    // in case when nonexisting value is entered by user in autovomplete
+    // in case when nonexisting value is entered by user in autocomplete
     // empty options list is loaded/shown then user switch focus to another UI
     // element and then go bak to autocomplete and see again empty options list
     // that was loaded for non existing value, while after focus we need to show
     // all (or first xxx options) that are available
     // So for fixing this situation we force options reloading using '' term.
-    const selector = this.refs['Select.Async'];
-    if (selector !== undefined && selector.loadOptions !== undefined) {
-      selector.loadOptions('');
-    }
+    this.reloadOptions();
   };
 
   onChange = (value) => {
@@ -76,6 +83,11 @@ class ReferenceAutocomplete extends React.Component {
       this.props.onChange(value ? value : (this.props.multiple ? [] : null));
     }
     this.setState({ value: value });
+
+    // Reload options after cleaning of the selectbox
+    if (value === null) {
+      this.reloadOptions();
+    }
   };
 
   validateValue(value, multiple) {
