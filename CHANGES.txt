@@ -1,4 +1,13 @@
 
+Release 1.0.3 Mon Sep 18 2017 15:54:38 GMT+0300 (Belarus Standard Time)
+=======================================================
+
+ - Merge branch 'master' of https://github.com/OpusCapita/react-reference-select (5fbf555 ddc2fcf, Alexander Danilov <adanilov@scand.com>)
+ - (CMMN-5513) Fixed wrong displaying headers for search result table (Alexander Danilov <adanilov@scand.com>, Mon Sep 18 15:33:29 2017 +0300)
+ - Fixed file encoding (Natallia Hryhoryeva <hryhoryeva@SCAND.LOCAL>, Mon Sep 18 14:40:56 2017 +0300)
+ - Fixed translations. (Natallia Hryhoryeva <hryhoryeva@SCAND.LOCAL>, Mon Sep 18 14:15:18 2017 +0300)
+ - Updating to a version to  1.0.3 (baliunov <baliunov@scand.com>, Wed Aug 30 13:14:17 2017 +0300)
+
 Release 1.0.2 Wed Aug 30 2017 13:14:01 GMT+0300 (Belarus Standard Time)
 =======================================================
 
