@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import translations from './i18n';
 import lodash from 'lodash';
 import ReactSelectSpecificProps from '../ReactSelectSpecificProps';
@@ -23,12 +24,12 @@ export default class ExampleInput extends React.Component {
 
   static propTypes = {
     ...ReferenceInputBaseProps,
-    reactSelectSpecificProps: React.PropTypes.shape(ReactSelectSpecificProps),
+    reactSelectSpecificProps: PropTypes.shape(ReactSelectSpecificProps),
     serviceRegistry: isServiceRegistryConfiguredFor(SERVICE_NAME)
   };
 
   static contextTypes = {
-    i18n: React.PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   };
 
   componentWillMount() {

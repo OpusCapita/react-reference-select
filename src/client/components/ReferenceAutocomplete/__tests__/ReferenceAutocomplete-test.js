@@ -2,9 +2,9 @@ jest.autoMockOff();
 
 const React = require('react');
 const ReactDOM = require('react-dom');
+const ReactTestUtils = require('react-dom/test-utils');
 const { I18nContext } = require('@opuscapita/react-i18n');
 const ReferenceAutocomplete = require('../ReferenceAutocomplete.react').default;
-const TestUtils = require('react-addons-test-utils');
 const Select = require('react-select');
 
 describe('ReferenceAutocomplete', () => {
@@ -36,7 +36,8 @@ describe('ReferenceAutocomplete', () => {
 
     const value = { id: 'test' };
     let componentsTree = renderReferenceAutocomplete(domNode, value);
-    let referenceAutocompleteInstance = TestUtils.findRenderedComponentWithType(componentsTree, ReferenceAutocomplete);
+    let referenceAutocompleteInstance = ReactTestUtils.
+        findRenderedComponentWithType(componentsTree, ReferenceAutocomplete);
     let firstRenderStateValue = referenceAutocompleteInstance.state.value;
     expect(firstRenderStateValue).toBe(value);
     // rerender using the same value
@@ -55,7 +56,7 @@ describe('ReferenceAutocomplete', () => {
     // render component
     let componentsTree = renderReferenceAutocomplete(domNode, null, false, { options });
     // find Select.Async instance
-    let selectAsyncInstance = TestUtils.findRenderedComponentWithType(componentsTree, Select.Async);
+    let selectAsyncInstance = ReactTestUtils.findRenderedComponentWithType(componentsTree, Select.Async);
     // check result of loadOptions prop Promise call results
     selectAsyncInstance.props.loadOptions().
       then(result => {
@@ -74,7 +75,7 @@ describe('ReferenceAutocomplete', () => {
     // render component
     let componentsTree = renderReferenceAutocomplete(domNode, null, false, { options, sort: false });
     // find Select.Async instance
-    let selectAsyncInstance = TestUtils.findRenderedComponentWithType(componentsTree, Select.Async);
+    let selectAsyncInstance = ReactTestUtils.findRenderedComponentWithType(componentsTree, Select.Async);
     // check result of loadOptions prop Promise call results
     selectAsyncInstance.props.loadOptions().
       then(result => {
@@ -102,18 +103,19 @@ describe('ReferenceAutocomplete', () => {
       />
     </I18nContext>, domNode);
 
-    let referenceAutocompleteInstance = TestUtils.findRenderedComponentWithType(componentsTree, ReferenceAutocomplete);
+    let referenceAutocompleteInstance = ReactTestUtils
+        .findRenderedComponentWithType(componentsTree, ReferenceAutocomplete);
     let firstRenderStateValue = referenceAutocompleteInstance.state.value;
     expect(firstRenderStateValue).toBe(value1);
 
 
-    let selectInstance = TestUtils.findRenderedComponentWithType(componentsTree, Select);
+    let selectInstance = ReactTestUtils.findRenderedComponentWithType(componentsTree, Select);
     let searchInstance = ReactDOM.findDOMNode(selectInstance.refs.input);
 
     let searchInputNode = searchInstance.querySelector('input');
 
-    TestUtils.Simulate.change(searchInputNode, { target: { value: 'two' } });
-    TestUtils.Simulate.keyDown(searchInputNode, { keyCode: 13, key: 'Enter' });
+    ReactTestUtils.Simulate.change(searchInputNode, { target: { value: 'two' } });
+    ReactTestUtils.Simulate.keyDown(searchInputNode, { keyCode: 13, key: 'Enter' });
 
     let secondRenderStateValue = referenceAutocompleteInstance.state.value;
     expect(secondRenderStateValue).toBe(value2);

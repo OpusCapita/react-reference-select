@@ -2,7 +2,7 @@ jest.autoMockOff();
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const TestUtils = require('react-addons-test-utils');
+const ReactTestUtils = require('react-dom/test-utils');
 const Modal = require('react-bootstrap/lib/Modal');
 import SortableColumn from '../../SortableColumn';
 import PaginationPanel from '../../PaginationPanel';
@@ -15,7 +15,7 @@ describe('ReferenceSearchDialog', () => {
       { name: 'manufacturerId', label: 'Mfg ID' },
       { name: 'name', label: 'Name' }
     ];
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -39,7 +39,7 @@ describe('ReferenceSearchDialog', () => {
       expect(document.activeElement).toBeUndefined();
     });
 
-    componentTree = TestUtils.renderIntoDocument(
+    componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -70,7 +70,7 @@ describe('ReferenceSearchDialog', () => {
       { name: 'name', label: 'Name' }
     ];
     let referenceSearchAction = jest.fn();
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -85,33 +85,31 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const manufacturerInput = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
       querySelector('#manufacturerId');
     const nameInput = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).querySelector('#name');
-    TestUtils.Simulate.change(manufacturerInput, { target: { value: 'manufacturerParam' } });
-    TestUtils.Simulate.change(nameInput, { target: { value: 'nameParam' } });
+    ReactTestUtils.Simulate.change(manufacturerInput, { target: { value: 'manufacturerParam' } });
+    ReactTestUtils.Simulate.change(nameInput, { target: { value: 'nameParam' } });
     expect(referenceSearchDialog.state.searchParams.manufacturerId).toBeDefined();
     expect(referenceSearchDialog.state.searchParams.manufacturerId).toBe('manufacturerParam');
     expect(referenceSearchDialog.state.searchParams.name).toBeDefined();
     expect(referenceSearchDialog.state.searchParams.name).toBe('nameParam');
     const form = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).querySelector('form');
-    TestUtils.Simulate.submit(form);
+    ReactTestUtils.Simulate.submit(form);
     expect(referenceSearchAction.mock.calls.length).toBe(2);
     expect(referenceSearchAction.mock.calls[1][0].manufacturerId).toBe('manufacturerParam');
     expect(referenceSearchAction.mock.calls[1][0].name).toBe('nameParam');
-    TestUtils.Simulate.change(manufacturerInput, { target: { value: '' } });
-    TestUtils.Simulate.change(nameInput, { target: { value: '' } });
-    TestUtils.Simulate.submit(form);
+    ReactTestUtils.Simulate.change(manufacturerInput, { target: { value: '' } });
+    ReactTestUtils.Simulate.change(nameInput, { target: { value: '' } });
+    ReactTestUtils.Simulate.submit(form);
     expect(referenceSearchAction.mock.calls.length).toBe(3);
     expect(referenceSearchAction.mock.calls[2][0].manufacturerId).toBeUndefined();
     expect(referenceSearchAction.mock.calls[2][0].name).toBeUndefined();
-    TestUtils.Simulate.change(manufacturerInput, { target: { value: '  test  ' } });
-    TestUtils.Simulate.change(nameInput, { target: { value: '    ' } });
-    TestUtils.Simulate.submit(form);
+    ReactTestUtils.Simulate.change(manufacturerInput, { target: { value: '  test  ' } });
+    ReactTestUtils.Simulate.change(nameInput, { target: { value: '    ' } });
+    ReactTestUtils.Simulate.submit(form);
     expect(referenceSearchAction.mock.calls.length).toBe(4);
     expect(referenceSearchAction.mock.calls[3][0].manufacturerId).toBe('test');
     expect(referenceSearchAction.mock.calls[3][0].name).toBeUndefined();
@@ -123,7 +121,7 @@ describe('ReferenceSearchDialog', () => {
       { name: 'supplierId', label: 'Spl ID' },
       { name: 'name', label: 'Name' }
     ];
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -138,10 +136,8 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const searchInputs = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).querySelectorAll('input');
     expect(searchInputs.length).toBe(3);
   });
@@ -154,7 +150,7 @@ describe('ReferenceSearchDialog', () => {
     ];
     let onSelect = jest.fn();
     let onCloseDialog = jest.fn();
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -171,11 +167,9 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
     expect(referenceSearchDialog).toEqual(expect.anything());
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     expect(modalComponent).toEqual(expect.anything());
     const modalNode = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement());
     expect(modalNode).toEqual(expect.anything());
@@ -196,7 +190,7 @@ describe('ReferenceSearchDialog', () => {
     // this button should contain text of 'manufacturerId' property value
     expect(buttonWithManufacturerId.textContent).toBe('test_mfd');
     // simulate button click
-    TestUtils.Simulate.click(buttonWithManufacturerId);
+    ReactTestUtils.Simulate.click(buttonWithManufacturerId);
     // chekc that out callbacks with correct parameters are called
     expect(onSelect.mock.calls.length).toBe(1);
     expect(onSelect.mock.calls[0][0][0].id).toBe('100');
@@ -209,7 +203,7 @@ describe('ReferenceSearchDialog', () => {
       { name: 'supplierId', label: 'Spl ID' },
       { name: 'name', label: 'Name' }
     ];
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -226,26 +220,24 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const checkboxes = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
        querySelectorAll('input[type="checkbox"]');
-    TestUtils.Simulate.change(checkboxes[1], { "target": { "checked": true } });
+    ReactTestUtils.Simulate.change(checkboxes[1], { "target": { "checked": true } });
     expect(referenceSearchDialog.state.selectedItems.length).toBe(1);
     expect(referenceSearchDialog.state.selectedItems[0].id).toBe('100');
-    TestUtils.Simulate.change(checkboxes[2], { "target": { "checked": true } });
+    ReactTestUtils.Simulate.change(checkboxes[2], { "target": { "checked": true } });
     expect(referenceSearchDialog.state.selectedItems.length).toBe(2);
     expect(referenceSearchDialog.state.selectedItems[1].id).toBe('200');
-    TestUtils.Simulate.change(checkboxes[2], { "target": { "checked": false } });
+    ReactTestUtils.Simulate.change(checkboxes[2], { "target": { "checked": false } });
     expect(referenceSearchDialog.state.selectedItems.length).toBe(1);
     expect(referenceSearchDialog.state.selectedItems[0].id).toBe('100');
-    TestUtils.Simulate.change(checkboxes[0], { "target": { "checked": true } });
+    ReactTestUtils.Simulate.change(checkboxes[0], { "target": { "checked": true } });
     expect(referenceSearchDialog.state.selectedItems.length).toBe(fields.length);
     expect(referenceSearchDialog.state.selectedAll).toBeTruthy();
     expect(referenceSearchDialog.state.selectedItems[2].id).toBe('300');
-    TestUtils.Simulate.change(checkboxes[0], { "target": { "checked": false } });
+    ReactTestUtils.Simulate.change(checkboxes[0], { "target": { "checked": false } });
     expect(referenceSearchDialog.state.selectedItems.length).toBe(0);
     expect(referenceSearchDialog.state.selectedAll).toBeFalsy();
   });
@@ -258,7 +250,7 @@ describe('ReferenceSearchDialog', () => {
     ];
     let onSelect = jest.fn();
     let onCloseDialog = jest.fn();
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -275,18 +267,16 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const selectAllCheckbox = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
       querySelectorAll('input[type="checkbox"]')[0];
-    TestUtils.Simulate.change(selectAllCheckbox, { "target": { "checked": true } });
+    ReactTestUtils.Simulate.change(selectAllCheckbox, { "target": { "checked": true } });
     expect(referenceSearchDialog.state.selectedItems.length).toBe(3);
     expect(referenceSearchDialog.state.selectedAll).toBeTruthy();
     const selectButton = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
        querySelector('p button.btn-primary');
-    TestUtils.Simulate.click(selectButton);
+    ReactTestUtils.Simulate.click(selectButton);
     expect(onSelect.mock.calls.length).toBe(1);
     expect(onSelect.mock.calls[0][0].length).toBe(3);
     expect(onSelect.mock.calls[0][0][0].id).toBe('100');
@@ -303,7 +293,7 @@ describe('ReferenceSearchDialog', () => {
     ];
     let onSelect = jest.fn();
     let onCloseDialog = jest.fn();
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -320,13 +310,11 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const selectButton = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
       querySelector('p button.btn-primary');
-    TestUtils.Simulate.click(selectButton);
+    ReactTestUtils.Simulate.click(selectButton);
     expect(onSelect.mock.calls.length).toBe(0);
     expect(onCloseDialog.mock.calls.length).toBe(0);
   });
@@ -341,7 +329,7 @@ describe('ReferenceSearchDialog', () => {
         }
       },
     ];
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -358,11 +346,9 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
     expect(referenceSearchDialog).toBeDefined();
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const view = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).querySelectorAll('cite');
     // <cite> will be rendred once per each found item, e.g. 3 times
     expect(view.length).toBe(3);
@@ -386,7 +372,7 @@ describe('ReferenceSearchDialog', () => {
         count: 15
       });
     });
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -401,10 +387,10 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog = TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
     expect(referenceSearchDialog).toBeDefined();
     const modalBody = referenceSearchDialog.refs['modal-body'];
-    const paginationPanel = TestUtils.findRenderedComponentWithType(modalBody, PaginationPanel);
+    const paginationPanel = ReactTestUtils.findRenderedComponentWithType(modalBody, PaginationPanel);
 
     expect(referenceSearchAction.mock.calls.length).toBe(1);
     expect(referenceSearchAction.mock.calls[0][0].offset).toBe(0);
@@ -429,7 +415,7 @@ describe('ReferenceSearchDialog', () => {
         count: 15
       })
     });
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -444,13 +430,10 @@ describe('ReferenceSearchDialog', () => {
         />
       </I18nContext>
     );
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
     expect(referenceSearchDialog).toBeDefined();
-    const modalBody =
-      referenceSearchDialog.refs['modal-body'];
-    const sortableColumn =
-      TestUtils.findRenderedComponentWithType(modalBody, SortableColumn);
+    const modalBody = referenceSearchDialog.refs['modal-body'];
+    const sortableColumn = ReactTestUtils.findRenderedComponentWithType(modalBody, SortableColumn);
     expect(referenceSearchAction.mock.calls.length).toBe(1);
     sortableColumn.onSort({ preventDefault: () => {} });
     expect(referenceSearchAction.mock.calls.length).toBe(2);
@@ -470,7 +453,7 @@ describe('ReferenceSearchDialog', () => {
     ];
     let onEnter = jest.fn();
     let onHide = jest.fn();
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
         <ReferenceSearchDialog
           title="test"
@@ -490,14 +473,12 @@ describe('ReferenceSearchDialog', () => {
       </I18nContext>
     );
     expect(onEnter.mock.calls.length).toBe(1);
-    const referenceSearchDialog =
-      TestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
+    const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
     expect(referenceSearchDialog).toBeDefined();
-    const modalComponent =
-      TestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
+    const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
     const closeDialogButton = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
-      querySelector('button.close');
-    TestUtils.Simulate.click(closeDialogButton);
+    querySelector('button.close');
+    ReactTestUtils.Simulate.click(closeDialogButton);
     expect(onHide.mock.calls.length).toBe(1);
   });
 });

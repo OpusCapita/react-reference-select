@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReferenceSearchDialogProps from '../ReferenceSearchDialogProps';
@@ -13,10 +14,10 @@ class ReferenceSearchInput extends React.Component {
   static propTypes = {
     ...ReferenceInputBaseProps,
     ...ReferenceSearchDialogProps,
-    referenceSearchAction: React.PropTypes.func.isRequired,
-    labelProperty: React.PropTypes.string.isRequired,
-    valueProperty: React.PropTypes.string.isRequired,
-    modalSpecificProps: React.PropTypes.object
+    referenceSearchAction: PropTypes.func.isRequired,
+    labelProperty: PropTypes.string.isRequired,
+    valueProperty: PropTypes.string.isRequired,
+    modalSpecificProps: PropTypes.object
   };
 
   static defaultProps = {
