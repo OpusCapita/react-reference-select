@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Button from 'react-bootstrap/lib/Button';
 import Modal from 'react-bootstrap/lib/Modal';
+import ResultSizePanel from '../ResultSizePanel';
 import PaginationPanel from '../PaginationPanel';
 import SortableColumn from '../SortableColumn';
 import lodash from 'lodash';
@@ -61,7 +62,7 @@ export default class ReferenceSearchDialog extends Component {
     /**
      * Trim search parameters
      */
-    trimSearchParameters: PropTypes.bool,
+    trimSearchParameters: PropTypes.bool
   };
 
   static contextTypes = {
@@ -188,6 +189,10 @@ export default class ReferenceSearchDialog extends Component {
 
   onPaginate(offset) {
     ::this.doSearch(this.state.max, offset, this.state.sort, this.state.order, ::this.onPaginateOnSortSearchCallback);
+  }
+
+  onResultsPerPageSizeChange(size) {
+    this.setState({ max: size, offset: 0 });
   }
 
   onSelect = (selectedItems) => {
@@ -425,6 +430,13 @@ export default class ReferenceSearchDialog extends Component {
 
           {this.state.count >= 1 ? (
             <div className="container-fluid" style={{ padding: 0 }}>
+              <div className="pull-right">
+                <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
+                  <ResultSizePanel
+                      onResize={(size) => this.onResultsPerPageSizeChange(size)}
+                  />
+                </div>
+              </div>
               <div className="pull-right">
                 <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
                   <div className="pull-left">

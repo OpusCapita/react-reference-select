@@ -53,9 +53,9 @@ export default class PaginationPanel extends Component {
 
   render() {
     const count = this.props.count;
+    const max = this.props.max;
 
-    if (count > 0) {
-      const max = this.props.max;
+    if (count > 0 && count > max) {
       const offset = this.props.offset;
       const items = Math.ceil(count / max);
       const activePage = offset > 0 ? (offset / max + 1) : 1;
