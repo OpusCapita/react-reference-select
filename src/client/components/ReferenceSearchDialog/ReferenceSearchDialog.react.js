@@ -433,7 +433,7 @@ export default class ReferenceSearchDialog extends Component {
               <div className="pull-right">
                 <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
                   <ResultSizePanel
-                      onResize={(size) => this.onResultsPerPageSizeChange(size)}
+                    onResize={(size) => this.onResultsPerPageSizeChange(size)}
                   />
                 </div>
               </div>

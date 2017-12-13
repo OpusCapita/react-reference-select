@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from "react";
+import React, { Component, PropTypes } from "react";
 import Dropdown from "react-bootstrap/lib/Dropdown";
 import MenuItem from "react-bootstrap/lib/MenuItem";
 import translations from './i18n'
@@ -10,11 +10,11 @@ export default class ResultSizePanel extends Component {
      */
     onResize: PropTypes.func.isRequired
   };
-  
+
   static contextTypes = {
     i18n: React.PropTypes.object.isRequired
   };
-  
+
   static defaultProps = {
   };
 
@@ -36,17 +36,22 @@ export default class ResultSizePanel extends Component {
 
   onSelect(eventKey, event) {
     if (eventKey) {
-      this.setState({size: eventKey == 'all' ? this.context.i18n.getMessage('ResultSizePanel.resultsPerPageAllLabel') : eventKey });
+      this.setState(
+        {
+          size: eventKey === 'all' ? this.context.i18n.getMessage('ResultSizePanel.resultsPerPageAllLabel') : eventKey
+        }
+      );
 
-      this.props.onResize(eventKey == 'all' ? Number.MAX_SAFE_INTEGER : parseInt(eventKey));
+      this.props.onResize(eventKey === 'all' ? Number.MAX_SAFE_INTEGER : parseInt(eventKey, 10));
     }
   }
 
   render() {
     return (
       <Dropdown id="dropdownMenu"
-                dropup={true}
-                onSelect={this.onSelect.bind(this)}>
+        dropup={true}
+        onSelect={this.onSelect.bind(this)}
+      >
         <Dropdown.Toggle>
           <span>{this.context.i18n.getMessage('ResultSizePanel.resultsPerPageLabel')}: <b>{this.state.size}</b></span>
         </Dropdown.Toggle>
