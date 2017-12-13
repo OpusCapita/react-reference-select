@@ -2,11 +2,11 @@ jest.autoMockOff();
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const TestUtils = require('react-addons-test-utils');
+const ReactTestUtils = require('react-dom/test-utils');
 const ReadonlyInput = require('../ReadonlyInput.react').default;
 
 describe('ReadonlyInput', () => {
-  let componentTree = TestUtils.renderIntoDocument(
+  let componentTree = ReactTestUtils.renderIntoDocument(
     <ReadonlyInput
       labelProperty={"labelProperty"}
       valueProperty={"valueProperty"}
@@ -20,7 +20,7 @@ describe('ReadonlyInput', () => {
   it('test is thrown exception on wrong props', () => {
     let errorMessage;
     try {
-      TestUtils.renderIntoDocument(
+      ReactTestUtils.renderIntoDocument(
         <ReadonlyInput
           labelProperty={"labelProperty"}
           valueProperty={"valueProperty"}
@@ -38,7 +38,7 @@ describe('ReadonlyInput', () => {
   });
 
   it('test with single value', () => {
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <ReadonlyInput
         labelProperty={"labelProperty"}
         valueProperty={"valueProperty"}
@@ -51,7 +51,7 @@ describe('ReadonlyInput', () => {
   });
 
   it('test multiple values with null element', () => {
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <ReadonlyInput
         labelProperty={"labelProperty"}
         valueProperty={"valueProperty"}
@@ -65,7 +65,7 @@ describe('ReadonlyInput', () => {
   });
 
   it('test with multiple values', () => {
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <ReadonlyInput
         labelProperty={"labelProperty"}
         valueProperty={"valueProperty"}
@@ -79,7 +79,7 @@ describe('ReadonlyInput', () => {
   });
 
   it('test input value unchangeable', () => {
-    let componentTree = TestUtils.renderIntoDocument(
+    let componentTree = ReactTestUtils.renderIntoDocument(
       <ReadonlyInput
         valueProperty={""}
         labelProperty={"labelProperty"}
@@ -89,7 +89,7 @@ describe('ReadonlyInput', () => {
     let inputElement = ReactDOM.findDOMNode(componentTree);
     expect(inputElement).toBeDefined();
     expect(inputElement.value).toBe("anotherValue");
-    TestUtils.Simulate.change(inputElement, { target: { value: 'test' } });
+    ReactTestUtils.Simulate.change(inputElement, { target: { value: 'test' } });
     expect(inputElement.value).toBe("anotherValue");
   });
 

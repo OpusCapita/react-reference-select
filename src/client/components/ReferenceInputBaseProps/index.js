@@ -1,21 +1,21 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const ReferenceInputBaseProps = {
-  id: React.PropTypes.string,
-  name: React.PropTypes.string,
-  value: React.PropTypes.oneOfType(
+  id: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.oneOfType(
     [
-      React.PropTypes.array,
-      React.PropTypes.object
+      PropTypes.array,
+      PropTypes.object
     ]
   ),
-  onChange: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  onBlur: React.PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 
-  multiple: React.PropTypes.bool,
-  readOnly: React.PropTypes.bool,
-  disabled: React.PropTypes.bool
+  multiple: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 export default ReferenceInputBaseProps

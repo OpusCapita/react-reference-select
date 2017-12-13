@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Button from 'react-bootstrap/lib/Button';
 import Modal from 'react-bootstrap/lib/Modal';
 import PaginationPanel from '../PaginationPanel';
@@ -65,7 +66,7 @@ export default class ReferenceSearchDialog extends Component {
   };
 
   static contextTypes = {
-    i18n: React.PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   };
 
   static defaultProps = {
