@@ -2,9 +2,15 @@ jest.autoMockOff();
 
 const Promise = require('bluebird');
 const React = require('react');
-const enzyme = require('enzyme');
+const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-15');
 const refreshValueDecorator = require('../refreshValueDecorator.react').default;
+
+Enzyme.configure(
+    {
+      adapter: new Adapter()
+    }
+);
 
 const load = () => {
   return (statusId) => {
@@ -35,8 +41,7 @@ describe('refreshValueDecorator', () => {
   let componentTree;
 
   beforeEach(function() {
-    enzyme.configure({ adapter: new Adapter() });
-    componentTree = enzyme.mount(
+    componentTree = Enzyme.mount(
       <WrappedMyComponent
         serviceRegistry={() => ({ url: 'testUrl' })}
         value={ { statusId: '100' } }
