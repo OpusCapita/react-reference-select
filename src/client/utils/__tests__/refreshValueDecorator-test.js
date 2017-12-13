@@ -7,9 +7,9 @@ const Adapter = require('enzyme-adapter-react-15');
 const refreshValueDecorator = require('../refreshValueDecorator.react').default;
 
 Enzyme.configure(
-    {
-      adapter: new Adapter()
-    }
+  {
+    adapter: new Adapter()
+  }
 );
 
 const load = () => {
