@@ -1,4 +1,29 @@
 
+Release 2.0.0 Thu Dec 14 2017 12:58:01 GMT+0300 (+03)
+=======================================================
+
+ - Increment major package version (Kirill Volkovich <kirill.volkovich@jcatalog.com>, Thu Dec 14 12:57:42 2017 +0300)
+ - Merge pull request #11 from OpusCapita/issue#4
+    
+     #4 Fix "Missing i18n in context" and "Use propTypes from 'prop-types' instead of 'React.PropTypes'" errors (50c9767 450d167, Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>)
+ - #4 Fix "Missing i18n in context" and "Use propTypes from 'prop-types' instead of 'React.PropTypes'" errors (Kirill Volkovich <kirill.volkovich@jcatalog.com>, Thu Dec 14 12:55:49 2017 +0300)
+ - Merge pull request #7 from OpusCapita/issue#6
+    
+    Added possibility to select results per page size (9f0975e 9ae352c, Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>)
+ - Merged with 'master' branch (Alexander Danilov <adanilov@scand.com>, Thu Dec 14 11:09:02 2017 +0300)
+ - Merge branch 'master' into issue#6 (9a25f90 9f0975e, Alexander Danilov <adanilov@scand.com>)
+ - Refactored code (Alexander Danilov <adanilov@scand.com>, Thu Dec 14 10:36:23 2017 +0300)
+ - Merge pull request #8 from OpusCapita/issue#4
+    
+    Migrated to React 15.x.x and 16.x.x (9ece702 4ff294f, Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>)
+ - Fixed tests (Alexander Danilov <adanilov@scand.com>, Wed Dec 13 16:42:57 2017 +0300)
+ - Fixed code style (Alexander Danilov <adanilov@scand.com>, Wed Dec 13 16:30:17 2017 +0300)
+ - Fixed tests (Alexander Danilov <adanilov@scand.com>, Wed Dec 13 16:27:18 2017 +0300)
+ - Migrated to React 15.x.x and 16.x.x (Alexander Danilov <adanilov@scand.com>, Wed Dec 13 15:38:47 2017 +0300)
+ - Fixed code style (Alexander Danilov <adanilov@scand.com>, Wed Dec 13 13:31:53 2017 +0300)
+ - Added possibility to select results per page size (Alexander Danilov <adanilov@scand.com>, Wed Dec 13 13:16:49 2017 +0300)
+ - Updating to a version to  1.0.5 (Alexander Danilov <adanilov@scand.com>, Mon Sep 18 16:32:05 2017 +0300)
+
 Release 1.0.3 Mon Sep 18 2017 15:54:38 GMT+0300 (Belarus Standard Time)
 =======================================================
 
