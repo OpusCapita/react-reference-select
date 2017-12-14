@@ -96,12 +96,22 @@ export default class ReferenceSearchDialog extends Component {
   }
 
   componentWillMount() {
-    this.context.i18n.register('ReferenceSearchDialog', translations)
+    this.context.i18n.register('ReferenceSearchDialog', translations);
+  }
+
+  componentDidMount() {
+    if (this.props.openDialog) {
+      this.doInitialSearch();
+    }
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
     if (nextProps.openDialog !== this.props.openDialog) {
       this.setState(this.defaultDialogState);
+    }
+
+    if (!this.props.openDialog && nextProps.openDialog) {
+      this.doInitialSearch();
     }
   }
 
@@ -154,6 +164,21 @@ export default class ReferenceSearchDialog extends Component {
     })
   }
 
+  doInitialSearch = () => {
+    ::this.doSearch(this.state.max, this.state.offset, this.state.sort, this.state.order);
+    // if no search fields -> return
+    if (lodash.size(this.props.searchFields) === 0) {
+      return
+    }
+    // set focus to first search field in the form
+    let fieldName = this.props.searchFields[0].name;
+    let element = this.refs[fieldName];
+    if (element) {
+      // fix for IE: set focus on next tick
+      setTimeout(() => element.focus(), 300);
+    }
+  };
+
   onPaginateOnSortSearchCallback(result) {
     this.setState(
       {
@@ -167,21 +192,6 @@ export default class ReferenceSearchDialog extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     ::this.doSearch(this.state.max, 0, this.state.sort, this.state.order);
-  };
-
-  handleEnter = () => {
-    ::this.doSearch(this.state.max, this.state.offset, this.state.sort, this.state.order);
-    // if no search fields -> return
-    if (lodash.size(this.props.searchFields) === 0) {
-      return
-    }
-    // set focus to first search field in the form
-    let fieldName = this.props.searchFields[0].name;
-    let element = this.refs[fieldName];
-    if (element) {
-      // fix for IE: set focus on next tick
-      setTimeout(() => element.focus(), 300);
-    }
   };
 
   handleColumnSort = (sort, order) => {
@@ -275,12 +285,6 @@ export default class ReferenceSearchDialog extends Component {
           this.props.onCloseDialog();
           if (modalSpecificProps.onHide) {
             modalSpecificProps.onHide()
-          }
-        }}
-        onEnter={() => {
-          this.handleEnter();
-          if (modalSpecificProps.onEnter) {
-            modalSpecificProps.onEnter();
           }
         }}
         dialogClassName="reference-search-dialog"

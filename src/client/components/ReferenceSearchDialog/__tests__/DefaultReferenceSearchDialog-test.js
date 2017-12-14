@@ -451,7 +451,6 @@ describe('ReferenceSearchDialog', () => {
       { name: 'supplierId', label: 'Spl ID' },
       { name: 'name', label: 'Name' }
     ];
-    let onEnter = jest.fn();
     let onHide = jest.fn();
     let componentTree = ReactTestUtils.renderIntoDocument(
       <I18nContext>
@@ -466,13 +465,11 @@ describe('ReferenceSearchDialog', () => {
           resultFields={fields}
           objectIdentifier="id"
           modalSpecificProps={{
-            onEnter,
             onHide
           }}
         />
       </I18nContext>
     );
-    expect(onEnter.mock.calls.length).toBe(1);
     const referenceSearchDialog = ReactTestUtils.findRenderedComponentWithType(componentTree, ReferenceSearchDialog);
     expect(referenceSearchDialog).toBeDefined();
     const modalComponent = ReactTestUtils.findRenderedComponentWithType(referenceSearchDialog, Modal);
