@@ -1,4 +1,10 @@
 
+Release 2.0.1 Thu Dec 14 2017 18:26:24 GMT+0300 (+03)
+=======================================================
+
+ - #4 Fix react@16.x.x support (#15) (Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>, Thu Dec 14 18:23:55 2017 +0300)
+ - Updating to a version to  2.0.1 (Kirill Volkovich <kirill.volkovich@jcatalog.com>, Thu Dec 14 12:58:15 2017 +0300)
+
 Release 2.0.0 Thu Dec 14 2017 12:58:01 GMT+0300 (+03)
 =======================================================
 
