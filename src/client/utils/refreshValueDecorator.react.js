@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import lodash from 'lodash';
 import { loadObjectData } from './referenceInputUtils';
 
@@ -10,13 +11,13 @@ export default function refreshValueDecorator(keyProperty, labelProperty, refres
       };
 
       static propTypes = {
-        value: React.PropTypes.oneOfType(
+        value: PropTypes.oneOfType(
           [
-            React.PropTypes.array,
-            React.PropTypes.object
+            PropTypes.array,
+            PropTypes.object
           ]
         ),
-        serviceRegistry: React.PropTypes.func.isRequired
+        serviceRegistry: PropTypes.func.isRequired
       };
 
       state = {
@@ -55,6 +56,6 @@ export default function refreshValueDecorator(keyProperty, labelProperty, refres
           <DecoratedComponent {...this.props} value={this.state.value}/>
         );
       }
-    }
-  }
+    };
+  };
 }

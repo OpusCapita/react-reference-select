@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import lodash from 'lodash';
 
@@ -8,8 +9,8 @@ class ReadonlyInput extends React.Component {
 
   static propTypes = {
     ...ReferenceInputBaseProps,
-    labelProperty: React.PropTypes.string.isRequired,
-    valueProperty: React.PropTypes.string.isRequired
+    labelProperty: PropTypes.string.isRequired,
+    valueProperty: PropTypes.string.isRequired
   };
 
   constructor(props) {

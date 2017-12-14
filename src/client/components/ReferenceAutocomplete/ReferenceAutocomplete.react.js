@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
 import _ from 'lodash';
@@ -14,15 +15,15 @@ class ReferenceAutocomplete extends React.Component {
   static propTypes = {
     ...ReferenceInputBaseProps,
     // custom prop types
-    autocompleteAction: React.PropTypes.func.isRequired,
-    labelProperty: React.PropTypes.string.isRequired,
-    valueProperty: React.PropTypes.string.isRequired,
+    autocompleteAction: PropTypes.func.isRequired,
+    labelProperty: PropTypes.string.isRequired,
+    valueProperty: PropTypes.string.isRequired,
     // react-select specific props
-    reactSelectSpecificProps: React.PropTypes.shape(ReactSelectSpecificProps)
+    reactSelectSpecificProps: PropTypes.shape(ReactSelectSpecificProps)
   };
 
   static contextTypes = {
-    i18n: React.PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   };
 
   static defaultProps = {
