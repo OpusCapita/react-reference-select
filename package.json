@@ -21,9 +21,7 @@
     "publish-snapshot": "npm run npm-publish",
     "publish-release": "npm run npm-publish -- --release",
     "with-react-15": "test -L node_modules/react && npm unlink react && test -L node_modules/react-dom && npm unlink react-dom || true",
-    "with-react-16": "npm run link-react-16 && npm run link-react-dom-16",
-    "link-react-16": "cd external_modules/react-16/node_modules/react && npm link && cd ../../../../ && npm link react",
-    "link-react-dom-16": "cd external_modules/react-16/node_modules/react-dom && npm link && cd ../../../../ && npm link react-dom"
+    "with-react-16": "cd external_modules/react-16/node_modules/react && npm link && cd ../../../../ && npm link react && cd external_modules/react-16/node_modules/react-dom && npm link && cd ../../../../ && npm link react-dom"
   },
   "repository": "OpusCapita/react-reference-select",
   "publishConfig": {
