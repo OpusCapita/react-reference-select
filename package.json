@@ -36,9 +36,7 @@
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
     "react-bootstrap": "0.30.7",
-    "react-input-autosize": "1.1.0",
     "react-select": "1.0.0-rc.2",
-    "react-split-pane": "0.1.42",
     "recompose": "0.21.0",
     "superagent": "3.3.0",
     "superagent-bluebird-promise": "3.0.2"
