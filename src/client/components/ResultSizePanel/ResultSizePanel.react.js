@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Dropdown from "react-bootstrap/lib/Dropdown";
 import MenuItem from "react-bootstrap/lib/MenuItem";
 import translations from './i18n'
@@ -12,7 +13,7 @@ export default class ResultSizePanel extends Component {
   };
 
   static contextTypes = {
-    i18n: React.PropTypes.object.isRequired
+    i18n: PropTypes.object.isRequired
   };
 
   static defaultProps = {

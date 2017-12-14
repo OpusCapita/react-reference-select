@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Pagination from 'react-bootstrap/lib/Pagination';
 // import translations from './i18n';
 // import './PaginationPanel.less';

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { showroomScopeDecorator } from '@opuscapita/react-showroom-client';
 import { I18nManager } from '@opuscapita/i18n';
 
@@ -22,12 +23,9 @@ class ResultSizePanelScope extends Component {
 
   render() {
     return (
-        <div>
-          <button onClick={this.toggleModal.bind(this)}>
-            Open modal
-          </button>
-          {this._renderChildren()}
-        </div>
+      <div>
+        {this._renderChildren()}
+      </div>
     )
   }
 }
