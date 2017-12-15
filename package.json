@@ -31,7 +31,7 @@
     "react-dom": "^15.6.2 || ^16.2.0"
   },
   "dependencies": {
-    "@opuscapita/i18n": "1.0.14",
+    "@opuscapita/i18n": "1.1.0",
     "bluebird": "3.4.6",
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
