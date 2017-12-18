@@ -12,7 +12,7 @@ class ReferenceAutocompleteScope extends Component {
 
   getChildContext() {
     if (!this.context.i18n) {
-      this.context.i18n = new I18nManager('en', null, {});
+      this.context.i18n = new I18nManager({ locale: 'en' });
     }
     return { i18n: this.context.i18n };
   }

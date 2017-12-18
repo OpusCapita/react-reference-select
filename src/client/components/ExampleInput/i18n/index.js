@@ -1,8 +1,5 @@
 import en from './en';
 
-export default [
-  {
-    locales: ['en'],
-    messages: en
-  }
-];
+export default {
+  en
+};
