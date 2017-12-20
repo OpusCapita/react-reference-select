@@ -8,7 +8,7 @@ import ReferenceSearchInput from '../ReferenceSearchInput';
 import ReferenceAutocomplete from '../ReferenceAutocomplete';
 import isServiceRegistryConfiguredFor from '../ServiceRegistryValidator';
 import ExampleService from '../../service/ExampleService';
-import refreshValueDecorator from "../../utils/refreshValueDecorator.react";
+import refreshValueDecorator from "../refreshValueDecorator";
 import { getTotalCount } from '../../utils/referenceInputUtils.js';
 
 const SERVICE_NAME = 'example';

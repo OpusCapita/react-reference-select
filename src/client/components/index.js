@@ -6,6 +6,7 @@ import ReferenceSearchDialog from './ReferenceSearchDialog';
 import ReferenceSearchInput from './ReferenceSearchInput';
 import isServiceRegistryConfiguredFor from './ServiceRegistryValidator';
 import SortableColumn from './SortableColumn';
+import refreshValueDecorator from './refreshValueDecorator';
 
 export {
   PaginationPanel,
@@ -15,5 +16,6 @@ export {
   ReferenceSearchDialog,
   ReferenceSearchInput,
   isServiceRegistryConfiguredFor,
-  SortableColumn
+  SortableColumn,
+  refreshValueDecorator
 }

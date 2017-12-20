@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import lodash from 'lodash';
-import { loadObjectData } from './referenceInputUtils';
+import { loadObjectData } from '../../utils/referenceInputUtils';
 
 export default function refreshValueDecorator(keyProperty, labelProperty, refresh) {
   return (DecoratedComponent) => {
