@@ -1,6 +1,6 @@
 jest.autoMockOff();
 
-const loadObjectData = require('../referenceInputUtils').loadObjectData;
+const loadObjectData = require('../').loadObjectData;
 const lodash = require('lodash');
 
 const testData = [
