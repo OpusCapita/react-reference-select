@@ -9,7 +9,7 @@ import ReferenceAutocomplete from '../ReferenceAutocomplete';
 import isServiceRegistryConfiguredFor from '../ServiceRegistryValidator';
 import ExampleService from '../../service/ExampleService';
 import refreshValueDecorator from "../refreshValueDecorator";
-import { getTotalCount } from '../../utils/referenceInputUtils.js';
+import { getTotalCount } from '../referenceInputUtils';
 
 const SERVICE_NAME = 'example';
 
