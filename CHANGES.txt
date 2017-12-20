@@ -1,4 +1,13 @@
 
+Release 2.0.3 Wed Dec 20 2017 11:53:30 GMT+0300 (Belarus Standard Time)
+=======================================================
+
+ - Merge pull request #17 from OpusCapita/issue-5
+    
+    Added refreshValueDecorator to default exports (5ea97b8 33fec09, Dmitriy Sanko <dsanko-sc@users.noreply.github.com>)
+ - Fixed #5 (Egor Stambakio <stambakio@scand.com>, Wed Dec 20 11:46:11 2017 +0300)
+ - Updating to a version to  2.0.3 (Dmitriy Sanko <dsanko@scand.com>, Mon Dec 18 14:41:50 2017 +0300)
+
 Release 2.0.2 Mon Dec 18 2017 14:39:02 GMT+0300 (+03)
 =======================================================
 
