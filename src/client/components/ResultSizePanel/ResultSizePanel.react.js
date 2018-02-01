@@ -57,12 +57,12 @@ export default class ResultSizePanel extends Component {
           <span>{this.context.i18n.getMessage('ResultSizePanel.resultsPerPageLabel')}: <b>{this.state.size}</b></span>
         </Dropdown.Toggle>
         <Dropdown.Menu className="text-right">
-          <MenuItem eventKey="all">{this.context.i18n.getMessage('ResultSizePanel.resultsPerPageAllLabel')}</MenuItem>
-          <MenuItem eventKey="1000">1000</MenuItem>
-          <MenuItem eventKey="100">100</MenuItem>
-          <MenuItem eventKey="50">50</MenuItem>
-          <MenuItem eventKey="30">30</MenuItem>
           <MenuItem eventKey="10">10</MenuItem>
+          <MenuItem eventKey="30">30</MenuItem>
+          <MenuItem eventKey="50">50</MenuItem>
+          <MenuItem eventKey="100">100</MenuItem>
+          <MenuItem eventKey="1000">1000</MenuItem>
+          <MenuItem eventKey="all">{this.context.i18n.getMessage('ResultSizePanel.resultsPerPageAllLabel')}</MenuItem>
         </Dropdown.Menu>
       </Dropdown>
     )
