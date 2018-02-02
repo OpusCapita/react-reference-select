@@ -15,32 +15,13 @@ class ReadonlyInput extends React.Component {
 
   constructor(props) {
     super(props);
-    if (!this.validateValue(props.value, props.multiple || false)) {
-      throw new Error(`Invalid reference search value: ${props.value}. Only of 'object' and 'array' are supported.`);
-    }
     this.state = {
       value: lodash.isUndefined(props.value) ? null : props.value
     };
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    if (!this.validateValue(nextProps.value, nextProps.multiple || false)) {
-      throw new Error(`Invalid reference search value: ${nextProps.value}.
-        Only of 'object' and 'array' are supported.`);
-    }
-    if (!lodash.isEqual(nextProps.value, this.state.value)) {
-      this.setState({ value: nextProps.value });
-    }
-  }
-
-  validateValue(value, multiple) {
-    if (multiple && lodash.isArray(value)) {
-      return true;
-    } else if (!multiple && lodash.isObject(value) && !lodash.isArray(value)) {
-      return true;
-    } else {
-      return lodash.isEmpty(value);
-    }
+    this.setState({ value: nextProps.value });
   }
 
   render() {
@@ -75,7 +56,7 @@ class ReadonlyInput extends React.Component {
         name={this.props.name}
         onFocus={this.props.onFocus}
         onBlur={this.props.onBlur}
-        value={typeof value === 'undefined' ? '' : value}
+        value={lodash.isUndefined(value) || lodash.isNull(value) ? '' : value + ''}
       />
     );
   }
