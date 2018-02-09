@@ -203,7 +203,7 @@ export default class ReferenceSearchDialog extends Component {
   }
 
   onResultsPerPageSizeChange(size) {
-    this.setState({ max: size, offset: 0 });
+    ::this.doSearch(size, 0, this.state.sort, this.state.order, ::this.onPaginateOnSortSearchCallback);
   }
 
   onSelect = (selectedItems) => {
