@@ -1,4 +1,15 @@
 
+Release 2.0.6 Fri Feb 09 2018 12:55:52 GMT+0300 (Belarus Standard Time)
+=======================================================
+
+ - Merge branch 'master' of https://github.com/OpusCapita/react-reference-select (1f114ca 5062fb4, baliunov <baliunov@scand.com>)
+ - Updating to a version to  2.0.6 (baliunov <baliunov@scand.com>, Fri Feb 9 12:53:51 2018 +0300)
+ - (#21) Fix unit tests (#22)
+    
+    * (#21) Fix unit tests
+    
+    * Change package.json (Aleksandr Baliunov <abaliunov-sc@users.noreply.github.com>, Fri Feb 9 12:53:50 2018 +0300)
+
 Release 2.0.5 Fri Feb 09 2018 12:53:30 GMT+0300 (Belarus Standard Time)
 =======================================================
 
