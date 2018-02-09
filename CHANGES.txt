@@ -1,4 +1,15 @@
 
+Release 2.0.5 Fri Feb 09 2018 12:53:30 GMT+0300 (Belarus Standard Time)
+=======================================================
+
+ - (#19) Client don't request data on the server after list's resizing (#20)
+    
+    * (#19) Request after page's resize
+    
+    * (#19) Restore  a sequence of the sizes of the page (Aleksandr Baliunov <abaliunov-sc@users.noreply.github.com>, Fri Feb 9 11:43:30 2018 +0300)
+ - Update package.json (Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>, Wed Jan 31 13:05:13 2018 +0300)
+ - Updating to a version to  2.0.5 (Egor Stambakio <stambakio@scand.com>, Wed Dec 20 12:09:25 2017 +0300)
+
 Release 2.0.4 Wed Dec 20 2017 12:09:11 GMT+0300 (Belarus Standard Time)
 =======================================================
 
