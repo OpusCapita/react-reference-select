@@ -84,6 +84,7 @@
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "rimraf": "2.5.4",
+    "semver": "5.5.0",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",

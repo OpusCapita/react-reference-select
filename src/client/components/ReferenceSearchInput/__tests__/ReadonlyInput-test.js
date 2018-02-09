@@ -17,26 +17,6 @@ describe('ReadonlyInput', () => {
     expect(ReactDOM.findDOMNode(componentTree)).toBeDefined();
   });
 
-  it('test is thrown exception on wrong props', () => {
-    let errorMessage;
-    try {
-      ReactTestUtils.renderIntoDocument(
-        <ReadonlyInput
-          labelProperty={"labelProperty"}
-          valueProperty={"valueProperty"}
-          value={"invalidValue"}
-          multiple={true}
-        />
-      );
-    } catch (e) {
-      errorMessage = e.message;
-    }
-    expect(errorMessage).toBeDefined();
-    expect(errorMessage).toBe(
-      "Invalid reference search value: invalidValue. Only of 'object' and 'array' are supported."
-    );
-  });
-
   it('test with single value', () => {
     let componentTree = ReactTestUtils.renderIntoDocument(
       <ReadonlyInput
@@ -112,33 +92,5 @@ describe('ReadonlyInput', () => {
         value={{ valueProperty: 'anotherValue' }}
       />, root);
     expect(inputElement.value).toBe("");
-  });
-
-  it('test input re-rendering with wrong value', () => {
-    let root = document.createElement('div');
-    let componentTree = ReactDOM.render(
-      <ReadonlyInput
-        labelProperty={""}
-        valueProperty={"labelProperty"}
-        value={{ labelProperty: 'anotherValue' }}
-      />, root);
-    let inputElement = ReactDOM.findDOMNode(componentTree);
-    expect(inputElement).toBeDefined();
-    expect(inputElement.value).toBe("anotherValue");
-    let errorMessage;
-    try {
-      ReactDOM.render(
-        <ReadonlyInput
-          labelProperty={"labelProperty"}
-          valueProperty={"valueProperty"}
-          value={"invalidValue"}
-          multiple={true}
-        />, root);
-    } catch (e) {
-      errorMessage = e.message;
-    }
-    expect(errorMessage).toBeDefined();
-    expect(errorMessage).toBe(`Invalid reference search value: invalidValue.
-        Only of 'object' and 'array' are supported.`);
   });
 });

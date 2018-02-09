@@ -12,7 +12,7 @@ class TestReferenceSearchDialogInputComponent extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.object,
+    value: PropTypes.string,
     refName: PropTypes.string
   };
 
