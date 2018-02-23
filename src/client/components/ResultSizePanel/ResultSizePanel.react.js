@@ -43,7 +43,7 @@ export default class ResultSizePanel extends Component {
         }
       );
 
-      this.props.onResize(eventKey === 'all' ? Number.MAX_SAFE_INTEGER : parseInt(eventKey, 10));
+      this.props.onResize(eventKey === 'all' ? -1 : parseInt(eventKey, 10));
     }
   }
 
