@@ -1,5 +1,0 @@
-/**
- * @providesModule LESSStub
- */
-
-module.exports = {};
