@@ -1,4 +1,12 @@
 
+Release 2.0.7 Fri Feb 23 2018 14:29:45 GMT+0000 (UTC)
+=======================================================
+
+- Updated build config. (Dmitry Shienok dshienok@scand.com, 2018-02-23 17:13:59 +0300)
+- Merge pull request #24 from OpusCapita/issue-23 (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2018-02-23 16:20:22 +0300)
+- Fixed #23 (Egor Stambakio stambakio@scand.com, 2018-02-23 16:18:59 +0300)
+- Updating to a version to  2.0.7 (baliunov baliunov@scand.com, 2018-02-09 12:56:09 +0300)
+
 Release 2.0.6 Fri Feb 09 2018 12:55:52 GMT+0300 (Belarus Standard Time)
 =======================================================
 
