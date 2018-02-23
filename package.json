@@ -15,9 +15,8 @@
     "gh-pages-generate": "showroom-scan src && sh scripts/gh-pages/generate.sh",
     "gh-pages-deploy": "npm run gh-pages-generate && sh scripts/gh-pages/deploy.sh .gh-pages-tmp",
     "npm-build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy,lodash --ignore __tests__,*.spec.js,demo src/client/components --out-dir lib",
-    "npm-publish": "npm run npm-build && npm-publish",
-    "publish-snapshot": "npm run npm-publish",
-    "publish-release": "npm run npm-publish -- --release"
+    "npm-publish": "npm run npm-build && npm publish",
+    "publish-release": "npm run npm-publish"
   },
   "repository": "OpusCapita/react-reference-select",
   "publishConfig": {

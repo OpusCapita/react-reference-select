@@ -1,25 +1,37 @@
+defaults: &defaults
+  docker:
+    - image: opuscapita/minsk-core-ci:grails-2.4.4-jdk-8u131-nodejs-8.9.4-maven-3.3.9
+  working_directory: ~/build
+
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:6
-    working_directory: ~/reference-select
+    <<: *defaults
     steps:
+      - run:
+          name: Environment inject.
+          command: env_inject.sh
+
       - checkout
+
       - restore_cache:
-          key: dependencies-{{ checksum "package.json" }}
+          keys:
+            - react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-{{ .Branch }}
+            - react-reference-select
 
       - run:
-          name: Install dependencies
-          command: npm install
+          name: "Installing dependencies."
+          command: yarn install
 
       - save_cache:
-          key: dependencies-{{ checksum "package.json" }}
+          key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
-            - node_modules
+              - ./node_modules
+              - ./yarn.lock
 
       - run:
-          name: Lint
+          name: "Running lint."
           command: npm run lint
 
       - run:
@@ -36,38 +48,112 @@ jobs:
 
       - store_artifacts:
           path: junit
+
   update-gh-pages:
-      docker:
-        - image: circleci/node:6
-      working_directory: ~/reference-select
-      steps:
-        - checkout
-        - restore_cache:
-            keys:
-            - dependencies-{{ checksum "package.json" }}
+    <<: *defaults
+    steps:
+      - run:
+          name: Environment inject
+          command: /bin/env_inject.sh
+      
+      - checkout
 
-        - run:
-            name: install-dependencies
-            command: npm install
+      - restore_cache:
+          keys:
+            - react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-{{ .Branch }}
+            - react-reference-select
 
-        - save_cache:
-            key: dependencies-{{ checksum "package.json" }}
-            paths:
-              - node_modules
+      - run:
+          name: "Installing dependencies."
+          command: yarn install
 
-        - run:
-            name: deploy-gh-pages
-            command: npm run gh-pages-deploy
+      - save_cache:
+          key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+              - ./yarn.lock
+
+      - run:
+          name: deploy-gh-pages
+          command: npm run gh-pages-deploy
+
+  build_release:
+    <<: *defaults
+    steps:
+      - run:
+          name: Environment inject
+          command: /bin/env_inject.sh
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-{{ .Branch }}
+            - react-reference-select
+
+      - run:
+          name: "Installing dependencies."
+          command: yarn install
+
+      - save_cache:
+          key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+              - ./yarn.lock
+
+      - run:
+          name: "Running lint."
+          command: npm run lint
+
+      - run:
+          name: Test
+          command: |
+            mkdir junit
+            npm test -- --ci --testResultsProcessor='jest-junit-reporter'
+          environment:
+            TEST_REPORT_PATH: junit
+            TEST_REPORT_FILENAME: test-results.xml
+
+      - store_test_results:
+          path: junit
+
+      - store_artifacts:
+          path: junit
+
+      - run:
+          name: "Deploy."
+          command: npm run publish-release
+
+  release:
+    <<: *defaults
+    steps:
+
+      - run:
+          name: Environment inject
+          command: env_inject.sh
+
+      - checkout
+
+      - run:
+          name: Executing release scrtipt.
+          command: .circleci/release.sh
 
 workflows:
   version: 2
-  build-all:
+  release-and-build:
     jobs:
+      - release:
+          filters:
+            branches:
+              only: release
       - build:
           filters:
             branches:
               ignore:
                 - gh-pages
+                - release
       - update-gh-pages:
           requires:
             - build
@@ -75,3 +161,9 @@ workflows:
             branches:
               only:
                 - master
+      - build_release:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
