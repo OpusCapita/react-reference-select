@@ -30,8 +30,21 @@ ReferenceSearchInput react component
   resultFields={[{ name: 'id', label: 'ID' }, { name: 'name', label: 'Name' }]}
   referenceSearchAction={(searchParams, callback) => {
     return callback({
-      count: 3,
-      items: [{"id": "1", "name": "example1"}, {"id": "2", "name": "example2"}, {"id": "3", "name": "example3"}]
+      count: 12,
+      items: [
+        {"id": "1", "name": "example1"},
+        {"id": "2", "name": "example2"},
+        {"id": "3", "name": "example3"},
+        {"id": "4", "name": "example4"},
+        {"id": "5", "name": "example5"},
+        {"id": "6", "name": "example6"},
+        {"id": "7", "name": "example7"},
+        {"id": "8", "name": "example8"},
+        {"id": "9", "name": "example9"},
+        {"id": "10", "name": "example10"},
+        {"id": "11", "name": "example11"},
+        {"id": "12", "name": "example12"}
+      ]
     })
   }}
   labelProperty="_objectLabel"
