@@ -1,5 +1,5 @@
 export default {
   PaginationPanel: {
-    goToPage: 'Gehe zu Seite'
+    goToPage: '\u00D6ffnen'
   }
 };

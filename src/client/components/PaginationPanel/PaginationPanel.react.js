@@ -56,17 +56,19 @@ export default class PaginationPanel extends Component {
     this.context.i18n.register('PaginationPanel', translations);
   }
 
-  onSelect(eventKey) {
+  onSelect(pageNumber) {
     const radix = 10;
-    let currentPage = Number.parseInt(eventKey, radix);
-    if (!isNaN(currentPage) && currentPage >= 1) {
-      const { count, max } = this.props;
-      let maxPage = Math.round(Math.ceil(count / max));
-      if (currentPage > maxPage) {
-        currentPage = maxPage
-      }
-      this.props.onPaginate((currentPage - 1) * max);
+    let page = Number.parseInt(pageNumber, radix);
+    if (!page || page < 0 || page !== Number(pageNumber)) {
+      this.setState({ pageNumber: '' });
+      return;
     }
+    const { count, max } = this.props;
+    let maxPage = Math.round(Math.ceil(count / max));
+    if (page > maxPage) {
+      page = maxPage
+    }
+    this.props.onPaginate((page - 1) * max);
     this.setState({ pageNumber: '' })
   }
 
