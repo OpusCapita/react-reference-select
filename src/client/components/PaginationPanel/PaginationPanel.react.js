@@ -58,7 +58,7 @@ export default class PaginationPanel extends Component {
 
   onSelect(pageNumber) {
     const radix = 10;
-    let page = Number.parseInt(pageNumber, radix);
+    let page = parseInt(pageNumber, radix);
     if (!page || page < 0 || page !== Number(pageNumber)) {
       this.setState({ pageNumber: '' });
       return;
