@@ -447,15 +447,12 @@ export default class ReferenceSearchDialog extends Component {
                   <div className="pull-left">
                     {this.context.i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: this.state.count })}
                   </div>
-                  <div className="pull-left">
-                    <PaginationPanel
-                      count={this.state.count}
-                      max={this.state.max}
-                      offset={this.state.offset}
-                      onPaginate={(offset) => this.onPaginate(offset)}
-                      style={{ verticalAlign: 'middle' }}
-                    />
-                  </div>
+                  <PaginationPanel
+                    count={this.state.count}
+                    max={this.state.max}
+                    offset={this.state.offset}
+                    onPaginate={(offset) => this.onPaginate(offset)}
+                  />
                 </div>
               </div>
             </div>

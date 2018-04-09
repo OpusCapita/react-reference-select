@@ -394,7 +394,7 @@ describe('ReferenceSearchDialog', () => {
 
     expect(referenceSearchAction.mock.calls.length).toBe(1);
     expect(referenceSearchAction.mock.calls[0][0].offset).toBe(0);
-    paginationPanel.onSelect({}, { eventKey: 2 });
+    paginationPanel.onSelect(2);
     expect(referenceSearchAction.mock.calls.length).toBe(2);
     // expect(referenceSearchAction.mock.calls[1][0].offset).toBe(10);
   });

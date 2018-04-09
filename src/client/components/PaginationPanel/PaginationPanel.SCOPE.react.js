@@ -4,7 +4,7 @@ import { showroomScopeDecorator } from '@opuscapita/react-showroom-client';
 import { I18nManager } from '@opuscapita/i18n';
 
 @showroomScopeDecorator
-class ReferenceSearchInputScope extends Component {
+class PaginationPanelScope extends Component {
   getChildContext() {
     if (!this.context.i18n) {
       this.context.i18n = new I18nManager({ locale: 'en' });
@@ -14,18 +14,18 @@ class ReferenceSearchInputScope extends Component {
 
   render() {
     return (
-      <div>
+      <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
         {this._renderChildren()}
       </div>
     )
   }
 }
 
-ReferenceSearchInputScope.contextTypes = {
+PaginationPanelScope.contextTypes = {
   i18n: PropTypes.object
 };
-ReferenceSearchInputScope.childContextTypes = {
+PaginationPanelScope.childContextTypes = {
   i18n: PropTypes.object
 };
 
-export default ReferenceSearchInputScope;
+export default PaginationPanelScope;
