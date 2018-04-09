@@ -1,4 +1,10 @@
 
+Release 2.1.0 Mon Apr 09 2018 08:20:57 GMT+0000 (UTC)
+=======================================================
+
+- Updating version. (Dmitriy Sanko dsanko@scand.com, 2018-04-09 11:01:18 +0300)
+- Extending page navigation bar with manual page input. [#25](https://github.com/OpusCapita/react-reference-select/issues/25) ([#26](https://github.com/OpusCapita/react-reference-select/issues/26)) (GitHub dsanko-sc@users.noreply.github.com, 2018-04-09 10:59:25 +0300)
+
 Release 2.0.7 Fri Feb 23 2018 14:29:45 GMT+0000 (UTC)
 =======================================================
 
