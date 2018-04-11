@@ -1,4 +1,11 @@
 
+Release 2.1.1 Wed Apr 11 2018 12:52:31 GMT+0000 (UTC)
+=======================================================
+
+- Merge pull request [#30](https://github.com/OpusCapita/react-reference-select/issues/30) from OpusCapita/issue-29/ReferenceSearchInput-onChange (GitHub dzhitomirsky-sc@users.noreply.github.com, 2018-04-11 15:11:58 +0300)
+- [#29](https://github.com/OpusCapita/react-reference-select/issues/29) Fixed calling onChange on reset button click. (dzhitomirsky-sc dzhitomirsky@scand.com, 2018-04-11 14:56:53 +0300)
+- Fixed version. [ci skip] (Dmitry Shienok dshienok@scand.com, 2018-04-09 11:22:37 +0300)
+
 Release 2.1.0 Mon Apr 09 2018 08:20:57 GMT+0000 (UTC)
 =======================================================
 
