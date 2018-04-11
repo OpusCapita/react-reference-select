@@ -68,14 +68,6 @@ class ReferenceSearchInput extends React.Component {
     this.setState({ openDialog: true });
   }
 
-  resetValue() {
-    if (this.props.multiple) {
-      this.setState({ value: [] });
-    } else {
-      this.setState({ value: null });
-    }
-  }
-
   render() {
     let childProps = lodash.pick(this.props,
       ['id', 'name', 'onFocus', 'onBlur', 'multiple', 'labelProperty', 'valueProperty', 'readOnly']
@@ -115,7 +107,10 @@ class ReferenceSearchInput extends React.Component {
             <i className="glyphicon glyphicon-search" />
           </Button>
         {!this.props.children ? (
-          <Button onClick={() => this.resetValue()} disabled={this.props.disabled || this.props.readOnly}>
+          <Button
+            onClick={() => this.handleValueChange(this.props.multiple ? [] : null)}
+            disabled={this.props.disabled || this.props.readOnly}
+          >
             <i className="glyphicon glyphicon-remove" />
           </Button>
         ) : null}
