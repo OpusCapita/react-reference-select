@@ -1,4 +1,9 @@
 
+Release 2.1.2 Fri Apr 13 2018 11:46:00 GMT+0000 (UTC)
+=======================================================
+
+- Fixing missing Promise in IE11 according to [#27](https://github.com/OpusCapita/react-reference-select/issues/27) (Egor Stambakio stambakio@scand.com, 2018-04-13 13:29:18 +0300)
+
 Release 2.1.1 Wed Apr 11 2018 12:52:31 GMT+0000 (UTC)
 =======================================================
 
