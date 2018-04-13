@@ -1,3 +1,4 @@
+import Promise from 'bluebird';
 import examples from './examples'
 
 export default class ExampleService {

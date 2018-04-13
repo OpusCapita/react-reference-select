@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { showroomScopeDecorator } from '@opuscapita/react-showroom-client';
 import { I18nManager } from '@opuscapita/i18n';
+import Promise from 'bluebird';
+
+if (!window.Promise) {
+  window.Promise = Promise
+}
 
 @showroomScopeDecorator
 class ReferenceAutocompleteScope extends Component {
