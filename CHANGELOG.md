@@ -1,4 +1,10 @@
 
+Release 2.1.3 Fri May 04 2018 17:22:22 GMT+0300 (MSK)
+=======================================================
+
+- Hide pagination for `show all` state in reference search (Egor Stambakio stambakio@scand.com, 2018-05-04 16:28:40 +0300)
+- Adding an issue template file [ci skip] (Egor Stambakio egor.stambakio@opuscapita.com, 2018-05-02 12:26:35 +0300)
+
 Release 2.1.2 Fri Apr 13 2018 11:46:00 GMT+0000 (UTC)
 =======================================================
 
