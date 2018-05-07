@@ -1,0 +1,15 @@
+{
+  "name": "babel-preset-web-app",
+  "version": "1.0.0",
+  "description": "Babel preset",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-plugin-lodash": "3.2.11",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-plugin-transform-object-assign": "6.8.0",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-stage-0": "6.16.0"
+  }
+}
