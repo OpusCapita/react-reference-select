@@ -4,7 +4,6 @@ import Pagination from 'react-bootstrap/lib/Pagination';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import translations from './i18n';
-// import './PaginationPanel.less';
 
 const NEXT_BUTTON = (<span className="glyphicon glyphicon-forward" />);
 const PREV_BUTTON = (<span className="glyphicon glyphicon-backward" />);
