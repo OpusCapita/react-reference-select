@@ -6,11 +6,9 @@ module.exports = {
       return babel.transform(src, {
         filename,
         presets: [
-          require('babel-preset-es2015'),
-          require('babel-preset-react'),
-          require('babel-preset-stage-0')
+          require('babel-preset-web-app'),
+          require('babel-preset-react')
         ],
-        plugins: ['transform-object-assign', 'transform-decorators-legacy'],
         retainLines: true,
       }).code;
     }
