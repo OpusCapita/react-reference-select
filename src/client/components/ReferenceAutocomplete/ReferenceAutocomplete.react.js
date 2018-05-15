@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Select from 'react-select';
+import Select from '@opuscapita/react-select';
 import _ from 'lodash';
-import 'react-select/dist/react-select.css';
-import './styles.less';
 import translations from './i18n';
 
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
