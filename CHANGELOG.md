@@ -1,4 +1,9 @@
 
+Release 2.1.4 Tue May 15 2018 17:34:39 GMT+0300 (MSK)
+=======================================================
+
+- react-select replaced with @opuscapita/react-select. (Sergey Tamkov tamkov@scand.com, 2018-05-15 17:31:35 +0300)
+
 Release 2.1.3 Fri May 04 2018 17:22:22 GMT+0300 (MSK)
 =======================================================
 
