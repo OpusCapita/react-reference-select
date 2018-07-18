@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import lodash from 'lodash';
-
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 
-export default
-class ReadonlyInput extends React.Component {
-
+export default class ReadonlyInput extends React.Component {
   static propTypes = {
     ...ReferenceInputBaseProps,
     labelProperty: PropTypes.string.isRequired,
@@ -16,7 +12,7 @@ class ReadonlyInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: lodash.isUndefined(props.value) ? null : props.value
+      value: props.value === undefined ? null : props.value
     };
   }
 
@@ -25,9 +21,8 @@ class ReadonlyInput extends React.Component {
   }
 
   render() {
-    let labelProperty = this.props.labelProperty;
-    let valueProperty = this.props.valueProperty;
-    let label = (value) => {
+    const { labelProperty, valueProperty } = this.props;
+    const label = (value) => {
       if (!value) {
         return '';
       }
@@ -36,7 +31,7 @@ class ReadonlyInput extends React.Component {
 
     let value = '';
     if (this.state.value) {
-      if (lodash.isArray(this.state.value)) {
+      if (Array.isArray(this.state.value)) {
         value = this.state.value.reduce((previousValue, currentValue) => {
           let val = label(currentValue);
           if (!previousValue) {
@@ -56,7 +51,7 @@ class ReadonlyInput extends React.Component {
         name={this.props.name}
         onFocus={this.props.onFocus}
         onBlur={this.props.onBlur}
-        value={lodash.isUndefined(value) || lodash.isNull(value) ? '' : value + ''}
+        value={value === undefined || value === null ? '' : value + ''}
       />
     );
   }

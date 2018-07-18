@@ -1,5 +1,6 @@
-import _ from 'lodash';
 import Promise from 'bluebird'
+import hasIn from 'lodash/hasIn';
+import isNil from 'lodash/isNil';
 
 // add cancelation support otherwise refreshValueDecorator will not be able to perform calcelling
 Promise.config({
@@ -16,11 +17,14 @@ Promise.config({
  * @private
  */
 function _getObjectWithFallback(object, keyProperty, labelProperty) {
-  if (_.hasIn(object, labelProperty)) {
+  if (hasIn(object, labelProperty)) {
     return object;
-  } else if (_.hasIn(object, keyProperty)) {
+  } else if (hasIn(object, keyProperty)) {
     // in case when key property is defined then we overwrite label property value
-    return _.assignIn({}, object, { [labelProperty]: object[keyProperty] });
+    return {
+      ...object,
+      [labelProperty]: object[keyProperty]
+    }
   } else {
     return object;
   }
@@ -40,7 +44,7 @@ function _getObjectWithFallback(object, keyProperty, labelProperty) {
  * @private
  */
 function _loadSingleObject(object, keyProperty, labelProperty, objectLoader) {
-  if (_.hasIn(object, labelProperty)) {
+  if (hasIn(object, labelProperty)) {
     // label exists -> return object as it is
     return Promise.resolve(object);
   } else if (object[keyProperty] === undefined) {
@@ -68,36 +72,31 @@ function _loadSingleObject(object, keyProperty, labelProperty, objectLoader) {
  */
 function loadObjectData(object, keyProperty, labelProperty, objectLoader,
                         onLoadingStart = () => {}, onLoadingEnd = () => {}) {
-  if (_.isNil(object)) {
+  if (isNil(object)) {
     return Promise.resolve(object);
   }
   // is multiple
-  if (_.isArray(object)) {
-    const someObjectHasNoLabel = _.some(object, (item) => {
-      return !_.hasIn(item, labelProperty);
-    });
+  if (Array.isArray(object)) {
+    const someObjectHasNoLabel = object.some(item => !hasIn(item, labelProperty));
 
     if (someObjectHasNoLabel) {
       onLoadingStart();
       return Promise.all(
-        _.map(object, (item) => {
-          return _loadSingleObject(item, keyProperty, labelProperty, objectLoader);
-        })
-      ).then((responses) => {
+        object.map(item => _loadSingleObject(item, keyProperty, labelProperty, objectLoader))
+      ).then(responses => {
         onLoadingEnd();
-        return _.map(responses, (response) => {
-          return _getObjectWithFallback(response, keyProperty, labelProperty);
-        });
+        return responses.map(response => _getObjectWithFallback(response, keyProperty, labelProperty));
       });
     } else {
       return Promise.resolve(object);
     }
   } else {
     onLoadingStart();
-    return _loadSingleObject(object, keyProperty, labelProperty, objectLoader).then((result) => {
-      onLoadingEnd();
-      return result;
-    });
+    return _loadSingleObject(object, keyProperty, labelProperty, objectLoader).
+      then(result => {
+        onLoadingEnd();
+        return result;
+      });
   }
 }
 

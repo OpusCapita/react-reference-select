@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import isEqual from 'lodash/isEqual';
+import isObject from 'lodash/isObject';
+import isEmpty from 'lodash/isEmpty';
+import sortBy from 'lodash/sortBy';
 import Select from '@opuscapita/react-select';
-import _ from 'lodash';
 import translations from './i18n';
-
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReactSelectSpecificProps from '../ReactSelectSpecificProps';
 
 export default
 class ReferenceAutocomplete extends React.Component {
-
   static propTypes = {
     ...ReferenceInputBaseProps,
     // custom prop types
@@ -49,7 +50,7 @@ class ReferenceAutocomplete extends React.Component {
         Only of 'object' and 'array' are supported.`);
     }
 
-    if (!_.isEqual(nextProps.value, this.props.value)) {
+    if (!isEqual(nextProps.value, this.props.value)) {
       this.setState({ value: nextProps.value });
     }
   }
@@ -90,12 +91,12 @@ class ReferenceAutocomplete extends React.Component {
   };
 
   validateValue(value, multiple) {
-    if (multiple && _.isArray(value)) {
+    if (multiple && Array.isArray(value)) {
       return true;
-    } else if (!multiple && _.isObject(value) && !_.isArray(value)) {
+    } else if (!multiple && isObject(value) && !Array.isArray(value)) {
       return true;
     } else {
-      return _.isEmpty(value);
+      return isEmpty(value);
     }
   }
 
@@ -111,7 +112,7 @@ class ReferenceAutocomplete extends React.Component {
         return autocompleteAction(input).then((result) => {
           const { options = [], sort = true, complete = false } = result;
           return {
-            options: sort ? _.sortBy(options, (option) => {
+            options: sort ? sortBy(options, (option) => {
               return `${option[labelProperty]}`.toLowerCase();
             }) : options,
             complete: complete

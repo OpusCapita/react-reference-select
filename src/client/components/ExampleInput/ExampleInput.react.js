@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import translations from './i18n';
-import lodash from 'lodash';
+import extend from 'lodash/extend';
+import pick from 'lodash/pick';
 import ReactSelectSpecificProps from '../ReactSelectSpecificProps';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReferenceSearchInput from '../ReferenceSearchInput';
@@ -37,9 +38,9 @@ export default class ExampleInput extends React.Component {
   }
 
   render() {
-    let referenceSearchProps = lodash.extend(
+    let referenceSearchProps = extend(
       // copy this properties
-      lodash.pick(this.props, ['id', 'name', 'onBlur', 'onFocus', 'onChange', 'multiple', 'disabled', 'readOnly']),
+      pick(this.props, ['id', 'name', 'onBlur', 'onFocus', 'onChange', 'multiple', 'disabled', 'readOnly']),
       // add custom properties
       {
         value: this.props.value,
@@ -67,11 +68,13 @@ export default class ExampleInput extends React.Component {
         resultFields: [
           {
             name: 'id',
-            label: this.context.i18n.getMessage('ExampleInput.id')
+            label: this.context.i18n.getMessage('ExampleInput.id'),
+            sortable: true
           },
           {
             name: 'name',
-            label: this.context.i18n.getMessage('ExampleInput.name')
+            label: this.context.i18n.getMessage('ExampleInput.name'),
+            sortable: true
           }
         ],
 

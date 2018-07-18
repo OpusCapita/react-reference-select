@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import lodash from 'lodash';
+import isEqual from 'lodash/isEqual';
 import { loadObjectData } from '../referenceInputUtils';
 
 export default function refreshValueDecorator(keyProperty, labelProperty, refresh) {
@@ -29,7 +29,7 @@ export default function refreshValueDecorator(keyProperty, labelProperty, refres
       }
 
       componentWillReceiveProps(nextProps, nextContext) {
-        if (!lodash.isEqual(nextProps.value, this.props.value)) {
+        if (!isEqual(nextProps.value, this.props.value)) {
           this.setState({ value: nextProps.value });
           this.load(nextProps);
         }
