@@ -100,7 +100,7 @@ class ReferenceSearchInput extends React.Component {
           objectIdentifier={this.props.valueProperty}
           modalSpecificProps={this.props.modalSpecificProps}
         />
-      {children}
+        {children}
         <div className="input-group-btn">
           <Button onClick={() => this.openReferenceSearch()} disabled={this.props.disabled || this.props.readOnly}>
             <i className="glyphicon glyphicon-search" />

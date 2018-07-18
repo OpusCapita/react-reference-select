@@ -1,6 +1,5 @@
 import Promise from 'bluebird'
 import hasIn from 'lodash/hasIn';
-import assignIn from 'lodash/assignIn';
 import isNil from 'lodash/isNil';
 
 // add cancelation support otherwise refreshValueDecorator will not be able to perform calcelling
@@ -22,7 +21,10 @@ function _getObjectWithFallback(object, keyProperty, labelProperty) {
     return object;
   } else if (hasIn(object, keyProperty)) {
     // in case when key property is defined then we overwrite label property value
-    return assignIn({}, object, { [labelProperty]: object[keyProperty] });
+    return {
+      ...object,
+      [labelProperty]: object[keyProperty]
+    }
   } else {
     return object;
   }
@@ -91,7 +93,7 @@ function loadObjectData(object, keyProperty, labelProperty, objectLoader,
   } else {
     onLoadingStart();
     return _loadSingleObject(object, keyProperty, labelProperty, objectLoader).
-      then((result) => {
+      then(result => {
         onLoadingEnd();
         return result;
       });

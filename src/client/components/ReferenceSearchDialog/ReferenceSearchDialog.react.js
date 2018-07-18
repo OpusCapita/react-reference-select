@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import size from 'lodash/size';
 import clone from 'lodash/clone';
 import find from 'lodash/find';
 import reject from 'lodash/reject';
@@ -170,21 +169,9 @@ export default class ReferenceSearchDialog extends Component {
 
   doInitialSearch = () => {
     ::this.doSearch(this.state.max, this.state.offset, this.state.sort, this.state.order);
-    // if no search fields -> return
-    if (size(this.props.searchFields) === 0) {
-      return
-    }
-    // set focus to first search field in the form
-    let fieldName = this.props.searchFields[0].name;
-    let element = this.refs[fieldName];
-    if (element) {
-      // fix for IE: set focus on next tick
-      setTimeout(() => element.focus(), 300);
-    }
   };
 
   onPaginateOnSortSearchCallback(result) {
-    console.log('onPaginateOnSortSearchCallback', { result });
     this.setState({
       ...result,
       selectedAll: false
@@ -312,7 +299,7 @@ export default class ReferenceSearchDialog extends Component {
         <Modal.Header closeButton={true}>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body ref="modal-body">
+        <Modal.Body ref='modal-body'>
           <form className="form-horizontal" onSubmit={this.handleFormSubmit}>
             <div className="reference-search__table-container">
               <table className="table">
@@ -329,23 +316,26 @@ export default class ReferenceSearchDialog extends Component {
                   <tr>
                   {searchFields.map((column, key) => {
                     if (column.inputComponent) {
+                      const Component = column.inputComponent;
                       return (
                         <td key={key + '-label-search-header-input'} style={style}>
-                          <column.inputComponent
+                          <Component
+                            {...(searchFields[0].name === column.name && { autoFocus: true })}
                             onChange={(event) => this.onChangeSearchParam(
                               column.name, event.target.value
                             )}
                             value={searchParams[column.name] || ''}
                             id={column.name}
-                            ref={column.name}
                           />
                         </td>
                       )
                     }
                     return (
                       <td key={key + '-label-search-header-input'} style={style}>
-                        <input id={column.name}
-                          ref={column.name} type="text"
+                        <input
+                          {...(searchFields[0].name === column.name && { autoFocus: true })}
+                          id={column.name}
+                          type="text"
                           className="form-control"
                           onChange={(event) => this.onChangeSearchParam(
                             column.name, event.target.value
