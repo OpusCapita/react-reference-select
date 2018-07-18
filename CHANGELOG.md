@@ -1,4 +1,9 @@
 
+[Release 2.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.5) Wed Jul 18 2018 17:07:10 GMT+0300 (MSK)
+=======================================================
+
+- Fixes and enhancements ([#34](https://github.com/OpusCapita/react-reference-select/issues/34)) (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2018-07-18 16:59:26 +0300)
+
 Release 2.1.4 Tue May 15 2018 17:34:39 GMT+0300 (MSK)
 =======================================================
 
