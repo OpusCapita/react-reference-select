@@ -120,7 +120,7 @@ export default class ReferenceSearchDialog extends Component {
   }
 
   onChangeSearchParam = (name, value) => {
-    let searchParams = { ...this.state.searchParams };
+    const searchParams = { ...this.state.searchParams };
     if (value) {
       searchParams[name] = value;
       searchParams[`${name}_operator`] = 'startsWith';
@@ -128,12 +128,11 @@ export default class ReferenceSearchDialog extends Component {
       delete searchParams[name];
       delete searchParams[`${name}_operator`];
     }
-
     this.setState({ searchParams });
   };
 
-  doSearch(max, offset, sort, order, cb = (result) => {this.setState({ ...result })}) {
-    let dataRowParams = {
+  doSearch(max, offset, sort, order, cb = (result) => { this.setState(result) }) {
+    const dataRowParams = {
       max,
       offset
     };
@@ -149,11 +148,12 @@ export default class ReferenceSearchDialog extends Component {
     if (trimSearchParameters) {
       // trim search params
       searchParams = Object.keys(searchParams).reduce((previousValue, currentValue) => {
-        let parameterValue = searchParams[currentValue].trim();
+        const parameterValue = searchParams[currentValue].trim();
         if (parameterValue) {
-          let result = { ...previousValue };
-          result[currentValue] = parameterValue;
-          return result;
+          return {
+            ...previousValue,
+            [currentValue]: parameterValue
+          }
         } else {
           return previousValue;
         }
@@ -184,13 +184,11 @@ export default class ReferenceSearchDialog extends Component {
   };
 
   onPaginateOnSortSearchCallback(result) {
-    this.setState(
-      {
-        ...result,
-        selectedAll: false,
-        selectedItems: this.state.selectedItems
-      }
-    );
+    console.log('onPaginateOnSortSearchCallback', { result });
+    this.setState({
+      ...result,
+      selectedAll: false
+    });
   }
 
   handleFormSubmit = (event) => {
@@ -262,7 +260,7 @@ export default class ReferenceSearchDialog extends Component {
 
     this.setState({
       selectedAll: false,
-      selectedItems: selectedItems
+      selectedItems
     });
   };
 
@@ -400,7 +398,8 @@ export default class ReferenceSearchDialog extends Component {
                       <th key={key + '-label-search-result-header'} className="header">
                         {row.sortable ? (
                           <nobr>
-                            <SortableColumn title={row.label}
+                            <SortableColumn
+                              title={row.label}
                               test={row.name}
                               sort={sort}
                               order={order}

@@ -1,10 +1,15 @@
 import Promise from 'bluebird';
-import examples from './examples'
+import examples from './examples';
+
+const sort = {
+  asc: (objects, prop) => objects.sort((a, b) => a[prop] < b[prop] ? -1 : 1),
+  desc: (objects, prop) => objects.sort((a, b) => a[prop] < b[prop] ? 1 : -1)
+}
 
 export default class ExampleService {
   getExamples(params) {
+    let items = [...examples.body];
     if (params.id || params.name) {
-      let items = [];
       if (params.id) {
         items = examples.body.filter((example) => {
           return example.id.includes(params.id)
@@ -21,13 +26,17 @@ export default class ExampleService {
           });
         }
       }
-      return Promise.resolve({
-        "body": items,
-        "headers": {
-          "content-range": `items 0-9/${items.length}`
-        }
-      })
     }
-    return Promise.resolve(examples)
+
+    if (params.sort) {
+      items = sort[params.order || 'asc'](items, params.sort)
+    }
+
+    return Promise.resolve({
+      "body": items,
+      "headers": {
+        "content-range": `items 0-9/${items.length}`
+      }
+    })
   }
 }
