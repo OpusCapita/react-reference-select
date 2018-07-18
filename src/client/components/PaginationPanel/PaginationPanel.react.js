@@ -4,7 +4,6 @@ import Pagination from 'react-bootstrap/lib/Pagination';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import translations from './i18n';
-// import './PaginationPanel.less';
 
 const NEXT_BUTTON = (<span className="glyphicon glyphicon-forward" />);
 const PREV_BUTTON = (<span className="glyphicon glyphicon-backward" />);
@@ -80,14 +79,12 @@ export default class PaginationPanel extends Component {
   };
 
   render() {
-    const count = this.props.count;
-    const max = this.props.max;
+    const { count, max, offset } = this.props;
 
     if (max === -1 || count === 0 || count <= max) {
       return null
     }
 
-    const offset = this.props.offset;
     const items = Math.ceil(count / max);
     const activePage = offset > 0 ? (offset / max + 1) : 1;
 

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import size from 'lodash/size';
+import clone from 'lodash/clone';
+import find from 'lodash/find';
+import reject from 'lodash/reject';
+import get from 'lodash/get';
 import Button from 'react-bootstrap/lib/Button';
 import Modal from 'react-bootstrap/lib/Modal';
 import ResultSizePanel from '../ResultSizePanel';
 import PaginationPanel from '../PaginationPanel';
 import SortableColumn from '../SortableColumn';
-import lodash from 'lodash';
 import translations from './i18n'
 import ReferenceSearchDialogProps from '../ReferenceSearchDialogProps';
 import './styles.less';
@@ -75,8 +79,8 @@ export default class ReferenceSearchDialog extends Component {
     trimSearchParameters: true
   };
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(...args) {
+    super(...args);
 
     this.defaultDialogState = {
       selectedItems: [],
@@ -105,7 +109,7 @@ export default class ReferenceSearchDialog extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps, nextContext) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.openDialog !== this.props.openDialog) {
       this.setState(this.defaultDialogState);
     }
@@ -167,7 +171,7 @@ export default class ReferenceSearchDialog extends Component {
   doInitialSearch = () => {
     ::this.doSearch(this.state.max, this.state.offset, this.state.sort, this.state.order);
     // if no search fields -> return
-    if (lodash.size(this.props.searchFields) === 0) {
+    if (size(this.props.searchFields) === 0) {
       return
     }
     // set focus to first search field in the form
@@ -209,7 +213,6 @@ export default class ReferenceSearchDialog extends Component {
   onSelect = (selectedItems) => {
     if (selectedItems.length === 0) {
       alert(`${this.context.i18n.getMessage('ReferenceSearchDialog.noItemsSelectedMessage')}`);
-
       return;
     }
     this.props.onSelect(selectedItems);
@@ -221,55 +224,73 @@ export default class ReferenceSearchDialog extends Component {
   }
 
   selectAllItems = (checked) => {
-    let newState = {
+    const { objectIdentifier } = this.props;
+    const { selectedItems, items } = this.state;
+
+    const newState = {
       selectedAll: checked,
-      selectedItems: lodash.clone(this.state.selectedItems)
+      selectedItems: clone(selectedItems)
     };
 
     if (checked) {
-      let items = this.state.items;
-      let length = items.length;
-
-      for (let i = 0; i < length; i++) {
+      for (let i = 0; i < items.length; i++) {
         let item = items[i];
-        if (lodash.isUndefined(lodash.find(this.state.selectedItems,
-            { [this.props.objectIdentifier]: item[this.props.objectIdentifier] }))) {
+        if (find(selectedItems, { [objectIdentifier]: item[objectIdentifier] }) === undefined) {
           newState.selectedItems.push(item);
         }
       }
     } else {
-      newState.selectedItems = lodash.reject(newState.selectedItems, (item) => {
-        return !lodash.isUndefined(lodash.find(this.state.items,
-          { [this.props.objectIdentifier]: item[this.props.objectIdentifier] }))
+      newState.selectedItems = reject(newState.selectedItems, (item) => {
+        return find(items, { [objectIdentifier]: item[objectIdentifier] }) !== undefined
       });
     }
     this.setState(newState);
   };
 
   selectItem = (item, checked) => {
-    let selectedItems = lodash.clone(this.state.selectedItems);
+    const { objectIdentifier } = this.props;
+    let selectedItems = clone(this.state.selectedItems);
     if (checked) {
-      if (lodash.isUndefined(lodash.find(selectedItems, {
-        [this.props.objectIdentifier]: item[this.props.objectIdentifier] }))) {
+      if (find(selectedItems, { [objectIdentifier]: item[objectIdentifier] }) === undefined) {
         selectedItems.push(item);
       }
     } else {
-      selectedItems = lodash.reject(selectedItems, (selectedItem) => {
-        return selectedItem[this.props.objectIdentifier] === item[this.props.objectIdentifier];
+      selectedItems = reject(selectedItems, (selectedItem) => {
+        return selectedItem[objectIdentifier] === item[objectIdentifier];
       });
     }
 
-    this.setState(
-      {
-        selectedAll: false,
-        selectedItems: selectedItems
-      }
-    );
+    this.setState({
+      selectedAll: false,
+      selectedItems: selectedItems
+    });
   };
 
   render() {
-    const { multiple, modalSpecificProps } = this.props;
-    const { searchParams } = this.state;
+    const { i18n } = this.context;
+
+    const {
+      multiple,
+      modalSpecificProps,
+      openDialog,
+      onCloseDialog,
+      title,
+      searchFields,
+      objectIdentifier,
+      resultFields
+    } = this.props;
+
+    const {
+      searchParams,
+      selectedItems,
+      items,
+      selectedAll,
+      sort,
+      order,
+      count,
+      max,
+      offset
+    } = this.state;
 
     const style = {
       border: '0',
@@ -279,10 +300,10 @@ export default class ReferenceSearchDialog extends Component {
 
     return (
       <Modal
-        {...this.props.modalSpecificProps}
-        show={this.props.openDialog}
+        {...modalSpecificProps}
+        show={openDialog}
         onHide={() => {
-          this.props.onCloseDialog();
+          onCloseDialog();
           if (modalSpecificProps.onHide) {
             modalSpecificProps.onHide()
           }
@@ -291,7 +312,7 @@ export default class ReferenceSearchDialog extends Component {
         bsSize="lg"
       >
         <Modal.Header closeButton={true}>
-          <Modal.Title>{this.props.title}</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body ref="modal-body">
           <form className="form-horizontal" onSubmit={this.handleFormSubmit}>
@@ -299,7 +320,7 @@ export default class ReferenceSearchDialog extends Component {
               <table className="table">
                 <tbody>
                   <tr>
-                  {this.props.searchFields.map((column, key) => {
+                  {searchFields.map((column, key) => {
                     return (
                       <td key={key + '-label-search-header'} style={style}>
                         <label htmlFor={column.name}>{column.label}</label>
@@ -308,7 +329,7 @@ export default class ReferenceSearchDialog extends Component {
                   })}
                   </tr>
                   <tr>
-                  {this.props.searchFields.map((column, key) => {
+                  {searchFields.map((column, key) => {
                     if (column.inputComponent) {
                       return (
                         <td key={key + '-label-search-header-input'} style={style}>
@@ -342,26 +363,26 @@ export default class ReferenceSearchDialog extends Component {
             </div>
             <div className="form-submit text-right">
               <Button bsStyle="link" onClick={::this.reset}>
-                {this.context.i18n.getMessage('ReferenceSearchDialog.resetLabel')}
+                {i18n.getMessage('ReferenceSearchDialog.resetLabel')}
               </Button>
               <Button bsStyle="primary" type="submit">
-                {this.context.i18n.getMessage('ReferenceSearchDialog.searchLabel')}
+                {i18n.getMessage('ReferenceSearchDialog.searchLabel')}
               </Button>
             </div>
           </form>
 
-          {this.state.items.length > 0 && multiple ? (
+          {items.length > 0 && multiple ? (
             <p>
                <Button
                  bsStyle="primary"
-                 onClick={() => this.onSelect(this.state.selectedItems)}
+                 onClick={() => this.onSelect(selectedItems)}
                >
-                 {this.context.i18n.getMessage('ReferenceSearchDialog.selectLabel')}
+                 {i18n.getMessage('ReferenceSearchDialog.selectLabel')}
                </Button>
             </p>
           ) : null}
 
-          {this.state.items.length > 0 ? (
+          {items.length > 0 ? (
             <table className="opuscapita_reference-search-dialog__table table">
               <thead>
                 <tr>
@@ -369,20 +390,20 @@ export default class ReferenceSearchDialog extends Component {
                   (
                     <th className="header">
                       <input type="checkbox"
-                        onChange={(e) => this.selectAllItems(e.target.checked)}
-                        checked={this.state.selectedAll}
+                        onChange={e => this.selectAllItems(e.target.checked)}
+                        checked={selectedAll}
                       />
                   </th>
                   ) : null}
-                  {this.props.resultFields.map((row, key) => {
+                  {resultFields.map((row, key) => {
                     return (
                       <th key={key + '-label-search-result-header'} className="header">
                         {row.sortable ? (
                           <nobr>
                             <SortableColumn title={row.label}
                               test={row.name}
-                              sort={this.state.sort}
-                              order={this.state.order}
+                              sort={sort}
+                              order={order}
                               onSort={this.handleColumnSort}
                             />
                           </nobr>
@@ -393,9 +414,9 @@ export default class ReferenceSearchDialog extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.items.map((item, itemKey) => {
-                  let isItemSelected = !lodash.isUndefined(lodash.find(this.state.selectedItems,
-                    { [this.props.objectIdentifier]: item[this.props.objectIdentifier] }));
+                {items.map((item, itemKey) => {
+                  // eslint-disable-next-line max-len
+                  const isItemSelected = find(selectedItems, { [objectIdentifier]: item[objectIdentifier] }) !== undefined;
                   return (
                     <tr key={itemKey + '-search-result-item-row'}>
                     {multiple ?
@@ -407,7 +428,7 @@ export default class ReferenceSearchDialog extends Component {
                           />
                         </td>
                       ) : null}
-                      {this.props.resultFields.map((row, headerKey) => {
+                      {resultFields.map((row, headerKey) => {
                         if (!row.view) {
                           return (<td key={itemKey + '-' + headerKey + '-search-result-item-value'}>
                             <button
@@ -415,9 +436,9 @@ export default class ReferenceSearchDialog extends Component {
                               className="btn btn-link"
                               onClick={() => this.onSelect([item])}
                               style={ { padding: 0 } }
-                              title={lodash.get(item, row.name)}
+                              title={get(item, row.name)}
                             >
-                              {lodash.get(item, row.name)}
+                              {get(item, row.name)}
                             </button>
                           </td>)
                         } else {
@@ -433,32 +454,32 @@ export default class ReferenceSearchDialog extends Component {
             </table>
           ) : null}
 
-          {this.state.count >= 1 ? (
+          {count >= 1 ? (
             <div className="container-fluid" style={{ padding: 0 }}>
               <div className="pull-right">
                 <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
                   <ResultSizePanel
-                    onResize={(size) => this.onResultsPerPageSizeChange(size)}
+                    onResize={::this.onResultsPerPageSizeChange}
                   />
                 </div>
               </div>
               <div className="pull-right">
                 <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
                   <div className="pull-left">
-                    {this.context.i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: this.state.count })}
+                    {i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: count })}
                   </div>
                   <PaginationPanel
-                    count={this.state.count}
-                    max={this.state.max}
-                    offset={this.state.offset}
-                    onPaginate={(offset) => this.onPaginate(offset)}
+                    count={count}
+                    max={max}
+                    offset={offset}
+                    onPaginate={::this.onPaginate}
                   />
                 </div>
               </div>
             </div>
           ) : (
             <div className="bs-callout bs-callout-info">
-              {this.context.i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: 0 })}
+              {i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: 0 })}
             </div>
           )}
         </Modal.Body>
