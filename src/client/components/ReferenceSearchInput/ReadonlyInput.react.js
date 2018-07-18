@@ -21,8 +21,7 @@ export default class ReadonlyInput extends React.Component {
   }
 
   render() {
-    const labelProperty = this.props.labelProperty;
-    const valueProperty = this.props.valueProperty;
+    const { labelProperty, valueProperty } = this.props;
     const label = (value) => {
       if (!value) {
         return '';
