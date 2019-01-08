@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import pick from 'lodash/pick';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReferenceSearchDialogProps from '../ReferenceSearchDialogProps';
 import ReadonlyInput from './ReadonlyInput.react';
 import Button from 'react-bootstrap/lib/Button';
 import ReferenceSearchDialog from '../ReferenceSearchDialog';
 import './styles.less';
-
-import lodash from 'lodash';
 
 export default
 class ReferenceSearchInput extends React.Component {
@@ -30,7 +29,7 @@ class ReferenceSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: lodash.isUndefined(props.value) ? null : props.value,
+      value: props.value === undefined ? null : props.value,
       openDialog: false
     };
   }
@@ -69,7 +68,7 @@ class ReferenceSearchInput extends React.Component {
   }
 
   render() {
-    let childProps = lodash.pick(this.props,
+    const childProps = pick(this.props,
       ['id', 'name', 'onFocus', 'onBlur', 'multiple', 'labelProperty', 'valueProperty', 'readOnly']
     );
 
@@ -81,7 +80,7 @@ class ReferenceSearchInput extends React.Component {
       childProps.readOnly = this.props.readOnly;
       childProps.disabled = this.props.disabled;
 
-      let element = React.Children.only(this.props.children);
+      const element = React.Children.only(this.props.children);
       children = React.cloneElement(element, childProps);
     } else {
       children = (<ReadonlyInput {... childProps}/>);
@@ -101,7 +100,7 @@ class ReferenceSearchInput extends React.Component {
           objectIdentifier={this.props.valueProperty}
           modalSpecificProps={this.props.modalSpecificProps}
         />
-      {children}
+        {children}
         <div className="input-group-btn">
           <Button onClick={() => this.openReferenceSearch()} disabled={this.props.disabled || this.props.readOnly}>
             <i className="glyphicon glyphicon-search" />

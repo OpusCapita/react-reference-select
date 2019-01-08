@@ -5,7 +5,7 @@ const ReactDOM = require('react-dom');
 const ReactTestUtils = require('react-dom/test-utils');
 const { I18nContext } = require('@opuscapita/react-i18n');
 const ReferenceAutocomplete = require('../ReferenceAutocomplete.react').default;
-const Select = require('react-select');
+const Select = require('@opuscapita/react-select');
 
 describe('ReferenceAutocomplete', () => {
   let domNode;

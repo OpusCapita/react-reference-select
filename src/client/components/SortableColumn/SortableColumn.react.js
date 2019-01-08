@@ -29,26 +29,25 @@ class SortableColumn extends Component {
   onSort(event) {
     event.preventDefault();
 
+    const { sort, test, defaultOrder, onSort } = this.props;
     let order = this.props.order;
 
-    if (order) {
-      order = order === ASC_ORDER ? DESC_ORDER : this.props.defaultOrder;
+    if (order && sort === test) {
+      order = order === ASC_ORDER ? DESC_ORDER : defaultOrder;
     } else {
-      order = this.props.defaultOrder;
+      order = defaultOrder;
     }
 
-    this.props.onSort(this.props.test, order);
+    onSort(this.props.test, order);
   }
 
   render() {
-    const sort = this.props.sort;
-    const test = this.props.test;
-    const title = this.props.title;
+    const { sort, test, title, order, defaultOrder } = this.props;
 
     let icon = null;
     if (sort === test) {
-      let order = this.props.order || this.props.defaultOrder;
-      if (order === ASC_ORDER) {
+      const currentOrder = order || defaultOrder;
+      if (currentOrder === ASC_ORDER) {
         icon = (<span className="glyphicon glyphicon-arrow-up"/>);
       } else {
         icon = (<span className="glyphicon glyphicon-arrow-down"/>);

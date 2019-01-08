@@ -1,4 +1,20 @@
 
+[Release 2.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.5) Wed Jul 18 2018 17:07:10 GMT+0300 (MSK)
+=======================================================
+
+- Fixes and enhancements ([#34](https://github.com/OpusCapita/react-reference-select/issues/34)) (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2018-07-18 16:59:26 +0300)
+
+Release 2.1.4 Tue May 15 2018 17:34:39 GMT+0300 (MSK)
+=======================================================
+
+- react-select replaced with @opuscapita/react-select. (Sergey Tamkov tamkov@scand.com, 2018-05-15 17:31:35 +0300)
+
+Release 2.1.3 Fri May 04 2018 17:22:22 GMT+0300 (MSK)
+=======================================================
+
+- Hide pagination for `show all` state in reference search (Egor Stambakio stambakio@scand.com, 2018-05-04 16:28:40 +0300)
+- Adding an issue template file [ci skip] (Egor Stambakio egor.stambakio@opuscapita.com, 2018-05-02 12:26:35 +0300)
+
 Release 2.1.2 Fri Apr 13 2018 11:46:00 GMT+0000 (UTC)
 =======================================================
 
