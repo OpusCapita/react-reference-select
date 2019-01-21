@@ -9,6 +9,9 @@ const ReferenceInputBaseProps = {
       PropTypes.object
     ]
   ),
+  labelProperty: PropTypes.string,
+  valueProperty: PropTypes.string,
+
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
