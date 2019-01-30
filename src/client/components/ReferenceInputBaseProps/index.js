@@ -9,7 +9,6 @@ const ReferenceInputBaseProps = {
       PropTypes.object
     ]
   ),
-
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
