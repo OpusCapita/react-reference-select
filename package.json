@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-reference-select",
-  "version": "2.1.6-pimline-593-SNAPSHOT-7",
+  "version": "2.1.6-pimline-593-SNAPSHOT-8",
   "description": "React reference select",
   "main": "lib/index.js",
   "files": [

@@ -7,9 +7,13 @@ export default {
   */
   key: PropTypes.string,
   /**
-  * The default set of options to show before the user starts searching
+  * The default set of options to show before the user starts searching; default to [].
   */
-  defaultOptions: PropTypes.array,
+  options: PropTypes.array,
+  /**
+  * Automatically call the `loadOptions` prop on-mount; defaults to true.
+  */
+  autoload: PropTypes.bool,
   clearable: PropTypes.bool,
   onOpen: PropTypes.func,
   className: PropTypes.string,
