@@ -7,10 +7,9 @@ export default {
   */
   key: PropTypes.string,
   /**
-  * If cacheOptions is truthy, then the loaded data will be cached. The cache
-  * will remain until `cacheOptions` changes value.
+  * The default set of options to show before the user starts searching
   */
-  cacheOptions: PropTypes.bool,
+  defaultOptions: PropTypes.array,
   clearable: PropTypes.bool,
   onOpen: PropTypes.func,
   className: PropTypes.string,
