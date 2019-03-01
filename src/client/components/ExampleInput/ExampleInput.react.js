@@ -90,10 +90,7 @@ export default class ExampleInput extends React.Component {
       autocompleteAction: (searchTerm, callback) => {
         let exampleService = new ExampleService(this.props.serviceRegistry(SERVICE_NAME).url);
         return exampleService.getExamples({ q: searchTerm }).then((response) => {
-          return {
-            options: response.body,
-            complete: false
-          };
+          return response.body;
         });
       },
       reactSelectSpecificProps: this.props.reactSelectSpecificProps

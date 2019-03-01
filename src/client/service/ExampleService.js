@@ -32,6 +32,10 @@ export default class ExampleService {
       items = sort[params.order || 'asc'](items, params.sort)
     }
 
+    if (params.q) {
+      items = items.filter(item => item.name.toLowerCase().includes(params.q.toLowerCase()));
+    }
+
     return Promise.resolve({
       "body": items,
       "headers": {
