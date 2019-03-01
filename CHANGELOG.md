@@ -1,4 +1,13 @@
 
+[Release 2.1.6-beta.0](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.6-beta.0) Fri Mar 01 2019 15:34:31 GMT+0300 (MSK)
+=======================================================
+
+- ([#36](https://github.com/OpusCapita/react-reference-select/issues/36)) Upgrade dependency react-select to latest version (Dmitry Divin divin@scand.com, 2019-03-01 15:31:51 +0300)
+- Fixing tests (Dmitry Divin divin@scand.com, 2019-02-27 11:57:46 +0300)
+- Reset cache (Dmitry Divin divin@scand.com, 2019-02-27 09:45:24 +0300)
+- Run build (Dmitry Divin divin@scand.com, 2019-02-27 09:40:43 +0300)
+- Using docker image opuscapita/minsk-core-ci tag grails-2.4.4-jdk-8u131-nodejs-6.9.4-maven-3.3.9 [ci skip] (Alexey Sergeev alexey.sergeev@opuscapita.com, 2018-09-07 09:08:47 +0300)
+
 [Release 2.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.5) Wed Jul 18 2018 17:07:10 GMT+0300 (MSK)
 =======================================================
 
