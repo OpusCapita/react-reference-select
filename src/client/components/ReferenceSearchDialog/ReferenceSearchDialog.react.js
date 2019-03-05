@@ -82,7 +82,6 @@ export default class ReferenceSearchDialog extends Component {
     super(...args);
 
     this.defaultDialogState = {
-      selectedItems: [],
       selectedAll: false,
       searchParams: {},
       sort: '',
@@ -94,7 +93,8 @@ export default class ReferenceSearchDialog extends Component {
     };
 
     this.state = {
-      ...this.defaultDialogState
+      ...this.defaultDialogState,
+      selectedItems: []
     };
   }
 
