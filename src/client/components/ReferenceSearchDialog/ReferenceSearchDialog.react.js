@@ -82,7 +82,8 @@ export default class ReferenceSearchDialog extends Component {
     super(...args);
 
     this.defaultDialogState = {
-      selectedAll: false,
+      checkedItems: [],
+      checkedAll: false,
       searchParams: {},
       sort: '',
       order: '',
@@ -93,8 +94,7 @@ export default class ReferenceSearchDialog extends Component {
     };
 
     this.state = {
-      ...this.defaultDialogState,
-      selectedItems: []
+      ...this.defaultDialogState
     };
   }
 
@@ -174,7 +174,7 @@ export default class ReferenceSearchDialog extends Component {
   onPaginateOnSortSearchCallback(result) {
     this.setState({
       ...result,
-      selectedAll: false
+      checkedAll: false
     });
   }
 
@@ -195,12 +195,12 @@ export default class ReferenceSearchDialog extends Component {
     ::this.doSearch(size, 0, this.state.sort, this.state.order, ::this.onPaginateOnSortSearchCallback);
   }
 
-  onSelect = (selectedItems) => {
-    if (selectedItems.length === 0) {
+  onSelect = (checkedItems) => {
+    if (checkedItems.length === 0) {
       alert(`${this.context.i18n.getMessage('ReferenceSearchDialog.noItemsSelectedMessage')}`);
       return;
     }
-    this.props.onSelect(selectedItems);
+    this.props.onSelect(checkedItems);
     this.props.onCloseDialog()
   };
 
@@ -208,24 +208,24 @@ export default class ReferenceSearchDialog extends Component {
     this.setState({ searchParams: {} });
   }
 
-  selectAllItems = (checked) => {
+  checkAllItems = (checked) => {
     const { objectIdentifier } = this.props;
-    const { selectedItems, items } = this.state;
+    const { checkedItems, items } = this.state;
 
     const newState = {
-      selectedAll: checked,
-      selectedItems: clone(selectedItems)
+      checkedAll: checked,
+      checkedItems: clone(checkedItems)
     };
 
     if (checked) {
       for (let i = 0; i < items.length; i++) {
         let item = items[i];
-        if (find(selectedItems, { [objectIdentifier]: item[objectIdentifier] }) === undefined) {
-          newState.selectedItems.push(item);
+        if (find(checkedItems, { [objectIdentifier]: item[objectIdentifier] }) === undefined) {
+          newState.checkedItems.push(item);
         }
       }
     } else {
-      newState.selectedItems = reject(newState.selectedItems, (item) => {
+      newState.checkedItems = reject(newState.checkedItems, (item) => {
         return find(items, { [objectIdentifier]: item[objectIdentifier] }) !== undefined
       });
     }
@@ -234,20 +234,20 @@ export default class ReferenceSearchDialog extends Component {
 
   selectItem = (item, checked) => {
     const { objectIdentifier } = this.props;
-    let selectedItems = clone(this.state.selectedItems);
+    let checkedItems = clone(this.state.checkedItems);
     if (checked) {
-      if (find(selectedItems, { [objectIdentifier]: item[objectIdentifier] }) === undefined) {
-        selectedItems.push(item);
+      if (find(checkedItems, { [objectIdentifier]: item[objectIdentifier] }) === undefined) {
+        checkedItems.push(item);
       }
     } else {
-      selectedItems = reject(selectedItems, (selectedItem) => {
+      checkedItems = reject(checkedItems, (selectedItem) => {
         return selectedItem[objectIdentifier] === item[objectIdentifier];
       });
     }
 
     this.setState({
-      selectedAll: false,
-      selectedItems
+      checkedAll: false,
+      checkedItems
     });
   };
 
@@ -267,9 +267,9 @@ export default class ReferenceSearchDialog extends Component {
 
     const {
       searchParams,
-      selectedItems,
+      checkedItems,
       items,
-      selectedAll,
+      checkedAll,
       sort,
       order,
       count,
@@ -363,7 +363,7 @@ export default class ReferenceSearchDialog extends Component {
             <p>
                <Button
                  bsStyle="primary"
-                 onClick={() => this.onSelect(selectedItems)}
+                 onClick={() => this.onSelect(checkedItems)}
                >
                  {i18n.getMessage('ReferenceSearchDialog.selectLabel')}
                </Button>
@@ -378,8 +378,8 @@ export default class ReferenceSearchDialog extends Component {
                   (
                     <th className="header">
                       <input type="checkbox"
-                        onChange={e => this.selectAllItems(e.target.checked)}
-                        checked={selectedAll}
+                        onChange={e => this.checkAllItems(e.target.checked)}
+                        checked={checkedAll}
                       />
                   </th>
                   ) : null}
@@ -405,7 +405,7 @@ export default class ReferenceSearchDialog extends Component {
               <tbody>
                 {items.map((item, itemKey) => {
                   // eslint-disable-next-line max-len
-                  const isItemSelected = find(selectedItems, { [objectIdentifier]: item[objectIdentifier] }) !== undefined;
+                  const isItemChecked = find(checkedItems, { [objectIdentifier]: item[objectIdentifier] }) !== undefined;
                   return (
                     <tr key={itemKey + '-search-result-item-row'}>
                     {multiple ?
@@ -413,7 +413,7 @@ export default class ReferenceSearchDialog extends Component {
                         <td>
                           <input type="checkbox"
                             onChange={(e) => this.selectItem(item, e.target.checked)}
-                            checked={isItemSelected}
+                            checked={isItemChecked}
                           />
                         </td>
                       ) : null}
