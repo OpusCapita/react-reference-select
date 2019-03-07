@@ -225,21 +225,21 @@ describe('ReferenceSearchDialog', () => {
     const checkboxes = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
        querySelectorAll('input[type="checkbox"]');
     ReactTestUtils.Simulate.change(checkboxes[1], { "target": { "checked": true } });
-    expect(referenceSearchDialog.state.selectedItems.length).toBe(1);
-    expect(referenceSearchDialog.state.selectedItems[0].id).toBe('100');
+    expect(referenceSearchDialog.state.checkedItems.length).toBe(1);
+    expect(referenceSearchDialog.state.checkedItems[0].id).toBe('100');
     ReactTestUtils.Simulate.change(checkboxes[2], { "target": { "checked": true } });
-    expect(referenceSearchDialog.state.selectedItems.length).toBe(2);
-    expect(referenceSearchDialog.state.selectedItems[1].id).toBe('200');
+    expect(referenceSearchDialog.state.checkedItems.length).toBe(2);
+    expect(referenceSearchDialog.state.checkedItems[1].id).toBe('200');
     ReactTestUtils.Simulate.change(checkboxes[2], { "target": { "checked": false } });
-    expect(referenceSearchDialog.state.selectedItems.length).toBe(1);
-    expect(referenceSearchDialog.state.selectedItems[0].id).toBe('100');
+    expect(referenceSearchDialog.state.checkedItems.length).toBe(1);
+    expect(referenceSearchDialog.state.checkedItems[0].id).toBe('100');
     ReactTestUtils.Simulate.change(checkboxes[0], { "target": { "checked": true } });
-    expect(referenceSearchDialog.state.selectedItems.length).toBe(fields.length);
-    expect(referenceSearchDialog.state.selectedAll).toBeTruthy();
-    expect(referenceSearchDialog.state.selectedItems[2].id).toBe('300');
+    expect(referenceSearchDialog.state.checkedItems.length).toBe(fields.length);
+    expect(referenceSearchDialog.state.checkedAll).toBeTruthy();
+    expect(referenceSearchDialog.state.checkedItems[2].id).toBe('300');
     ReactTestUtils.Simulate.change(checkboxes[0], { "target": { "checked": false } });
-    expect(referenceSearchDialog.state.selectedItems.length).toBe(0);
-    expect(referenceSearchDialog.state.selectedAll).toBeFalsy();
+    expect(referenceSearchDialog.state.checkedItems.length).toBe(0);
+    expect(referenceSearchDialog.state.checkedAll).toBeFalsy();
   });
 
   it('test select multiple values', () => {
@@ -272,8 +272,8 @@ describe('ReferenceSearchDialog', () => {
     const selectAllCheckbox = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
       querySelectorAll('input[type="checkbox"]')[0];
     ReactTestUtils.Simulate.change(selectAllCheckbox, { "target": { "checked": true } });
-    expect(referenceSearchDialog.state.selectedItems.length).toBe(3);
-    expect(referenceSearchDialog.state.selectedAll).toBeTruthy();
+    expect(referenceSearchDialog.state.checkedItems.length).toBe(3);
+    expect(referenceSearchDialog.state.checkedAll).toBeTruthy();
     const selectButton = ReactDOM.findDOMNode(modalComponent._modal.getDialogElement()).
        querySelector('p button.btn-primary');
     ReactTestUtils.Simulate.click(selectButton);
