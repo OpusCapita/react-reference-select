@@ -15,6 +15,7 @@ ReferenceAutocomplete react component
 | multiple                       | bool                     | Allows to select several elements. *Note*: if *true*, **value** must be array of objects.               |
 | readOnly                       | bool                     | Disallows any interaction with the component.                                                           |
 | disabled                       | bool                     | Disallows any interaction with the component.                                                           |
+| defaultOptions                 | array                    | Default set of options to show before the user starts searching.
 | autocompleteAction             | func                     | Callback fired when the input text is changed for objects loading.                                      |
 | labelProperty                  | string                   | Value which is displayed in select options.                                                             |
 | valueProperty                  | string                   | Unique value for object identifying in select options.                                                  |
