@@ -14,6 +14,7 @@ class ReferenceAutocomplete extends React.Component {
     ...ReferenceInputBaseProps,
     // custom prop types
     autocompleteAction: PropTypes.func.isRequired,
+    defaultOptions: PropTypes.array,
     labelProperty: PropTypes.string.isRequired,
     valueProperty: PropTypes.string.isRequired,
     // react-select specific props
@@ -36,16 +37,20 @@ class ReferenceAutocomplete extends React.Component {
     }
   }
 
-  state = {};
+  state = {
+    defaultOptions: this.props.defaultOptions
+  };
 
   componentWillMount() {
     this.context.i18n.register('ReferenceAutocomplete', translations);
   }
 
   componentDidMount() {
-    this.getOptions('', (defaultOptions) => {
-      this.setState({ defaultOptions });
-    });
+    if (!this.state.defaultOptions) {
+      this.getOptions('', (defaultOptions) => {
+        this.setState({ defaultOptions });
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -113,7 +118,10 @@ class ReferenceAutocomplete extends React.Component {
       placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder")
     };
     const reactSelectSpecificProps = this.props.reactSelectSpecificProps ? this.props.reactSelectSpecificProps : {};
-    const { clearable, onOpen, className, placeholder } = reactSelectSpecificProps;
+    const { key, clearable, onOpen, className, placeholder } = reactSelectSpecificProps;
+    if (key) {
+      autoCompleteProps.key = key;
+    }
     if (clearable) {
       autoCompleteProps.isClearable = clearable;
     }
