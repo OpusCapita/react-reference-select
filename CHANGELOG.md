@@ -1,4 +1,9 @@
 
+[Release 3.0.0](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.0) Tue Mar 12 2019 12:33:52 GMT+0300 (MSK)
+=======================================================
+
+- Upgrade dependency `@opuscapita/react-select` from `1.0.0-oc.2` to `2.0.9` (Dmitry Divin divin@scand.com, 2019-03-12 12:12:10 +0300)
+
 [Release 2.1.6](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.6) Thu Mar 07 2019 18:00:42 GMT+0300 (MSK)
 =======================================================
 
