@@ -35,7 +35,7 @@
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
     "react-bootstrap": "0.31.5",
-    "@opuscapita/react-select": "1.0.0-oc.2",
+    "@opuscapita/react-select": "2.0.9",
     "recompose": "0.21.0",
     "superagent": "3.3.0",
     "superagent-bluebird-promise": "3.0.2"
@@ -82,6 +82,7 @@
     "raw-loader": "0.5.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
+    "react-test-renderer": "15.6.2",
     "rimraf": "2.5.4",
     "semver": "5.5.0",
     "style-loader": "0.13.1",
@@ -104,6 +105,7 @@
     "unmockedModulePathPatterns": [
       "react",
       "react-dom",
+      "react-test-renderer",
       "lodash",
       "enzyme"
     ],

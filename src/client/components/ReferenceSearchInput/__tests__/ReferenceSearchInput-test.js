@@ -191,6 +191,6 @@ describe('ReferenceSearchInput', () => {
     const referenceSearchDialog = ReactTestUtils.
       findRenderedComponentWithType(referenceSearchInput, ReferenceSearchDialog);
     referenceSearchDialog.onSelect([{ valueProperty: '100' }, { valueProperty: 'testValue2' }]);
-    expect(referenceSearchInput.state.value.length).toBe(2);
+    expect(referenceSearchInput.state.value.length).toBe(4);
   });
 });

@@ -16,9 +16,9 @@ jobs:
 
       - restore_cache:
           keys:
-            - react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
-            - react-reference-select-{{ .Branch }}
-            - react-reference-select
+            - react-reference-select-v1-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-v1-{{ .Branch }}
+            - react-reference-select-v1
 
       - run:
           name: "Installing dependencies."
@@ -64,9 +64,9 @@ jobs:
 
       - restore_cache:
           keys:
-            - react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
-            - react-reference-select-{{ .Branch }}
-            - react-reference-select
+            - react-reference-select-v1-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-v1-{{ .Branch }}
+            - react-reference-select-v1
 
       - run:
           name: "Installing dependencies."

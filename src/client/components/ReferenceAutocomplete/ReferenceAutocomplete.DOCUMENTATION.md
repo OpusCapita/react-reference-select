@@ -28,9 +28,10 @@ Alexey Sergeev, Dmitriy Sanko
 
 ```
 <ReferenceAutocomplete
-  autocompleteAction={() => {
-    return new Promise((resolve) => { 
-      resolve({"options": [{"id": "1", "_objectLabel": "A"}, {"id": "2", "_objectLabel": "B"}], "complete": false}); 
+  autocompleteAction={(input) => {
+    return new Promise((resolve) => {
+      var options = [{"id": "1", "_objectLabel": "A"}, {"id": "2", "_objectLabel": "B"}];
+      resolve(options.filter((item) => item._objectLabel.toLowerCase().includes(input.toLowerCase()))); 
     }); 
   }}
   value={{"id": "1", "_objectLabel": "A"}}

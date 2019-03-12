@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import clone from 'lodash/clone';
+import find from 'lodash/find';
 import pick from 'lodash/pick';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReferenceSearchDialogProps from '../ReferenceSearchDialogProps';
@@ -29,7 +31,7 @@ class ReferenceSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value === undefined ? null : props.value,
+      value: props.value === undefined ? (this.props.multiple ? [] : null) : props.value,
       openDialog: false
     };
   }
@@ -50,7 +52,15 @@ class ReferenceSearchInput extends React.Component {
 
   handleReferenceSelect(selectedItems) {
     if (this.props.multiple) {
-      this.handleValueChange(selectedItems);
+      let { valueProperty } = this.props;
+      let newValue = clone(this.state.value);
+      for (let i = 0; i < selectedItems.length; i++) {
+        let item = selectedItems[i];
+        if (find(newValue, { [valueProperty]: item[valueProperty] }) === undefined) {
+          newValue.push(item);
+        }
+      }
+      this.handleValueChange(newValue);
     } else {
       this.handleValueChange(selectedItems[0]);
     }

@@ -1,4 +1,18 @@
 
+[Release 3.0.0](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.0) Tue Mar 12 2019 12:33:52 GMT+0300 (MSK)
+=======================================================
+
+- Upgrade dependency `@opuscapita/react-select` from `1.0.0-oc.2` to `2.0.9` (Dmitry Divin divin@scand.com, 2019-03-12 12:12:10 +0300)
+
+[Release 2.1.6](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.6) Thu Mar 07 2019 18:00:42 GMT+0300 (MSK)
+=======================================================
+
+- ([#37](https://github.com/OpusCapita/react-reference-select/issues/37)) Reference search items selection changed to updating instead of replacing (GitHub dsanko-sc@users.noreply.github.com, 2019-03-07 17:50:51 +0300)
+- Fixing tests (Dmitry Divin divin@scand.com, 2019-02-27 11:57:46 +0300)
+- Reset cache (Dmitry Divin divin@scand.com, 2019-02-27 09:45:24 +0300)
+- Run build (Dmitry Divin divin@scand.com, 2019-02-27 09:40:43 +0300)
+- Using docker image opuscapita/minsk-core-ci tag grails-2.4.4-jdk-8u131-nodejs-6.9.4-maven-3.3.9 [ci skip] (Alexey Sergeev alexey.sergeev@opuscapita.com, 2018-09-07 09:08:47 +0300)
+
 [Release 2.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v2.1.5) Wed Jul 18 2018 17:07:10 GMT+0300 (MSK)
 =======================================================
 
