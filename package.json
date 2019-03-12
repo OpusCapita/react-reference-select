@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-reference-select",
-  "version": "2.1.7-SNAPSHOT",
+  "version": "3.0.0",
   "description": "React reference select",
   "main": "lib/index.js",
   "files": [
@@ -35,7 +35,7 @@
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
     "react-bootstrap": "0.31.5",
-    "@opuscapita/react-select": "1.0.0-oc.2",
+    "@opuscapita/react-select": "2.0.9",
     "recompose": "0.21.0",
     "superagent": "3.3.0",
     "superagent-bluebird-promise": "3.0.2"
@@ -105,6 +105,7 @@
     "unmockedModulePathPatterns": [
       "react",
       "react-dom",
+      "react-test-renderer",
       "lodash",
       "enzyme"
     ],

@@ -3,7 +3,6 @@ import React from 'react';
 import isEqual from 'lodash/isEqual';
 import isObject from 'lodash/isObject';
 import isEmpty from 'lodash/isEmpty';
-import sortBy from 'lodash/sortBy';
 import Select from '@opuscapita/react-select';
 import translations from './i18n';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
@@ -35,13 +34,18 @@ class ReferenceAutocomplete extends React.Component {
     if (!this.validateValue(props.value, props.multiple || false)) {
       throw new Error(`Invalid reference search value: ${props.value}. Only of 'object' and 'array' are supported.`);
     }
-    this.state = {
-      value: props.value
-    };
   }
+
+  state = {};
 
   componentWillMount() {
     this.context.i18n.register('ReferenceAutocomplete', translations);
+  }
+
+  componentDidMount() {
+    this.getOptions('', (defaultOptions) => {
+      this.setState({ defaultOptions });
+    });
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -55,38 +59,9 @@ class ReferenceAutocomplete extends React.Component {
     }
   }
 
-  /**
-   * force options reloading using '' term
-   */
-  reloadOptions = () => {
-    const selector = this.refs['Select.Async'];
-    if (selector !== undefined && selector.loadOptions !== undefined) {
-      selector.loadOptions('');
-    }
-  };
-
-  onBlur = (event) => {
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
-    }
-    // in case when nonexisting value is entered by user in autocomplete
-    // empty options list is loaded/shown then user switch focus to another UI
-    // element and then go bak to autocomplete and see again empty options list
-    // that was loaded for non existing value, while after focus we need to show
-    // all (or first xxx options) that are available
-    // So for fixing this situation we force options reloading using '' term.
-    this.reloadOptions();
-  };
-
   onChange = (value) => {
     if (this.props.onChange) {
       this.props.onChange(value ? value : (this.props.multiple ? [] : null));
-    }
-    this.setState({ value: value });
-
-    // Reload options after cleaning of the selectbox
-    if (value === null) {
-      this.reloadOptions();
     }
   };
 
@@ -100,53 +75,61 @@ class ReferenceAutocomplete extends React.Component {
     }
   }
 
+  getOptionLabel = (option) => {
+    const { labelProperty } = this.props;
+    return option[labelProperty];
+  };
+
+  getOptionValue = (option) => {
+    const { valueProperty } = this.props;
+    return option[valueProperty];
+  };
+
+  getOptions = (input, callback) => {
+    const { autocompleteAction } = this.props;
+    autocompleteAction(input).then((result) => {
+      callback(result)
+    });
+  };
+
   render() {
-    let { autocompleteAction, labelProperty } = this.props;
-    let autoCompleteProps = {
-      name: this.props.name,
-      onFocus: this.props.onFocus,
-      onBlur: this.onBlur,
+    const { i18n } = this.context;
+    const { name, onBlur } = this.props;
+    const { defaultOptions } = this.state;
+    const autoCompleteProps = {
+      name,
+      // onFocus: this.props.onFocus,
+      onBlur,
       onChange: this.onChange,
-      cache: {},
-      loadOptions: (input) => {
-        return autocompleteAction(input).then((result) => {
-          const { options = [], sort = true, complete = false } = result;
-          return {
-            options: sort ? sortBy(options, (option) => {
-              return `${option[labelProperty]}`.toLowerCase();
-            }) : options,
-            complete: complete
-          }
-        });
-      },
-      labelKey: this.props.labelProperty,
-      valueKey: this.props.valueProperty,
-      matchProp: 'label',
-      value: this.state.value,
-      disabled: this.props.disabled || this.props.readOnly,
-      multi: this.props.multiple,
-      ignoreCase: false,
-      filterOption: (option, filterString) => {
-        if (filterString) {
-          let labelTest = String(option[labelProperty]);
-          return labelTest.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
-        }
-        return true;
-      },
-      ignoreAccents: false,
-      isLoading: this.state.isLoading,
+      defaultOptions,
+      loadOptions: this.getOptions,
+      getOptionLabel: this.getOptionLabel,
+      getOptionValue: this.getOptionValue,
+      value: this.props.value,
+      isDisabled: this.props.disabled || this.props.readOnly,
+      isMulti: this.props.multiple,
       // labels:
-      clearAllText: this.context.i18n.getMessage("ReferenceAutocomplete.clearAllText"),
-      clearValueText: this.context.i18n.getMessage("ReferenceAutocomplete.clearValueText"),
-      noResultsText: this.context.i18n.getMessage("ReferenceAutocomplete.noResultsText"),
-      placeholder: this.context.i18n.getMessage("ReferenceAutocomplete.placeholder"),
-      loadingPlaceholder: this.context.i18n.getMessage("ReferenceAutocomplete.loadingPlaceholder"),
-      searchPromptText: this.context.i18n.getMessage("ReferenceAutocomplete.noResultsText"),
-      ...this.props.reactSelectSpecificProps
+      noOptionsMessage: () => i18n.getMessage("ReferenceAutocomplete.noResultsText"),
+      placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder")
     };
+    const reactSelectSpecificProps = this.props.reactSelectSpecificProps ? this.props.reactSelectSpecificProps : {};
+    const { clearable, onOpen, className, placeholder } = reactSelectSpecificProps;
+    if (clearable) {
+      autoCompleteProps.isClearable = clearable;
+    }
+    if (onOpen) {
+      autoCompleteProps.onMenuOpen = onOpen;
+    }
+    if (className) {
+      autoCompleteProps.className = className;
+    }
+    if (placeholder) {
+      autoCompleteProps.placeholder = placeholder;
+    }
+
     return (
       <div className="jc-reference-autocomplete">
-        <Select.Async {... autoCompleteProps} ref="Select.Async"/>
+        <Select.Async {... autoCompleteProps}/>
       </div>
     );
   }
