@@ -49,10 +49,6 @@ jobs:
       - store_artifacts:
           path: junit
 
-      - run:
-          name: "Deploy"
-          command: npm run publish-release
-
   update-gh-pages:
     <<: *defaults
     steps:
