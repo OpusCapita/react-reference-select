@@ -1,4 +1,9 @@
 
+[Release 3.0.1](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.1) Tue Mar 12 2019 16:14:48 GMT+0300 (MSK)
+=======================================================
+
+- OpusCapita/pimline[#593](https://github.com/OpusCapita/react-reference-select/issues/593) Improved ReferenceAutocomplete implementation ([#35](https://github.com/OpusCapita/react-reference-select/issues/35)) (GitHub shchitlyak@scand.com, 2019-03-12 16:12:30 +0300)
+
 [Release 3.0.0](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.0) Tue Mar 12 2019 12:33:52 GMT+0300 (MSK)
 =======================================================
 
