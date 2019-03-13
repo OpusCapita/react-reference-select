@@ -1,4 +1,10 @@
 
+[Release 3.0.3](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.3) Wed Mar 13 2019 16:09:16 GMT+0300 (MSK)
+=======================================================
+
+- Upgrade react-select dependency (Andrey Shchitlyak shchitlyak@scand.com, 2019-03-13 16:01:44 +0300)
+- Fixed bug of defaultOptions usage (Andrey Shchitlyak shchitlyak@scand.com, 2019-03-13 14:15:23 +0300)
+
 [Release 3.0.2](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.2) Wed Mar 13 2019 11:32:38 GMT+0300 (MSK)
 =======================================================
 
