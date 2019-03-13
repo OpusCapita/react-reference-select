@@ -54,6 +54,10 @@ class ReferenceAutocomplete extends React.Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
+    if (!isEqual(this.state.defaultOptions, nextProps.defaultOptions)) {
+      this.setState({ defaultOptions: nextProps.defaultOptions });
+    }
+
     if (!this.validateValue(nextProps.value, nextProps.multiple || false)) {
       throw new Error(`Invalid reference search value: ${nextProps.value}.
         Only of 'object' and 'array' are supported.`);
