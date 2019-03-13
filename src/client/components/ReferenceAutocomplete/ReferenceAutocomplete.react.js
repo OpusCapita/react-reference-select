@@ -126,7 +126,7 @@ class ReferenceAutocomplete extends React.Component {
     if (key) {
       autoCompleteProps.key = key;
     }
-    if (clearable) {
+    if (clearable !== undefined) {
       autoCompleteProps.isClearable = clearable;
     }
     if (onOpen) {
