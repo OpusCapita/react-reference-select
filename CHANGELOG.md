@@ -1,4 +1,9 @@
 
+[Release 3.0.4](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.4) Wed Mar 13 2019 18:21:31 GMT+0300 (MSK)
+=======================================================
+
+- Fixed `clearable` variable checking condition (Andrey Shchitlyak shchitlyak@scand.com, 2019-03-13 18:19:15 +0300)
+
 [Release 3.0.3](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.3) Wed Mar 13 2019 16:09:16 GMT+0300 (MSK)
 =======================================================
 
