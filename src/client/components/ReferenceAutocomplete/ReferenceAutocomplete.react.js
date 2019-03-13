@@ -54,7 +54,7 @@ class ReferenceAutocomplete extends React.Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    if (!isEqual(this.state.defaultOptions, nextProps.defaultOptions)) {
+    if (!isEqual(this.props.defaultOptions, nextProps.defaultOptions)) {
       this.setState({ defaultOptions: nextProps.defaultOptions });
     }
 
