@@ -1,4 +1,10 @@
 
+[Release 3.0.2](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.2) Wed Mar 13 2019 11:32:38 GMT+0300 (MSK)
+=======================================================
+
+- Improve ReferenceAutocomplete component ([#39](https://github.com/OpusCapita/react-reference-select/issues/39)) (GitHub shchitlyak@scand.com, 2019-03-13 11:30:57 +0300)
+- Upgrade react-select dependency (Dmitry Divin divin@scand.com, 2019-03-13 11:22:07 +0300)
+
 [Release 3.0.1](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.1) Tue Mar 12 2019 16:14:48 GMT+0300 (MSK)
 =======================================================
 
