@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-reference-select",
-  "version": "3.0.5-SNAPSHOT",
+  "version": "3.0.5",
   "description": "React reference select",
   "main": "lib/index.js",
   "files": [
@@ -35,7 +35,7 @@
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
     "react-bootstrap": "0.31.5",
-    "@opuscapita/react-select": "2.0.12",
+    "@opuscapita/react-select": "2.0.13",
     "recompose": "0.21.0",
     "superagent": "3.3.0",
     "superagent-bluebird-promise": "3.0.2"
