@@ -1,4 +1,10 @@
 
+[Release 3.0.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.5) Wed Apr 03 2019 19:14:58 GMT+0300 (MSK)
+=======================================================
+
+- Updated dependency version (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2019-04-03 18:28:42 +0300)
+- Adding package lock (Dmitry Divin divin@scand.com, 2019-03-26 14:50:05 +0300)
+
 [Release 3.0.4](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.4) Wed Mar 13 2019 18:21:31 GMT+0300 (MSK)
 =======================================================
 
