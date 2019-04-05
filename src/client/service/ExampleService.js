@@ -12,17 +12,17 @@ export default class ExampleService {
     if (params.id || params.name) {
       if (params.id) {
         items = examples.body.filter((example) => {
-          return example.id.includes(params.id)
+          return example.id.indexOf(params.id) !== -1
         })
       }
       if (params.name) {
         if (items.length) {
           items = items.filter((example) => {
-            return example.name.includes(params.name)
+            return example.name.indexOf(params.name) !== -1
           });
         } else {
           items = examples.body.filter((example) => {
-            return example.name.includes(params.name)
+            return example.name.indexOf(params.name) !== -1
           });
         }
       }
@@ -33,7 +33,7 @@ export default class ExampleService {
     }
 
     if (params.q) {
-      items = items.filter(item => item.name.toLowerCase().includes(params.q.toLowerCase()));
+      items = items.filter(item => item.name.toLowerCase().indexOf(params.q.toLowerCase()) !== -1);
     }
 
     return Promise.resolve({
