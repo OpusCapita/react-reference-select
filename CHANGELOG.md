@@ -1,4 +1,9 @@
 
+[Release 3.0.6](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.6) Mon Apr 08 2019 09:44:21 GMT+0300 (MSK)
+=======================================================
+
+- ([#40](https://github.com/OpusCapita/react-reference-select/issues/40)) Fixing stop event propogation from inner submit form (Dmitry Divin divin@scand.com, 2019-04-08 09:41:57 +0300)
+
 [Release 3.0.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.5) Wed Apr 03 2019 19:14:58 GMT+0300 (MSK)
 =======================================================
 
