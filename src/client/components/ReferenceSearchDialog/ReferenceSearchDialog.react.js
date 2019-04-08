@@ -180,6 +180,7 @@ export default class ReferenceSearchDialog extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     ::this.doSearch(this.state.max, 0, this.state.sort, this.state.order);
   };
 

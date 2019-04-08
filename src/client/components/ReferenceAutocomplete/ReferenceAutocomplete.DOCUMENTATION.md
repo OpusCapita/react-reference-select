@@ -32,7 +32,7 @@ Alexey Sergeev, Dmitriy Sanko
   autocompleteAction={(input) => {
     return new Promise((resolve) => {
       var options = [{"id": "1", "_objectLabel": "A"}, {"id": "2", "_objectLabel": "B"}];
-      resolve(options.filter((item) => item._objectLabel.toLowerCase().includes(input.toLowerCase()))); 
+      resolve(options.filter((item) => item._objectLabel.toLowerCase().includes(input.toLowerCase())!== -1)); 
     }); 
   }}
   value={{"id": "1", "_objectLabel": "A"}}
