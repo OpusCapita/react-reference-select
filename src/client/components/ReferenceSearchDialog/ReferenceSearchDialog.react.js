@@ -318,7 +318,7 @@ export default class ReferenceSearchDialog extends Component {
                   </tr>
                   <tr>
                   {searchFields.map((column, key) => {
-                    const additionalProps = column.additionalProps;
+                    let additionalProps = column.additionalProps;
                     if (column.inputComponent) {
                       const Component = column.inputComponent;
                       return (
@@ -330,10 +330,10 @@ export default class ReferenceSearchDialog extends Component {
                             )}
                             value={searchParams[column.name] || ''}
                             id={column.name}
-                            {...additionalProps({
+                            {...(additionalProps && additionalProps({
                               searchParams,
                               onChangeSearchParams: this.onChangeSearchParams
-                            }) || {}}
+                            }) || {})}
                           />
                         </td>
                       )
@@ -349,10 +349,10 @@ export default class ReferenceSearchDialog extends Component {
                             { [column.name]: event.target.value }
                           )}
                           value={searchParams[column.name] || ''}
-                          {...additionalProps({
+                          {...(additionalProps && additionalProps({
                             searchParams,
                             onChangeSearchParams: this.onChangeSearchParams
-                          }) || {}}
+                          }) || {})}
                         />
                       </td>
                     );
