@@ -31,7 +31,8 @@ export default {
   searchFields: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    inputComponent: PropTypes.func
+    inputComponent: PropTypes.func,
+    additionalProps: PropTypes.func
   })).isRequired,
 
    /**

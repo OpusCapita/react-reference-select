@@ -118,14 +118,16 @@ export default class ReferenceSearchDialog extends Component {
     }
   }
 
-  onChangeSearchParam = (name, value) => {
+  onChangeSearchParams = (modifiedSearchParams) => {
     const searchParams = { ...this.state.searchParams };
-    if (value) {
-      searchParams[name] = value;
-      searchParams[`${name}_operator`] = 'startsWith';
-    } else {
-      delete searchParams[name];
-      delete searchParams[`${name}_operator`];
+    for (let [name, value] of Object.entries(modifiedSearchParams)) {
+      if (value) {
+        searchParams[name] = value;
+        searchParams[`${name}_operator`] = 'startsWith';
+      } else {
+        delete searchParams[name];
+        delete searchParams[`${name}_operator`];
+      }
     }
     this.setState({ searchParams });
   };
@@ -316,17 +318,22 @@ export default class ReferenceSearchDialog extends Component {
                   </tr>
                   <tr>
                   {searchFields.map((column, key) => {
+                    const additionalProps = column.additionalProps;
                     if (column.inputComponent) {
                       const Component = column.inputComponent;
                       return (
                         <td key={key + '-label-search-header-input'} style={style}>
                           <Component
                             {...(searchFields[0].name === column.name && { autoFocus: true })}
-                            onChange={(event) => this.onChangeSearchParam(
-                              column.name, event.target.value
+                            onChange={(event) => this.onChangeSearchParams(
+                              { [column.name]: event.target.value }
                             )}
                             value={searchParams[column.name] || ''}
                             id={column.name}
+                            {...additionalProps({
+                              searchParams,
+                              onChangeSearchParams: this.onChangeSearchParams
+                            }) || {}}
                           />
                         </td>
                       )
@@ -338,10 +345,14 @@ export default class ReferenceSearchDialog extends Component {
                           id={column.name}
                           type="text"
                           className="form-control"
-                          onChange={(event) => this.onChangeSearchParam(
-                            column.name, event.target.value
+                          onChange={(event) => this.onChangeSearchParams(
+                            { [column.name]: event.target.value }
                           )}
                           value={searchParams[column.name] || ''}
+                          {...additionalProps({
+                            searchParams,
+                            onChangeSearchParams: this.onChangeSearchParams
+                          }) || {}}
                         />
                       </td>
                     );
