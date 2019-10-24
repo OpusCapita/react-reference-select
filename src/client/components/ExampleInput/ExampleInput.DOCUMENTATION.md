@@ -26,7 +26,7 @@ ExampleInput
 
 ```
 <ExampleInput
-  serviceRegistry={serviceName => ({ url: 'http://localhost:3000' })}
+  serviceRegistry={serviceName => ({ url: 'http://localhost:3000' })} multiple
 />
 ```
 

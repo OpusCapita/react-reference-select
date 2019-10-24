@@ -7,8 +7,8 @@ import Select from '@opuscapita/react-select';
 import translations from './i18n';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReactSelectSpecificProps from '../ReactSelectSpecificProps';
+import {withResizeDetector} from 'react-resize-detector';
 
-export default
 class ReferenceAutocomplete extends React.Component {
   static propTypes = {
     ...ReferenceInputBaseProps,
@@ -119,7 +119,20 @@ class ReferenceAutocomplete extends React.Component {
       isMulti: this.props.multiple,
       // labels:
       noOptionsMessage: () => i18n.getMessage("ReferenceAutocomplete.noResultsText"),
-      placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder")
+      placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder"),
+      styles: {
+        multiValueLabel: (provided) => {
+          const rMargin = 150;
+          const defaultMinWidth = 200;
+          const { width = (rMargin + defaultMinWidth) } = this.props;
+          const maxWidth = Math.max(width - rMargin, defaultMinWidth);
+
+          return {
+            ...provided,
+            maxWidth: `${maxWidth}px`,
+          }
+        },
+      }
     };
     const reactSelectSpecificProps = this.props.reactSelectSpecificProps ? this.props.reactSelectSpecificProps : {};
     const { key, clearable, onOpen, className, placeholder } = reactSelectSpecificProps;
@@ -146,3 +159,5 @@ class ReferenceAutocomplete extends React.Component {
     );
   }
 }
+
+export default withResizeDetector(ReferenceAutocomplete)
