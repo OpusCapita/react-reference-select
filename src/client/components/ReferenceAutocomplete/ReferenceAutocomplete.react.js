@@ -7,7 +7,7 @@ import Select from '@opuscapita/react-select';
 import translations from './i18n';
 import ReferenceInputBaseProps from '../ReferenceInputBaseProps';
 import ReactSelectSpecificProps from '../ReactSelectSpecificProps';
-import {withResizeDetector} from 'react-resize-detector';
+import { withResizeDetector } from 'react-resize-detector';
 
 class ReferenceAutocomplete extends React.Component {
   static propTypes = {
