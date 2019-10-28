@@ -1,9 +1,10 @@
+/* eslint-disable */
 export default {
   "body": [
     {
       "id": "1",
       "name": "example1",
-      "_objectLabel": "example1"
+      "_objectLabel": "extra long labellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
     },
     {
       "id": "2",

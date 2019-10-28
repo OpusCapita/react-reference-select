@@ -38,7 +38,8 @@
     "@opuscapita/react-select": "2.0.13",
     "recompose": "0.21.0",
     "superagent": "3.3.0",
-    "superagent-bluebird-promise": "3.0.2"
+    "superagent-bluebird-promise": "3.0.2",
+    "react-resize-detector": "4.2.1"
   },
   "devDependencies": {
     "@opuscapita/npm-scripts": "1.0.8",
