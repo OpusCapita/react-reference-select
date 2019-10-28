@@ -1,4 +1,9 @@
 
+[Release 3.0.7](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.7) Mon Oct 28 2019 16:37:13 GMT+0300 (MSK)
+=======================================================
+
+- ([#47](https://github.com/OpusCapita/react-reference-select/issues/47)) Fixing reference select is out of the container width if selected label to long ([#48](https://github.com/OpusCapita/react-reference-select/issues/48)) (Dmitriy Sanko ddivin-sc@users.noreply.github.com, 2019-10-28 16:27:38 +0300)
+
 [Release 3.0.6](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.6) Mon Apr 08 2019 09:44:21 GMT+0300 (MSK)
 =======================================================
 
