@@ -1,4 +1,9 @@
 
+[Release 3.0.8](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.8) Tue Dec 10 2019 15:17:37 GMT+0300 (MSK)
+=======================================================
+
+- Updated 'react-select' version (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2019-12-10 14:59:50 +0300)
+
 [Release 3.0.7](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.7) Mon Oct 28 2019 16:37:13 GMT+0300 (MSK)
 =======================================================
 
