@@ -103,8 +103,9 @@ class ReferenceAutocomplete extends React.Component {
 
   render() {
     const { i18n } = this.context;
-    const { name, onBlur } = this.props;
+    const { name, onBlur, styles = {} } = this.props;
     const { defaultOptions } = this.state;
+    console.log(styles)
     const autoCompleteProps = {
       name,
       // onFocus: this.props.onFocus,
@@ -132,6 +133,7 @@ class ReferenceAutocomplete extends React.Component {
             maxWidth: `${maxWidth}px`,
           }
         },
+        ...styles
       }
     };
     const reactSelectSpecificProps = this.props.reactSelectSpecificProps ? this.props.reactSelectSpecificProps : {};
