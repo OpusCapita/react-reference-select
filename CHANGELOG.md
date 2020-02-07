@@ -1,4 +1,9 @@
 
+[Release 3.0.9](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.9) Fri Feb 07 2020 16:39:54 GMT+0300 (MSK)
+=======================================================
+
+- ([#51](https://github.com/OpusCapita/react-reference-select/issues/51)) Implementing custom styles for ReactAutocomplete [skip ci] (Dmitry Divin divin@scand.com, 2020-02-07 16:38:29 +0300)
+
 [Release 3.0.8](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.8) Tue Dec 10 2019 15:17:37 GMT+0300 (MSK)
 =======================================================
 
