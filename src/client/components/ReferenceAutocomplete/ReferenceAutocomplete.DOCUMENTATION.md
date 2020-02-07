@@ -8,6 +8,7 @@ ReferenceAutocomplete react component
 | ------------------------------ | :----------------------  | -----------------------------------------------------------                                             |
 | id                             | string                   | Id of component                                                                                         |
 | name                           | string                   | Name of component                                                                                       |
+| styles                         | object                   | Style modifier methods, see more information [here](https://react-select.com/props#prop-types)          |
 | value                          | oneOfType: array, object | Current value of component. *Note*: if **multiple** prop is *true*, **value** must be array of objects. |
 | onChange                       | func                     | Callback fired when the **value** changes                                                               |
 | onFocus                        | func                     | Callback fired when the component take focus                                                            |
@@ -31,10 +32,21 @@ Alexey Sergeev, Dmitriy Sanko
 <ReferenceAutocomplete
   autocompleteAction={(input) => {
     return new Promise((resolve) => {
-      var options = [{"id": "1", "_objectLabel": "A"}, {"id": "2", "_objectLabel": "B"}];
-      resolve(options.filter((item) => item._objectLabel.toLowerCase().includes(input.toLowerCase())!== -1)); 
-    }); 
+      var options = [{"id": "1", "_objectLabel": "A"}, {"id": "2", "_objectLabel": "B", inactive: true}, {"id": "3", "_objectLabel": "C"}];
+      resolve(options.filter((item) => item._objectLabel.toLowerCase().includes(input.toLowerCase())!== -1));
+    });
   }}
+  styles={{option: (provided, {data} ) => {
+    const customStyles = {}
+    if (data.inactive) {
+        customStyles.backgroundColor = "#ccc"
+        customStyles.color = "white"
+    }
+    return {
+      ...provided,
+      ...customStyles
+    }
+  }}}
   value={{"id": "1", "_objectLabel": "A"}}
   labelProperty="_objectLabel"
   valueProperty="id"

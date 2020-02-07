@@ -103,8 +103,24 @@ class ReferenceAutocomplete extends React.Component {
 
   render() {
     const { i18n } = this.context;
-    const { name, onBlur } = this.props;
+    const { name, onBlur, styles = {} } = this.props;
     const { defaultOptions } = this.state;
+
+    const defaultMultiValueLabel = (provided) => {
+      const rMargin = 150;
+      const defaultMinWidth = 200;
+      const { width = (rMargin + defaultMinWidth) } = this.props;
+      const maxWidth = Math.max(width - rMargin, defaultMinWidth);
+
+      return {
+        ...provided,
+        maxWidth: `${maxWidth}px`,
+      }
+    };
+    const {
+        multiValueLabel: customMultiValueLabel = (provided, state) => provided,
+        ...otherStyles
+    } = styles;
     const autoCompleteProps = {
       name,
       // onFocus: this.props.onFocus,
@@ -121,17 +137,10 @@ class ReferenceAutocomplete extends React.Component {
       noOptionsMessage: () => i18n.getMessage("ReferenceAutocomplete.noResultsText"),
       placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder"),
       styles: {
-        multiValueLabel: (provided) => {
-          const rMargin = 150;
-          const defaultMinWidth = 200;
-          const { width = (rMargin + defaultMinWidth) } = this.props;
-          const maxWidth = Math.max(width - rMargin, defaultMinWidth);
-
-          return {
-            ...provided,
-            maxWidth: `${maxWidth}px`,
-          }
-        },
+        ...otherStyles,
+        multiValueLabel: (provided, state) => {
+          customMultiValueLabel(defaultMultiValueLabel(provided, state), state)
+        }
       }
     };
     const reactSelectSpecificProps = this.props.reactSelectSpecificProps ? this.props.reactSelectSpecificProps : {};
