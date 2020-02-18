@@ -1,4 +1,9 @@
 
+[Release 3.0.10](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.10) Tue Feb 18 2020 13:50:53 GMT+0300 (MSK)
+=======================================================
+
+- Update react-select plugin version (GitHub ksafin-sc@users.noreply.github.com, 2020-02-18 13:46:49 +0300)
+
 [Release 3.0.9](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.9) Fri Feb 07 2020 16:39:54 GMT+0300 (MSK)
 =======================================================
 
