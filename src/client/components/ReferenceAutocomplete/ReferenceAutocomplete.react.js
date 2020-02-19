@@ -144,7 +144,7 @@ class ReferenceAutocomplete extends React.Component {
       }
     };
     const reactSelectSpecificProps = this.props.reactSelectSpecificProps ? this.props.reactSelectSpecificProps : {};
-    const { key, clearable, onOpen, className, placeholder } = reactSelectSpecificProps;
+    const { key, clearable, onOpen, className, placeholder, menuPortalTarget } = reactSelectSpecificProps;
     if (key) {
       autoCompleteProps.key = key;
     }
@@ -159,6 +159,9 @@ class ReferenceAutocomplete extends React.Component {
     }
     if (placeholder) {
       autoCompleteProps.placeholder = placeholder;
+    }
+    if (menuPortalTarget) {
+      autoCompleteProps.menuPortalTarget = menuPortalTarget;
     }
 
     return (

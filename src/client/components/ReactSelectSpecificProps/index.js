@@ -11,4 +11,5 @@ export default {
   className: PropTypes.string,
   placeholder: PropTypes.string,
   styles: PropTypes.object,
+  menuTargetPortal: PropTypes.object,
 }
