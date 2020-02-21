@@ -1,4 +1,9 @@
 
+[Release 3.0.11](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.11) Fri Feb 21 2020 11:41:36 GMT+0300 (MSK)
+=======================================================
+
+- ([#51](https://github.com/OpusCapita/react-reference-select/issues/51)) Prepare ReferenceAutocomplete for portal using ([#53](https://github.com/OpusCapita/react-reference-select/issues/53)) (GitHub ksafin-sc@users.noreply.github.com, 2020-02-21 11:15:06 +0300)
+
 [Release 3.0.10](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.10) Tue Feb 18 2020 13:50:53 GMT+0300 (MSK)
 =======================================================
 
