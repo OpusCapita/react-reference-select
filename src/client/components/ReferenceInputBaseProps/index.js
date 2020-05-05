@@ -15,7 +15,10 @@ const ReferenceInputBaseProps = {
 
   multiple: PropTypes.bool,
   readOnly: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+
+  sort: PropTypes.string,
+  order: PropTypes.string
 };
 
 export default ReferenceInputBaseProps

@@ -14,8 +14,17 @@ ReferenceSearchDialog react component
 | objectIdentifier               | string                  | Field that uniquely identifies the object.                                                |
 | modalSpecificProps             | string                  | Specific for Modal component props like 'onHide', 'onEnter', etc.                         |
 | trimSearchParameters           | bool                    | Trim search parameters                                                                    |
+| sort                           | string                  | Sorted field                                                                              |
+| order                          | string                  | Sorted field order                                                                        |
 | ...ReferenceSearchDialogProps  |                         | See `ReferenceSearchDialogProps/index.js` file for details.                               |
-
+/**
+     * Sorted field
+     */
+    sort: PropTypes.string,
+    /**
+     * Sorted field order
+     */
+    order: PropTypes.string
 ### Code Example
 
 ```

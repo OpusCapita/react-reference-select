@@ -109,6 +109,8 @@ class ReferenceSearchInput extends React.Component {
           resultFields={this.props.resultFields}
           objectIdentifier={this.props.valueProperty}
           modalSpecificProps={this.props.modalSpecificProps}
+          sort={this.props.sort}
+          order={this.props.order}
         />
         {children}
         <div className="input-group-btn">

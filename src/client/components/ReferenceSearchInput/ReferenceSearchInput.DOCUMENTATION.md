@@ -19,6 +19,8 @@ ReferenceSearchInput react component
 | labelProperty                  | string                   | Value which is displayed in select options.                                                             |
 | valueProperty                  | string                   | Unique value for object identifying in select options.                                                  |
 | modalSpecificProps             | string                   | Specific for Modal component props like 'onHide', 'onEnter', etc.                                       |
+| sort                           | string                   | Sorted field                                                                                            |
+| order                          | string                   | Sorted field order                                                                                      |
 | ...ReferenceSearchDialogProps  |                          | See `ReferenceSearchDialogProps/index.js` file for details.                                             |
 
 ### Code Example

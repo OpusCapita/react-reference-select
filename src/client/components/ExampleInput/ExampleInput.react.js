@@ -40,7 +40,7 @@ export default class ExampleInput extends React.Component {
   render() {
     let referenceSearchProps = extend(
       // copy this properties
-      pick(this.props, ['id', 'name', 'onBlur', 'onFocus', 'onChange', 'multiple', 'disabled', 'readOnly']),
+      pick(this.props, ['id', 'name', 'sort', 'order', 'onBlur', 'onFocus', 'onChange', 'multiple', 'disabled', 'readOnly']),
       // add custom properties
       {
         value: this.props.value,
