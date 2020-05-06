@@ -63,7 +63,7 @@ export default {
    * Sorted field
    */
   sort: PropTypes.string,
-  
+
   /**
    * Sorted field order
    */
