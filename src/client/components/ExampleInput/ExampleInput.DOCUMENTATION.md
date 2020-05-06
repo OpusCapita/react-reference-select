@@ -17,8 +17,6 @@ ExampleInput react component
 | disabled                       | bool                     | Disallows any interaction with the component.                                                           |
 | serviceRegistry                | func                     | ????? Hard to describe it. ?????                                                                        |
 | reactSelectSpecificProps       | shape                    | See `ReactSelectSpecificProps/index.js` file for details.                                               |
-| sort                           | string                   | Sorted field                                                                                            |
-| order                          | string                   | Sorted field order                                                                                      |
 
 ### Component Name
 
@@ -28,10 +26,7 @@ ExampleInput
 
 ```
 <ExampleInput
-  serviceRegistry={serviceName => ({ url: 'http://localhost:3000' })}
-  multiple={true}
-  sort='name'
-  order='desc'
+  serviceRegistry={serviceName => ({ url: 'http://localhost:3000' })} multiple
 />
 ```
 

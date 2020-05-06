@@ -40,9 +40,7 @@ export default class ExampleInput extends React.Component {
   render() {
     let referenceSearchProps = extend(
       // copy this properties
-      pick(this.props, [
-        'id', 'name', 'onBlur', 'onFocus', 'onChange', 'multiple', 'disabled', 'readOnly', 'sort', 'order'
-      ]),
+      pick(this.props, ['id', 'name', 'onBlur', 'onFocus', 'onChange', 'multiple', 'disabled', 'readOnly']),
       // add custom properties
       {
         value: this.props.value,
@@ -82,7 +80,9 @@ export default class ExampleInput extends React.Component {
 
         title: this.context.i18n.getMessage('ExampleInput.dialogTitle'),
         labelProperty: '_objectLabel',
-        valueProperty: 'id'
+        valueProperty: 'id',
+        sort: 'name',
+        order: 'desc'
       }
     );
 

@@ -67,14 +67,6 @@ export default class ReferenceSearchDialog extends Component {
      * Trim search parameters
      */
     trimSearchParameters: PropTypes.bool,
-    /**
-     * Sorted field
-     */
-    sort: PropTypes.string,
-    /**
-     * Sorted field order
-     */
-    order: PropTypes.string
   };
 
   static contextTypes = {

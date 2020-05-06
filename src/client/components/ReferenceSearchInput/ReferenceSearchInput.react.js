@@ -105,12 +105,12 @@ class ReferenceSearchInput extends React.Component {
           onSelect={(selectedItems) => this.handleReferenceSelect(selectedItems)}
           title={this.props.title}
           multiple={this.props.multiple}
+          sort={this.props.sort}
+          order={this.props.order}
           searchFields={this.props.searchFields}
           resultFields={this.props.resultFields}
           objectIdentifier={this.props.valueProperty}
           modalSpecificProps={this.props.modalSpecificProps}
-          sort={this.props.sort}
-          order={this.props.order}
         />
         {children}
         <div className="input-group-btn">

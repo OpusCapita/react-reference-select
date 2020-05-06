@@ -57,5 +57,15 @@ export default {
     label: PropTypes.string.isRequired,
     sortable: PropTypes.bool,
     view: PropTypes.func
-  })).isRequired
+  })).isRequired,
+
+  /**
+   * Sorted field
+   */
+  sort: PropTypes.string,
+  
+  /**
+   * Sorted field order
+   */
+  order: PropTypes.oneOf(['asc', 'desc'])
 };
