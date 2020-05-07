@@ -80,7 +80,9 @@ export default class ExampleInput extends React.Component {
 
         title: this.context.i18n.getMessage('ExampleInput.dialogTitle'),
         labelProperty: '_objectLabel',
-        valueProperty: 'id'
+        valueProperty: 'id',
+        sort: 'name',
+        order: 'desc'
       }
     );
 

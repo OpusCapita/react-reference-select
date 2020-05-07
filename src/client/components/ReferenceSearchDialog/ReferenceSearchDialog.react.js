@@ -75,18 +75,20 @@ export default class ReferenceSearchDialog extends Component {
 
   static defaultProps = {
     modalSpecificProps: {},
-    trimSearchParameters: true
+    trimSearchParameters: true,
+    sort: '',
+    order: ''
   };
 
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
 
     this.defaultDialogState = {
       checkedItems: [],
       checkedAll: false,
       searchParams: {},
-      sort: '',
-      order: '',
+      sort: props.sort,
+      order: props.order,
       offset: 0,
       max: 10,
       items: [],
