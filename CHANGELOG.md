@@ -1,4 +1,9 @@
 
+[Release 3.0.12](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.12) Thu May 07 2020 13:10:54 GMT+0300 (MSK)
+=======================================================
+
+- [#54](https://github.com/OpusCapita/react-reference-select/issues/54) Add possibility to indicate default sorting order for reference search dialog ([#55](https://github.com/OpusCapita/react-reference-select/issues/55)) (GitHub dsanko-sc@users.noreply.github.com, 2020-05-07 13:02:33 +0300)
+
 [Release 3.0.11](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.11) Fri Feb 21 2020 11:41:36 GMT+0300 (MSK)
 =======================================================
 
