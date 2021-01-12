@@ -6,6 +6,11 @@ defaults: &defaults
         password: $DOCKER_PASS
   working_directory: ~/build
 
+aliases:
+  - &configure-dependency-management
+    name: Configure dependency management
+    command: configure-npm.sh
+
 version: 2
 jobs:
   init:
@@ -19,11 +24,9 @@ jobs:
   build:
     <<: *defaults
     steps:
-      - run:
-          name: Environment inject.
-          command: env_inject.sh
-
       - checkout
+
+      - run: *configure-dependency-management
 
       - restore_cache:
           keys:
@@ -63,11 +66,9 @@ jobs:
   update-gh-pages:
     <<: *defaults
     steps:
-      - run:
-          name: Environment inject
-          command: /bin/env_inject.sh
-      
       - checkout
+
+      - run: *configure-dependency-management
 
       - restore_cache:
           keys:
@@ -92,11 +93,9 @@ jobs:
   build_release:
     <<: *defaults
     steps:
-      - run:
-          name: Environment inject
-          command: /bin/env_inject.sh
-
       - checkout
+
+      - run: *configure-dependency-management
 
       - restore_cache:
           keys:
@@ -140,12 +139,9 @@ jobs:
   release:
     <<: *defaults
     steps:
-
-      - run:
-          name: Environment inject
-          command: env_inject.sh
-
       - checkout
+
+      - run: *configure-dependency-management
 
       - run:
           name: Executing release scrtipt.
@@ -180,7 +176,6 @@ workflows:
                 - gh-pages
                 - release
           requires:
-            - init
             - build
       - build_release:
           filters:
