@@ -1,4 +1,8 @@
 
+[Release 3.0.13-issue-56-2-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.13-issue-56-2-SNAPSHOT) Tue Jan 12 2021 18:22:10 GMT+0300 (MSK)
+=======================================================
+
+
 [Release 3.0.13-issue-56-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.13-issue-56-SNAPSHOT) Tue Jan 12 2021 18:18:59 GMT+0300 (MSK)
 =======================================================
 
