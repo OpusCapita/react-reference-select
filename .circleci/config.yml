@@ -1,18 +1,32 @@
 defaults: &defaults
   docker:
-    - image: opuscapita/minsk-core-ci:grails-2.4.4-jdk-8u192-nodejs-8.17.0-maven-3.3.9
+    - image: opuscapita/minsk-core-ci:2
+      auth:
+        username: $DOCKER_USER
+        password: $DOCKER_PASS
   working_directory: ~/build
+
+aliases:
+  - &configure-dependency-management
+    name: Configure dependency management
+    command: configure-npm.sh
 
 version: 2
 jobs:
+  init:
+    docker:
+      - image: opuscapita/minsk-core-machineuser-env:2
+    steps:
+      - run:
+          name: Inject secrets from vault to CircleCI project's environment
+          command: circle_ci_add_env.sh
+
   build:
     <<: *defaults
     steps:
-      - run:
-          name: Environment inject.
-          command: env_inject.sh
-
       - checkout
+
+      - run: *configure-dependency-management
 
       - restore_cache:
           keys:
@@ -52,11 +66,9 @@ jobs:
   update-gh-pages:
     <<: *defaults
     steps:
-      - run:
-          name: Environment inject
-          command: /bin/env_inject.sh
-      
       - checkout
+
+      - run: *configure-dependency-management
 
       - restore_cache:
           keys:
@@ -81,11 +93,9 @@ jobs:
   build_release:
     <<: *defaults
     steps:
-      - run:
-          name: Environment inject
-          command: /bin/env_inject.sh
-
       - checkout
+
+      - run: *configure-dependency-management
 
       - restore_cache:
           keys:
@@ -129,12 +139,9 @@ jobs:
   release:
     <<: *defaults
     steps:
-
-      - run:
-          name: Environment inject
-          command: env_inject.sh
-
       - checkout
+
+      - run: *configure-dependency-management
 
       - run:
           name: Executing release scrtipt.
@@ -144,27 +151,37 @@ workflows:
   version: 2
   release-and-build:
     jobs:
+      - init:
+          filters:
+            tags:
+              only: /.*/
       - release:
           filters:
             branches:
               only: release
+          requires:
+            - init
       - build:
           filters:
             branches:
               ignore:
                 - gh-pages
                 - release
-      - update-gh-pages:
           requires:
-            - build
+            - init
+      - update-gh-pages:
           filters:
             branches:
               ignore:
                 - gh-pages
                 - release
+          requires:
+            - build
       - build_release:
           filters:
             tags:
               only: /.*/
             branches:
               ignore: /.*/
+          requires:
+            - init

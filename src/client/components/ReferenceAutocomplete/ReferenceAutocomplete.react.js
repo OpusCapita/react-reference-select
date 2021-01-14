@@ -103,7 +103,7 @@ class ReferenceAutocomplete extends React.Component {
 
   render() {
     const { i18n } = this.context;
-    const { name, onBlur, styles = {} } = this.props;
+    const { id, name, onBlur, styles = {} } = this.props;
     const { defaultOptions } = this.state;
 
     const defaultMultiValueLabel = (provided) => {
@@ -122,6 +122,7 @@ class ReferenceAutocomplete extends React.Component {
         ...otherStyles
     } = styles;
     const autoCompleteProps = {
+      inputId: id,
       name,
       // onFocus: this.props.onFocus,
       onBlur,
