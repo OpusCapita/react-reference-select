@@ -1,15 +1,4 @@
 
-[Release 3.0.13-issue-56-2-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.13-issue-56-2-SNAPSHOT) Tue Jan 12 2021 18:22:10 GMT+0300 (MSK)
-=======================================================
-
-
-[Release 3.0.13-issue-56-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.13-issue-56-SNAPSHOT) Tue Jan 12 2021 18:18:59 GMT+0300 (MSK)
-=======================================================
-
-- Update circleci config (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-01-12 15:11:21 +0300)
-- Update circleci config (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-01-12 11:50:38 +0300)
-- Fix passing instance id prop to children (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-01-11 23:08:18 +0300)
-
 [Release 3.0.12](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.12) Thu May 07 2020 13:10:54 GMT+0300 (MSK)
 =======================================================
 
