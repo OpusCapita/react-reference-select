@@ -1,4 +1,9 @@
 
+[Release 3.0.13](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.13) Thu Jan 14 2021 11:25:29 GMT+0300 (MSK)
+=======================================================
+
+- [#56](https://github.com/OpusCapita/react-reference-select/issues/56) Fix passing instance id prop to children ([#57](https://github.com/OpusCapita/react-reference-select/issues/57)) (GitHub dsanko-sc@users.noreply.github.com, 2021-01-14 11:16:47 +0300)
+
 [Release 3.0.12](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.12) Thu May 07 2020 13:10:54 GMT+0300 (MSK)
 =======================================================
 
