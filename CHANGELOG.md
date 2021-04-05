@@ -1,4 +1,12 @@
 
+[Release 3.0.14](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14) Mon Apr 05 2021 11:12:14 GMT+0300 (MSK)
+=======================================================
+
+- Changed version (adanilov@scand.com adanilov@scand.com, 2021-04-05 11:04:59 +0300)
+- ([#59](https://github.com/OpusCapita/react-reference-select/issues/59)) Added new selectProperty option for autocomplete field (adanilov@scand.com adanilov@scand.com, 2021-04-05 09:29:41 +0300)
+- Initialize build (GitHub ashestak-sc@users.noreply.github.com, 2021-03-24 13:35:01 +0300)
+- (EPROC-20252) Added circleci builds jira integration (GitHub ashestak-sc@users.noreply.github.com, 2021-03-10 16:01:52 +0300)
+
 [Release 3.0.13](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.13) Thu Jan 14 2021 11:25:29 GMT+0300 (MSK)
 =======================================================
 
