@@ -20,6 +20,7 @@ ReferenceAutocomplete react component
 | autocompleteAction             | func                     | Callback fired when the input text is changed for objects loading.                                      |
 | labelProperty                  | string                   | Value which is displayed in select options.                                                             |
 | valueProperty                  | string                   | Unique value for object identifying in select options.                                                  |
+| selectProperty                 | string                   | Value which is displayed in the result field. 
 | reactSelectSpecificProps       | shape                    | See `ReactSelectSpecificProps/index.js` file for details.                                               |
 
 ### Contributors
@@ -47,6 +48,7 @@ Alexey Sergeev, Dmitriy Sanko
       ...customStyles
     }
   }}}
+  name="alphabet"
   value={{"id": "1", "_objectLabel": "A"}}
   labelProperty="_objectLabel"
   valueProperty="id"
