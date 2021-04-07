@@ -1,4 +1,10 @@
 
+[Release 3.0.14-EPROC-20250-2-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-2-SNAPSHOT) Wed Apr 07 2021 11:55:10 GMT+0300 (MSK)
+=======================================================
+
+- Merge branch 'EPROC-20250' of github.com:OpusCapita/react-reference-select into EPROC-20250 (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 11:37:12 +0300)
+- Changed default minAutocompleteChars (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 11:37:01 +0300)
+
 [Release 3.0.14-EPROC-20250-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-SNAPSHOT) Wed Apr 07 2021 11:35:42 GMT+0300 (MSK)
 =======================================================
 
