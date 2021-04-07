@@ -16,10 +16,11 @@ ReferenceAutocomplete react component
 | multiple                       | bool                     | Allows to select several elements. *Note*: if *true*, **value** must be array of objects.               |
 | readOnly                       | bool                     | Disallows any interaction with the component.                                                           |
 | disabled                       | bool                     | Disallows any interaction with the component.                                                           |
-| defaultOptions                 | array                    | Default set of options to show before the user starts searching.
+| defaultOptions                 | array                    | Default set of options to show before the user starts searching.                                        |
 | autocompleteAction             | func                     | Callback fired when the input text is changed for objects loading.                                      |
-| labelProperty                  | string                   | Value which is displayed in select options.                                                             |
+| labelProperty                  | string                   | Value which is displayed in the field     .                                                             |
 | valueProperty                  | string                   | Unique value for object identifying in select options.                                                  |
+| labelOptionProperty            | string                   | Value which is displayed in the options, by default used labelProperty                                  |
 | reactSelectSpecificProps       | shape                    | See `ReactSelectSpecificProps/index.js` file for details.                                               |
 
 ### Contributors
@@ -47,8 +48,10 @@ Alexey Sergeev, Dmitriy Sanko
       ...customStyles
     }
   }}}
+  name="alphabet"
   value={{"id": "1", "_objectLabel": "A"}}
-  labelProperty="_objectLabel"
+  labelOptionProperty="_objectLabel"
+  labelProperty="id"
   valueProperty="id"
 />
 ```
