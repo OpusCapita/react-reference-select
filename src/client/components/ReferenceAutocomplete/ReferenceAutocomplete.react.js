@@ -29,7 +29,7 @@ class ReferenceAutocomplete extends React.Component {
   static defaultProps = {
     disabled: false,
     multiple: false,
-    minAutocompleteChars: 1
+    minAutocompleteChars: 0
   };
 
   constructor(props, context) {
