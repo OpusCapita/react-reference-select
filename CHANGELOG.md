@@ -1,4 +1,12 @@
 
+[Release 3.0.15](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.15) Wed Apr 07 2021 08:58:16 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-20368) Adding labelOptionProperty optional property (Dmitry Divin divin@scand.com, 2021-04-07 08:42:13 +0300)
+- EPROC-20383) Used jdk zulu (GitHub ashestak-sc@users.noreply.github.com, 2021-04-06 12:27:56 +0300)
+- Initialize build (GitHub ashestak-sc@users.noreply.github.com, 2021-03-24 13:35:01 +0300)
+- (EPROC-20252) Added circleci builds jira integration (GitHub ashestak-sc@users.noreply.github.com, 2021-03-10 16:01:52 +0300)
+
 [Release 3.0.14](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14) Mon Apr 05 2021 11:12:14 GMT+0300 (MSK)
 =======================================================
 
