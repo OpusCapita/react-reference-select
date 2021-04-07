@@ -36,11 +36,15 @@ export default class ExampleService {
       items = items.filter(item => item.name.toLowerCase().indexOf(params.q.toLowerCase()) !== -1);
     }
 
-    return Promise.resolve({
-      "body": items,
-      "headers": {
-        "content-range": `items 0-9/${items.length}`
-      }
-    })
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          "body": items,
+          "headers": {
+            "content-range": `items 0-9/${items.length}`
+          }
+        });
+      }, 500)
+    });
   }
 }
