@@ -23,7 +23,7 @@ class ReferenceAutocomplete extends React.Component {
   };
 
   static contextTypes = {
-    i18n: PropTypes.object.isRequiredgetOptions
+    i18n: PropTypes.object.isRequired
   };
 
   static defaultProps = {

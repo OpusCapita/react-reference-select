@@ -1,11 +1,11 @@
 let ReferenceAutocomplete = {
   clearValueText: "Löschen",
   clearAllText: "Alles löschen",
-  noResultsText: "No matches found",
+  noResultsText: "Keine Treffer gefunden.",
   placeholder: "Werte hinzufügen",
-  loadingPlaceholder: "Searching...",
-  loadingError: "Loading failed",
-  notEnoughCharacters: "Please enter {minAutocompleteChars} or more characters"
+  loadingPlaceholder: "Suchen...",
+  loadingError: "Laden ist fehlgeschlagen.",
+  notEnoughCharacters: "Bitte geben Sie {minAutocompleteChars} oder mehr Zeichen ein."
 }
 
 export default {
