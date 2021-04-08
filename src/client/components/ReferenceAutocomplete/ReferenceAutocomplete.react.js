@@ -19,7 +19,8 @@ class ReferenceAutocomplete extends React.Component {
     valueProperty: PropTypes.string.isRequired,
     labelOptionProperty: PropTypes.string,
     // react-select specific props
-    reactSelectSpecificProps: PropTypes.shape(ReactSelectSpecificProps)
+    reactSelectSpecificProps: PropTypes.shape(ReactSelectSpecificProps),
+    minAutocompleteChars: PropTypes.number
   };
 
   static contextTypes = {
@@ -28,7 +29,8 @@ class ReferenceAutocomplete extends React.Component {
 
   static defaultProps = {
     disabled: false,
-    multiple: false
+    multiple: false,
+    minAutocompleteChars: 0
   };
 
   constructor(props, context) {
@@ -95,11 +97,21 @@ class ReferenceAutocomplete extends React.Component {
     return data[valueProperty];
   };
 
-  getOptions = (input, callback) => {
-    const { autocompleteAction } = this.props;
-    autocompleteAction(input).then((result) => {
-      callback(result)
-    });
+  getOptions = (autocompleteChars, callback) => {
+    const { autocompleteAction, minAutocompleteChars } = this.props;
+
+    if (autocompleteChars.length >= minAutocompleteChars) {
+      autocompleteAction(autocompleteChars).then((result) => {
+        this.setState({ loadingError: false })
+        callback(result)
+      }).catch((e) => {
+        this.setState({ loadingError: true })
+        callback([])
+      });
+    } else {
+      this.setState({ loadingError: false })
+      callback({ options: [], "complete": false })
+    }
   };
 
   formatOptionLabel = (data, meta) => {
@@ -147,7 +159,19 @@ class ReferenceAutocomplete extends React.Component {
       isDisabled: this.props.disabled || this.props.readOnly,
       isMulti: this.props.multiple,
       // labels:
-      noOptionsMessage: () => i18n.getMessage("ReferenceAutocomplete.noResultsText"),
+      noOptionsMessage: ({ inputValue: autocompleteChars }) => {
+        let { minAutocompleteChars } = this.props;
+        let { loadingError } = this.state;
+
+        if (loadingError) {
+          return (<div className="text-danger">{i18n.getMessage("ReferenceAutocomplete.loadingError")}</div>)
+        } else if (autocompleteChars.length < minAutocompleteChars) {
+          return i18n.getMessage("ReferenceAutocomplete.notEnoughCharacters", { minAutocompleteChars })
+        } else {
+          return i18n.getMessage("ReferenceAutocomplete.noResultsText")
+        }
+      },
+      loadingMessage: () => i18n.getMessage("ReferenceAutocomplete.loadingPlaceholder"),
       placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder"),
       styles: {
         ...otherStyles,

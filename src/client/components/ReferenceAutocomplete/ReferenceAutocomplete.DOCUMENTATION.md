@@ -22,6 +22,7 @@ ReferenceAutocomplete react component
 | valueProperty                  | string                   | Unique value for object identifying in select options.                                                  |
 | labelOptionProperty            | string                   | Value which is displayed in the options, by default used labelProperty                                  |
 | reactSelectSpecificProps       | shape                    | See `ReactSelectSpecificProps/index.js` file for details.                                               |
+| minAutocompleteChars           | number                   | Minimal amount of characters that user should enter to start searching for items.                       |
 
 ### Contributors
 
