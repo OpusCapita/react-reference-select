@@ -1,4 +1,11 @@
 
+[Release 3.0.14-EPROC-20250-3-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-3-SNAPSHOT) Thu Apr 08 2021 10:03:55 GMT+0300 (MSK)
+=======================================================
+
+- Update translations (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-08 09:51:02 +0300)
+- Merge branch 'EPROC-20250' of github.com:OpusCapita/react-reference-select into EPROC-20250 (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 14:07:37 +0300)
+- Update docs. [ci skip] (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 14:07:25 +0300)
+
 [Release 3.0.14-EPROC-20250-2-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-2-SNAPSHOT) Wed Apr 07 2021 11:55:10 GMT+0300 (MSK)
 =======================================================
 
