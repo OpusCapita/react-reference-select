@@ -1,22 +1,17 @@
 
-[Release 3.0.14-EPROC-20250-3-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-3-SNAPSHOT) Thu Apr 08 2021 10:03:55 GMT+0300 (MSK)
+[Release 3.0.15](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.15) Wed Apr 07 2021 08:58:16 GMT+0300 (MSK)
 =======================================================
 
-- Update translations (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-08 09:51:02 +0300)
-- Merge branch 'EPROC-20250' of github.com:OpusCapita/react-reference-select into EPROC-20250 (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 14:07:37 +0300)
-- Update docs. [ci skip] (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 14:07:25 +0300)
+- (EPROC-20368) Adding labelOptionProperty optional property (Dmitry Divin divin@scand.com, 2021-04-07 08:42:13 +0300)
+- EPROC-20383) Used jdk zulu (GitHub ashestak-sc@users.noreply.github.com, 2021-04-06 12:27:56 +0300)
+- Initialize build (GitHub ashestak-sc@users.noreply.github.com, 2021-03-24 13:35:01 +0300)
+- (EPROC-20252) Added circleci builds jira integration (GitHub ashestak-sc@users.noreply.github.com, 2021-03-10 16:01:52 +0300)
 
-[Release 3.0.14-EPROC-20250-2-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-2-SNAPSHOT) Wed Apr 07 2021 11:55:10 GMT+0300 (MSK)
+[Release 3.0.14](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14) Mon Apr 05 2021 11:12:14 GMT+0300 (MSK)
 =======================================================
 
-- Merge branch 'EPROC-20250' of github.com:OpusCapita/react-reference-select into EPROC-20250 (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 11:37:12 +0300)
-- Changed default minAutocompleteChars (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 11:37:01 +0300)
-
-[Release 3.0.14-EPROC-20250-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.14-EPROC-20250-SNAPSHOT) Wed Apr 07 2021 11:35:42 GMT+0300 (MSK)
-=======================================================
-
-- Update translations (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 10:58:56 +0300)
-- Unify ReferenceAutocomplete hints with select2 jquery component (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-04-07 10:31:16 +0300)
+- Changed version (adanilov@scand.com adanilov@scand.com, 2021-04-05 11:04:59 +0300)
+- ([#59](https://github.com/OpusCapita/react-reference-select/issues/59)) Added new selectProperty option for autocomplete field (adanilov@scand.com adanilov@scand.com, 2021-04-05 09:29:41 +0300)
 - Initialize build (GitHub ashestak-sc@users.noreply.github.com, 2021-03-24 13:35:01 +0300)
 - (EPROC-20252) Added circleci builds jira integration (GitHub ashestak-sc@users.noreply.github.com, 2021-03-10 16:01:52 +0300)
 

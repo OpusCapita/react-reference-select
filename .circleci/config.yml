@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: opuscapita/minsk-core-ci:2
+    - image: opuscapita/minsk-core-ci:4
       auth:
         username: $DOCKER_USER
         password: $DOCKER_PASS

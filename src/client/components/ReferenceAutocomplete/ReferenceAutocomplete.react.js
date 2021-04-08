@@ -17,6 +17,7 @@ class ReferenceAutocomplete extends React.Component {
     defaultOptions: PropTypes.array,
     labelProperty: PropTypes.string.isRequired,
     valueProperty: PropTypes.string.isRequired,
+    labelOptionProperty: PropTypes.string,
     // react-select specific props
     reactSelectSpecificProps: PropTypes.shape(ReactSelectSpecificProps),
     minAutocompleteChars: PropTypes.number
@@ -86,14 +87,14 @@ class ReferenceAutocomplete extends React.Component {
     }
   }
 
-  getOptionLabel = (option) => {
+  getOptionLabel = (data) => {
     const { labelProperty } = this.props;
-    return option[labelProperty];
+    return data[labelProperty];
   };
 
-  getOptionValue = (option) => {
+  getOptionValue = (data) => {
     const { valueProperty } = this.props;
-    return option[valueProperty];
+    return data[valueProperty];
   };
 
   getOptions = (autocompleteChars, callback) => {
@@ -111,6 +112,16 @@ class ReferenceAutocomplete extends React.Component {
       this.setState({ loadingError: false })
       callback({ options: [], "complete": false })
     }
+  };
+
+  formatOptionLabel = (data, meta) => {
+    const { labelOptionProperty } = this.props;
+    const { context } = meta;
+    if (context === 'menu' && labelOptionProperty !== undefined) {
+      return data[labelOptionProperty];
+    }
+
+    return this.getOptionLabel(data);
   };
 
   render() {
@@ -141,6 +152,7 @@ class ReferenceAutocomplete extends React.Component {
       onChange: this.onChange,
       defaultOptions,
       loadOptions: this.getOptions,
+      formatOptionLabel: this.formatOptionLabel,
       getOptionLabel: this.getOptionLabel,
       getOptionValue: this.getOptionValue,
       value: this.props.value,
