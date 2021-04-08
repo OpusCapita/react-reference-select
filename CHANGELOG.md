@@ -1,4 +1,9 @@
 
+[Release 3.0.16](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.16) Thu Apr 08 2021 19:18:12 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-20250) Unify ReferenceAutocomplete hints with select2 jquery component ([#61](https://github.com/OpusCapita/react-reference-select/issues/61)) (GitHub dsanko-sc@users.noreply.github.com, 2021-04-08 19:07:24 +0300)
+
 [Release 3.0.15](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.15) Wed Apr 07 2021 08:58:16 GMT+0300 (MSK)
 =======================================================
 
