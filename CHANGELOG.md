@@ -1,4 +1,9 @@
 
+[Release 3.0.17-EPROC-20549-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.17-EPROC-20549-SNAPSHOT) Mon Jun 07 2021 16:28:43 GMT+0300 (MSK)
+=======================================================
+
+- Make translation keys unique (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2021-06-07 14:44:38 +0300)
+
 [Release 3.0.16](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.16) Thu Apr 08 2021 19:18:12 GMT+0300 (MSK)
 =======================================================
 
