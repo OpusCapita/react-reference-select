@@ -8,5 +8,7 @@ ReferenceAutocomplete.loadingError = "Loading failed.";
 ReferenceAutocomplete.notEnoughCharacters = "Please enter {minAutocompleteChars} or more characters.";
 
 export default {
-  ReferenceAutocomplete: ReferenceAutocomplete
+  common: {
+    ReferenceAutocomplete
+  }
 };

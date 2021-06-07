@@ -1,5 +1,7 @@
 export default {
-  PaginationPanel: {
-    goToPage: 'Go'
+  common: {
+    PaginationPanel: {
+      goToPage: 'Go'
+    }
   }
 };

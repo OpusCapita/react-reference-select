@@ -1,6 +1,8 @@
 export default {
-  ResultSizePanel: {
-    resultsPerPageLabel: "Resultat per sida",
-    resultsPerPageAllLabel: "Alla"
+  common: {
+    ResultSizePanel: {
+      resultsPerPageLabel: "Resultat per sida",
+      resultsPerPageAllLabel: "Alla"
+    }
   }
 };

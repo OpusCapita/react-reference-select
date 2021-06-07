@@ -58,27 +58,27 @@ export default class ExampleInput extends React.Component {
         searchFields: [
           {
             name: 'id',
-            label: this.context.i18n.getMessage('ExampleInput.id')
+            label: this.context.i18n.getMessage('common.ExampleInput.id')
           },
           {
             name: 'name',
-            label: this.context.i18n.getMessage('ExampleInput.name')
+            label: this.context.i18n.getMessage('common.ExampleInput.name')
           }
         ],
         resultFields: [
           {
             name: 'id',
-            label: this.context.i18n.getMessage('ExampleInput.id'),
+            label: this.context.i18n.getMessage('common.ExampleInput.id'),
             sortable: true
           },
           {
             name: 'name',
-            label: this.context.i18n.getMessage('ExampleInput.name'),
+            label: this.context.i18n.getMessage('common.ExampleInput.name'),
             sortable: true
           }
         ],
 
-        title: this.context.i18n.getMessage('ExampleInput.dialogTitle'),
+        title: this.context.i18n.getMessage('common.ExampleInput.dialogTitle'),
         labelProperty: '_objectLabel',
         valueProperty: 'id',
         sort: 'name',

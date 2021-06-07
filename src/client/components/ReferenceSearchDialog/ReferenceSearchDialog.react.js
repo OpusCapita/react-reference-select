@@ -200,7 +200,7 @@ export default class ReferenceSearchDialog extends Component {
 
   onSelect = (checkedItems) => {
     if (checkedItems.length === 0) {
-      alert(`${this.context.i18n.getMessage('ReferenceSearchDialog.noItemsSelectedMessage')}`);
+      alert(`${this.context.i18n.getMessage('common.ReferenceSearchDialog.noItemsSelectedMessage')}`);
       return;
     }
     this.props.onSelect(checkedItems);
@@ -354,10 +354,10 @@ export default class ReferenceSearchDialog extends Component {
             </div>
             <div className="form-submit text-right">
               <Button bsStyle="link" onClick={::this.reset}>
-                {i18n.getMessage('ReferenceSearchDialog.resetLabel')}
+                {i18n.getMessage('common.ReferenceSearchDialog.resetLabel')}
               </Button>
               <Button bsStyle="primary" type="submit">
-                {i18n.getMessage('ReferenceSearchDialog.searchLabel')}
+                {i18n.getMessage('common.ReferenceSearchDialog.searchLabel')}
               </Button>
             </div>
           </form>
@@ -368,7 +368,7 @@ export default class ReferenceSearchDialog extends Component {
                  bsStyle="primary"
                  onClick={() => this.onSelect(checkedItems)}
                >
-                 {i18n.getMessage('ReferenceSearchDialog.selectLabel')}
+                 {i18n.getMessage('common.ReferenceSearchDialog.selectLabel')}
                </Button>
             </p>
           ) : null}
@@ -458,7 +458,7 @@ export default class ReferenceSearchDialog extends Component {
               <div className="pull-right">
                 <div className="paginate" style={{ display: 'flex', alignItems: 'center' }}>
                   <div className="pull-left">
-                    {i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: count })}
+                    {i18n.getMessage('common.ReferenceSearchDialog.itemsFound', { number: count })}
                   </div>
                   <PaginationPanel
                     count={count}
@@ -471,7 +471,7 @@ export default class ReferenceSearchDialog extends Component {
             </div>
           ) : (
             <div className="bs-callout bs-callout-info">
-              {i18n.getMessage('ReferenceSearchDialog.itemsFound', { number: 0 })}
+              {i18n.getMessage('common.ReferenceSearchDialog.itemsFound', { number: 0 })}
             </div>
           )}
         </Modal.Body>

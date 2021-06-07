@@ -41,7 +41,7 @@ export default class PaginationPanel extends Component {
   };
 
   static defaultProps = {
-    max: 10
+    max: 2
   };
 
   constructor(props, context) {
@@ -117,7 +117,7 @@ export default class PaginationPanel extends Component {
         </div>
         <div className="pull-left">
           <Button className="btn btn-default" onClick={() => { this.onSelect(this.state.pageNumber) }}>
-            {this.context.i18n.getMessage('PaginationPanel.goToPage')}
+            {this.context.i18n.getMessage('common.PaginationPanel.goToPage')}
           </Button>
         </div>
       </div>
