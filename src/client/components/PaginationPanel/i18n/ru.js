@@ -1,5 +1,7 @@
 export default {
-  PaginationPanel: {
-    goToPage: 'Перейти'
+  common: {
+    PaginationPanel: {
+      goToPage: 'Перейти'
+    }
   }
 };

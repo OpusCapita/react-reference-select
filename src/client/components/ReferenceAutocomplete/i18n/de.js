@@ -9,5 +9,7 @@ let ReferenceAutocomplete = {
 }
 
 export default {
-  ReferenceAutocomplete: ReferenceAutocomplete
+  common: {
+    ReferenceAutocomplete
+  }
 };

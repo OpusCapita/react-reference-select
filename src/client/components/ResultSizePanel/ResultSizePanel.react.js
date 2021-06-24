@@ -39,7 +39,8 @@ export default class ResultSizePanel extends Component {
     if (eventKey) {
       this.setState(
         {
-          size: eventKey === 'all' ? this.context.i18n.getMessage('ResultSizePanel.resultsPerPageAllLabel') : eventKey
+          size: eventKey === 'all' ?
+            this.context.i18n.getMessage('common.ResultSizePanel.resultsPerPageAllLabel') : eventKey
         }
       );
 
@@ -54,10 +55,14 @@ export default class ResultSizePanel extends Component {
         onSelect={this.onSelect.bind(this)}
       >
         <Dropdown.Toggle>
-          <span>{this.context.i18n.getMessage('ResultSizePanel.resultsPerPageLabel')}: <b>{this.state.size}</b></span>
+          <span>
+            {this.context.i18n.getMessage('common.ResultSizePanel.resultsPerPageLabel')}: <b>{this.state.size}</b>
+          </span>
         </Dropdown.Toggle>
         <Dropdown.Menu className="text-right">
-          <MenuItem eventKey="all">{this.context.i18n.getMessage('ResultSizePanel.resultsPerPageAllLabel')}</MenuItem>
+          <MenuItem eventKey="all">
+            {this.context.i18n.getMessage('common.ResultSizePanel.resultsPerPageAllLabel')}
+          </MenuItem>
           <MenuItem eventKey="1000">1000</MenuItem>
           <MenuItem eventKey="100">100</MenuItem>
           <MenuItem eventKey="50">50</MenuItem>

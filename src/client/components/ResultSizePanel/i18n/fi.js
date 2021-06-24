@@ -1,6 +1,8 @@
 export default {
-  ResultSizePanel: {
-    resultsPerPageLabel: "Tuloksia sivulla",
-    resultsPerPageAllLabel: "Kaikki"
+  common: {
+    ResultSizePanel: {
+      resultsPerPageLabel: "Tuloksia sivulla",
+      resultsPerPageAllLabel: "Kaikki"
+    }
   }
 };

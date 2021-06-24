@@ -4,5 +4,7 @@ ReferenceAutocomplete.clearAllText = "Очистить все";
 ReferenceAutocomplete.placeholder = "Нажмите, чтобы добавить значения";
 
 export default {
-  ReferenceAutocomplete: ReferenceAutocomplete
+  common: {
+    ReferenceAutocomplete
+  }
 };

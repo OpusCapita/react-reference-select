@@ -164,15 +164,15 @@ class ReferenceAutocomplete extends React.Component {
         let { loadingError } = this.state;
 
         if (loadingError) {
-          return (<div className="text-danger">{i18n.getMessage("ReferenceAutocomplete.loadingError")}</div>)
+          return (<div className="text-danger">{i18n.getMessage("common.ReferenceAutocomplete.loadingError")}</div>)
         } else if (autocompleteChars.length < minAutocompleteChars) {
-          return i18n.getMessage("ReferenceAutocomplete.notEnoughCharacters", { minAutocompleteChars })
+          return i18n.getMessage("common.ReferenceAutocomplete.notEnoughCharacters", { minAutocompleteChars })
         } else {
-          return i18n.getMessage("ReferenceAutocomplete.noResultsText")
+          return i18n.getMessage("common.ReferenceAutocomplete.noResultsText")
         }
       },
-      loadingMessage: () => i18n.getMessage("ReferenceAutocomplete.loadingPlaceholder"),
-      placeholder: i18n.getMessage("ReferenceAutocomplete.placeholder"),
+      loadingMessage: () => i18n.getMessage("common.ReferenceAutocomplete.loadingPlaceholder"),
+      placeholder: i18n.getMessage("common.ReferenceAutocomplete.placeholder"),
       styles: {
         ...otherStyles,
         multiValueLabel: (provided, state) => {
