@@ -1,4 +1,9 @@
 
+[Release 3.0.17](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.17) Thu Jun 24 2021 15:03:23 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-20549) Make translation keys unique ([#62](https://github.com/OpusCapita/react-reference-select/issues/62)) (GitHub dsanko-sc@users.noreply.github.com, 2021-06-24 12:52:09 +0300)
+
 [Release 3.0.17-EPROC-20549-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.17-EPROC-20549-SNAPSHOT) Mon Jun 07 2021 16:28:43 GMT+0300 (MSK)
 =======================================================
 
