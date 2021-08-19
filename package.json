@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-reference-select",
-  "version": "3.1.0",
+  "version": "3.1.1-SNAPSHOT",
   "description": "React reference select",
   "main": "lib/index.js",
   "files": [
