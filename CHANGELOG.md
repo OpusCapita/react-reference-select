@@ -1,4 +1,8 @@
 
+[Release 3.1.1](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.1) Thu Aug 19 2021 17:52:05 GMT+0300 (MSK)
+=======================================================
+
+
 [Release 3.1.0](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.0) Thu Aug 19 2021 17:41:31 GMT+0300 (MSK)
 =======================================================
 
