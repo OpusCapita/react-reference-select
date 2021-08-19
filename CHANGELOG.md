@@ -1,4 +1,11 @@
 
+[Release 3.1.0](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.0) Thu Aug 19 2021 17:41:31 GMT+0300 (MSK)
+=======================================================
+
+- Merge pull request [#67](https://github.com/OpusCapita/react-reference-select/issues/67) from OpusCapita/EPROC-20573 (GitHub nikolai.kovalenko@opuscapita.com, 2021-08-19 17:39:55 +0300)
+- (EPROC-20573) Rolled back version. (Nikolai Kovalenko kovalenko@scand.com, 2021-08-19 15:58:31 +0300)
+- (EPROC-20573) Updated react-bootstrap version. (Nikolai Kovalenko kovalenko@scand.com, 2021-08-19 15:46:39 +0300)
+
 [Release 3.0.17](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.0.17) Thu Jun 24 2021 15:03:23 GMT+0300 (MSK)
 =======================================================
 
