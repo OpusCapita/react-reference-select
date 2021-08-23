@@ -103,7 +103,6 @@ export default class PaginationPanel extends Component {
         <Pagination.Item
           {...buttonProps}
           key={page}
-          eventKey={page}
           active={page === activePage}
           onClick={() => this.onSelect(page)}
         >
@@ -127,7 +126,6 @@ export default class PaginationPanel extends Component {
         <Pagination.Item
           {...buttonProps}
           key={1}
-          eventKey={1}
           active={false}
           onClick={() => this.onSelect(1)}
         >
@@ -152,7 +150,6 @@ export default class PaginationPanel extends Component {
           <Pagination.Item
             {...buttonProps}
             key={items}
-            eventKey={items}
             active={false}
             onClick={() => this.onSelect(items)}
           >
