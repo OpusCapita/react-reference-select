@@ -78,6 +78,93 @@ export default class PaginationPanel extends Component {
     }
   };
 
+  renderPageButtons(activePage, items, maxButtons, boundaryLinks, ellipsis, buttonProps) {
+    const pageButtons = [];
+
+    let startPage;
+    let endPage;
+
+    if (maxButtons && maxButtons < items) {
+      startPage = Math.max(
+        Math.min(
+          activePage - Math.floor(maxButtons / 2, 10),
+          items - maxButtons + 1,
+        ),
+        1,
+      );
+      endPage = startPage + maxButtons - 1;
+    } else {
+      startPage = 1;
+      endPage = items;
+    }
+
+    for (let page = startPage; page <= endPage; ++page) {
+      pageButtons.push(
+        <Pagination.Item
+          {...buttonProps}
+          key={page}
+          eventKey={page}
+          active={page === activePage}
+          onClick={() => this.onSelect(page)}
+        >
+          {page}
+        </Pagination.Item>,
+      );
+    }
+
+    if (ellipsis && boundaryLinks && startPage > 1) {
+      if (startPage > 2) {
+        pageButtons.unshift(
+          <Pagination.Ellipsis key="ellipsisFirst" disabled={true}>
+            <span aria-label="More">
+              {ellipsis === true ? '\u2026' : ellipsis}
+            </span>
+          </Pagination.Ellipsis>,
+        );
+      }
+
+      pageButtons.unshift(
+        <Pagination.Item
+          {...buttonProps}
+          key={1}
+          eventKey={1}
+          active={false}
+          onClick={() => this.onSelect(1)}
+        >
+          1
+        </Pagination.Item>,
+      );
+    }
+
+    if (ellipsis && endPage < items) {
+      if (!boundaryLinks || endPage < items - 1) {
+        pageButtons.push(
+          <Pagination.Ellipsis key="ellipsis" disabled={true}>
+            <span aria-label="More">
+              {ellipsis === true ? '\u2026' : ellipsis}
+            </span>
+          </Pagination.Ellipsis>,
+        );
+      }
+
+      if (boundaryLinks) {
+        pageButtons.push(
+          <Pagination.Item
+            {...buttonProps}
+            key={items}
+            eventKey={items}
+            active={false}
+            onClick={() => this.onSelect(items)}
+          >
+            {items}
+          </Pagination.Item>,
+        );
+      }
+    }
+
+    return pageButtons;
+  }
+
   render() {
     const { count, max, offset } = this.props;
 
@@ -90,20 +177,24 @@ export default class PaginationPanel extends Component {
 
     return (
       <div>
-        <div className="pull-left">
-          <Pagination
-            items={items}
-            activePage={activePage}
-            maxButtons={3}
-            onSelect={this.onSelect.bind(this)}
-            prev={PREV_BUTTON}
-            next={NEXT_BUTTON}
-            first={false}
-            last={false}
-            ellipsis={true}
-            boundaryLinks={true}
-            style={{ verticalAlign: 'middle' }}
-          />
+        <div className="pull-left" style={{ height: '34px' }}>
+          <Pagination>
+            <li onClick={() => (activePage > 1) ? this.onSelect(activePage - 1) : null}>
+              <a role="button" href="#">{PREV_BUTTON}</a>
+            </li>
+            {
+              this.renderPageButtons(
+                activePage,
+                items,
+                3,
+                true,
+                true
+              )
+            }
+            <li onClick={() => (activePage < items) ? this.onSelect(activePage + 1) : null}>
+              <a role="button" href="#">{NEXT_BUTTON}</a>
+            </li>
+          </Pagination>
         </div>
         <div className="pull-left">
           <FormControl
