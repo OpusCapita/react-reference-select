@@ -1,4 +1,9 @@
 
+[Release 3.1.2](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.2) Mon Aug 23 2021 15:44:54 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-20573) Fixed pagination for new react-bootstrap. ([#68](https://github.com/OpusCapita/react-reference-select/issues/68)) (GitHub nikolai.kovalenko@opuscapita.com, 2021-08-23 15:43:42 +0300)
+
 [Release 3.1.1](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.1) Thu Aug 19 2021 17:52:05 GMT+0300 (MSK)
 =======================================================
 
