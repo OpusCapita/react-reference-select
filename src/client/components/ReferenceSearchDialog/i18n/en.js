@@ -5,7 +5,7 @@ export default {
       selectLabel: 'Select',
       resetLabel: 'Reset',
       searchLabel: 'Search',
-      itemsFound: "{number} items found"
+      itemsFound: "{number} item(s) found"
     }
   }
 };
