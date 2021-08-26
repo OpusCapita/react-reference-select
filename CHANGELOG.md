@@ -1,4 +1,9 @@
 
+[Release 3.1.3](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.3) Thu Aug 26 2021 17:49:16 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-20743) Adjusted default translations (Mikhail Kravchenya kravchenya@scand.com, 2021-08-26 17:09:34 +0300)
+
 [Release 3.1.2](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.2) Mon Aug 23 2021 15:44:54 GMT+0300 (MSK)
 =======================================================
 
