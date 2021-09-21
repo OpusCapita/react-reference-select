@@ -34,7 +34,7 @@
     "bluebird": "3.4.6",
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
-    "react-bootstrap": "0.33.1",
+    "react-bootstrap": "1.6.3",
     "@opuscapita/react-select": "2.0.16",
     "recompose": "0.21.0",
     "superagent": "3.3.0",
