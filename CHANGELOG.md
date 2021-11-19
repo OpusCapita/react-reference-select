@@ -1,4 +1,13 @@
 
+[Release 3.1.4](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.4) Fri Nov 19 2021 14:57:41 GMT+0300 (MSK)
+=======================================================
+
+- Updating package-lock.json (Dmitry Divin divin@scand.com, 2021-11-19 14:48:34 +0300)
+- Remove yarn from build process (Dmitry Divin divin@scand.com, 2021-11-19 14:41:35 +0300)
+- (EPROC-20852) Adjusted default translations (Mikhail Kravchenya kravchenya@scand.com, 2021-11-19 13:10:27 +0300)
+- Add missing fields to dependabot.yml [ci skip] (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2021-09-21 08:51:04 +0300)
+- Configure dependabot to create PRs for direct dependencies only [ci skip] (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2021-09-21 08:45:35 +0300)
+
 [Release 3.1.3](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.3) Thu Aug 26 2021 17:49:16 GMT+0300 (MSK)
 =======================================================
 
