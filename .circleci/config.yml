@@ -40,13 +40,12 @@ jobs:
 
       - run:
           name: "Installing dependencies."
-          command: yarn install
+          command: npm install
 
       - save_cache:
           key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
               - ./node_modules
-              - ./yarn.lock
 
       - run:
           name: "Running lint."
@@ -82,13 +81,12 @@ jobs:
 
       - run:
           name: "Installing dependencies."
-          command: yarn install
+          command: npm install
 
       - save_cache:
           key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
               - ./node_modules
-              - ./yarn.lock
 
       - run:
           name: deploy-gh-pages
@@ -109,13 +107,12 @@ jobs:
 
       - run:
           name: "Installing dependencies."
-          command: yarn install
+          command: npm install
 
       - save_cache:
           key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
               - ./node_modules
-              - ./yarn.lock
 
       - run:
           name: "Running lint."
