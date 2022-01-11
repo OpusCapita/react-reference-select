@@ -202,9 +202,8 @@ class ReferenceAutocomplete extends React.Component {
     }
 
     return (
-      <div
-        className={`jc-reference-autocomplete ${autoCompleteProps.defaultOptions
-        && autoCompleteProps.defaultOptions.length > 0 ? '' : 'disable'}`}>
+      <div className={`jc-reference-autocomplete ${autoCompleteProps.defaultOptions &&
+      autoCompleteProps.defaultOptions.length > 0 ? '' : 'disable'}`}>
         <Select.Async {...temp}/>
       </div>
     );
