@@ -28,6 +28,9 @@ jobs:
   build:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
 
       - run: *configure-dependency-management
@@ -69,6 +72,9 @@ jobs:
   update-gh-pages:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
 
       - run: *configure-dependency-management
@@ -95,6 +101,9 @@ jobs:
   build_release:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
 
       - run: *configure-dependency-management
@@ -140,6 +149,9 @@ jobs:
   release:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
 
       - run: *configure-dependency-management
@@ -171,7 +183,9 @@ workflows:
           requires:
             - init
           post-steps:
-            - jira/notify
+            - jira/notify:
+                token_name: "CIRCLE_CI_TOKEN"
+
       - update-gh-pages:
           filters:
             branches:
