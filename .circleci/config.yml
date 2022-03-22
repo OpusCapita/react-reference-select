@@ -21,9 +21,11 @@ jobs:
     docker:
       - image: opuscapita/minsk-core-machineuser-env:2
     steps:
-      - run:
-          name: Inject secrets from vault to CircleCI project's environment
-          command: circle_ci_add_env.sh
+      - run: generate_bash_env_exports.sh CIRCLE_CI_TOKEN > ~/generated_bash_env
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - generated_bash_env
 
   build:
     <<: *defaults
