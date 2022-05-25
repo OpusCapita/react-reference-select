@@ -1,4 +1,11 @@
 
+[Release 3.1.5-EPROC-21000-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.5-EPROC-21000-SNAPSHOT) Wed May 25 2022 11:15:53 GMT+0300 (MSK)
+=======================================================
+
+-  (EPROC-21097) Improved env variables setting (GitHub ashestak-sc@users.noreply.github.com, 2022-03-22 12:32:52 +0300)
+- (EPROC-21097) Improved env variables setting (Alexandr Shestak ashestak-sc@users.noreply.github.com, 2022-03-22 11:51:52 +0300)
+- Update dependabot config [ci skip] (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2022-02-11 10:39:12 +0300)
+
 [Release 3.1.4](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.4) Fri Nov 19 2021 14:57:41 GMT+0300 (MSK)
 =======================================================
 
