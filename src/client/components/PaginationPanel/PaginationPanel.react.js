@@ -41,7 +41,7 @@ export default class PaginationPanel extends Component {
   };
 
   static defaultProps = {
-    max: 2
+    max: 10
   };
 
   constructor(props, context) {
