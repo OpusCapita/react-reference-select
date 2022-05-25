@@ -1,6 +1,6 @@
 {
   "name": "@opuscapita/react-reference-select",
-  "version": "3.1.5-EPROC-21000-SNAPSHOT",
+  "version": "3.1.5-EPROC-21000-SNAPSHOT-2",
   "description": "React reference select",
   "main": "lib/index.js",
   "files": [
