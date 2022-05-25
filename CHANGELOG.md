@@ -1,4 +1,8 @@
 
+[Release 3.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.5) Wed May 25 2022 11:18:58 GMT+0300 (MSK)
+=======================================================
+
+
 [Release 3.1.5-EPROC-21000-SNAPSHOT](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.5-EPROC-21000-SNAPSHOT) Wed May 25 2022 11:15:53 GMT+0300 (MSK)
 =======================================================
 
