@@ -1,4 +1,9 @@
 
+[Release 3.1.7](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.7) Thu May 26 2022 15:32:09 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-21000) Fix PaginationPanel default max value ([#75](https://github.com/OpusCapita/react-reference-select/issues/75)) (GitHub dsanko-sc@users.noreply.github.com, 2022-05-26 14:23:33 +0300)
+
 [Release 3.1.6](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.6) Thu May 26 2022 14:23:09 GMT+0300 (MSK)
 =======================================================
 
