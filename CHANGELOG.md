@@ -1,4 +1,8 @@
 
+[Release 3.1.6](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.6) Thu May 26 2022 14:23:09 GMT+0300 (MSK)
+=======================================================
+
+
 [Release 3.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.5) Wed May 25 2022 11:18:58 GMT+0300 (MSK)
 =======================================================
 
