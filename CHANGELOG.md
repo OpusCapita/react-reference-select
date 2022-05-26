@@ -1,8 +1,7 @@
 
-[Release 3.1.5-EPROC-21000-SNAPSHOT-2](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.5-EPROC-21000-SNAPSHOT-2) Wed May 25 2022 11:19:24 GMT+0300 (MSK)
+[Release 3.1.5](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.5) Wed May 25 2022 11:18:58 GMT+0300 (MSK)
 =======================================================
 
-- Fix PaginationPanel default max value (Dmitriy Sanko dmitriy.sanko@opuscapita.com, 2022-05-25 10:37:01 +0300)
 -  (EPROC-21097) Improved env variables setting (GitHub ashestak-sc@users.noreply.github.com, 2022-03-22 12:32:52 +0300)
 - (EPROC-21097) Improved env variables setting (Alexandr Shestak ashestak-sc@users.noreply.github.com, 2022-03-22 11:51:52 +0300)
 - Update dependabot config [ci skip] (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2022-02-11 10:39:12 +0300)
