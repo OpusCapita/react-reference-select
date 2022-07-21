@@ -1,4 +1,9 @@
 
+[Release 3.1.8-EPROC-21237](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.8-EPROC-21237) Thu Jul 21 2022 11:26:40 GMT+0300 (MSK)
+=======================================================
+
+- (EPROC-21237) Fixed result displaying on data loading (adanilov@scand.com adanilov@scand.com, 2022-07-21 11:20:44 +0300)
+
 [Release 3.1.7](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.7) Thu May 26 2022 15:32:09 GMT+0300 (MSK)
 =======================================================
 
