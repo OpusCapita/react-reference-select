@@ -5,6 +5,7 @@ export default {
       selectLabel: 'Select',
       resetLabel: 'Reset',
       searchLabel: 'Search',
+      loadingPlaceholder: 'Please wait...',
       itemsFound: "{number} item(s) found"
     }
   }

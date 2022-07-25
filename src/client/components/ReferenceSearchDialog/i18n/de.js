@@ -5,6 +5,7 @@ export default {
       selectLabel: 'Wählen',
       resetLabel: 'Zurücksetzen',
       searchLabel: 'Suchen',
+      loadingPlaceholder: 'Suchen...',
       itemsFound: "{number} Datensätze gefunden"
     }
   }

@@ -92,7 +92,7 @@ export default class ReferenceSearchDialog extends Component {
       offset: 0,
       max: 10,
       items: [],
-      count: 0
+      count: -1
     };
 
     this.state = {
@@ -469,9 +469,16 @@ export default class ReferenceSearchDialog extends Component {
                 </div>
               </div>
             </div>
-          ) : (
+          ) : count === 0 ? (
             <div className="bs-callout bs-callout-info">
               {i18n.getMessage('common.ReferenceSearchDialog.itemsFound', { number: 0 })}
+            </div>
+          ) : (
+            <div className="container-fluid">
+              <div className="pull-right spinner">
+                <i className="fa fa-spinner fa-spin" />&nbsp;
+                {i18n.getMessage('common.ReferenceSearchDialog.loadingPlaceholder')}
+              </div>
             </div>
           )}
         </Modal.Body>
