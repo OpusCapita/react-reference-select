@@ -1,4 +1,11 @@
 
+[Release 3.1.9](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.9) Fri Jul 29 2022 12:03:41 GMT+0300 (MSK)
+=======================================================
+
+- Updated config files (adanilov@scand.com adanilov@scand.com, 2022-07-29 11:58:28 +0300)
+- Build project (adanilov@scand.com adanilov@scand.com, 2022-07-29 11:49:20 +0300)
+- Fixed translations (adanilov@scand.com adanilov@scand.com, 2022-07-29 11:41:39 +0300)
+
 [Release 3.1.8](https://github.com/OpusCapita/react-reference-select/releases/tag/v3.1.8) Mon Jul 25 2022 10:04:42 GMT+0300 (MSK)
 =======================================================
 
