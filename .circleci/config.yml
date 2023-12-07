@@ -1,0 +1,206 @@
+defaults: &defaults
+  docker:
+    - image: opuscapita/minsk-core-ci:4
+      auth:
+        username: $DOCKER_USER
+        password: $DOCKER_PASS
+  working_directory: ~/build
+
+aliases:
+  - &configure-dependency-management
+    name: Configure dependency management
+    command: configure-npm.sh
+
+version: 2.1
+
+orbs:
+  jira: circleci/jira@1.2.2
+
+jobs:
+  init:
+    docker:
+      - image: opuscapita/minsk-core-machineuser-env:2
+    steps:
+      - run: generate_bash_env_exports.sh CIRCLE_CI_TOKEN > ~/generated_bash_env
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - generated_bash_env
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
+      - checkout
+
+      - run: *configure-dependency-management
+
+      - restore_cache:
+          keys:
+            - react-reference-select-v1-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-v1-{{ .Branch }}
+            - react-reference-select-v1
+
+      - run:
+          name: "Installing dependencies."
+          command: npm install
+
+      - save_cache:
+          key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+
+      - run:
+          name: "Running lint."
+          command: npm run lint
+
+      - run:
+          name: Test
+          command: |
+            mkdir junit
+            npm test -- --ci --testResultsProcessor='jest-junit-reporter'
+          environment:
+            TEST_REPORT_PATH: junit
+            TEST_REPORT_FILENAME: test-results.xml
+
+      - store_test_results:
+          path: junit
+
+      - store_artifacts:
+          path: junit
+
+  update-gh-pages:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
+      - checkout
+
+      - run: *configure-dependency-management
+
+      - restore_cache:
+          keys:
+            - react-reference-select-v1-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-v1-{{ .Branch }}
+            - react-reference-select-v1
+
+      - run:
+          name: "Installing dependencies."
+          command: npm install
+
+      - save_cache:
+          key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+
+      - run:
+          name: deploy-gh-pages
+          command: npm run gh-pages-deploy
+
+  build_release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
+      - checkout
+
+      - run: *configure-dependency-management
+
+      - restore_cache:
+          keys:
+            - react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+            - react-reference-select-{{ .Branch }}
+            - react-reference-select
+
+      - run:
+          name: "Installing dependencies."
+          command: npm install
+
+      - save_cache:
+          key: react-reference-select-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+
+      - run:
+          name: "Running lint."
+          command: npm run lint
+
+      - run:
+          name: Test
+          command: |
+            mkdir junit
+            npm test -- --ci --testResultsProcessor='jest-junit-reporter'
+          environment:
+            TEST_REPORT_PATH: junit
+            TEST_REPORT_FILENAME: test-results.xml
+
+      - store_test_results:
+          path: junit
+
+      - store_artifacts:
+          path: junit
+
+      - run:
+          name: "Deploy."
+          command: npm run publish-release
+
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
+      - checkout
+
+      - run: *configure-dependency-management
+
+      - run:
+          name: Executing release scrtipt.
+          command: .circleci/release.sh
+
+workflows:
+  version: 2
+  release-and-build:
+    jobs:
+      - init:
+          filters:
+            tags:
+              only: /.*/
+      - release:
+          filters:
+            branches:
+              only: release
+          requires:
+            - init
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - release
+          requires:
+            - init
+          post-steps:
+            - jira/notify:
+                token_name: "CIRCLE_CI_TOKEN"
+
+      - update-gh-pages:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - release
+          requires:
+            - build
+      - build_release:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - init
