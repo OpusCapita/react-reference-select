@@ -1,20 +1,36 @@
 version: 2
+aliases:
+  - &docker_auth
+    auth:
+      username: ${DOCKER_USER}
+      password: ${DOCKER_PASS}
+
+  - &default-context
+    context:
+      - shared-creds
+      
 jobs:
   inject-environment:
     docker:
-      - image: opuscapita/minsk-core-machineuser-env:1
+      - image: opuscapita/minsk-core-machineuser-env:2
+        <<: *docker_auth
     steps:
       - run:
           name: Inject secrets from vault to CircleCI project's environment
           command: |
-            circle_ci_add_env.sh DOCKER_USER DOCKER_PASS GH_NAME GH_TOKEN MAVEN_REPO JFROG_USER JFROG_PASSWD
+            generate_bash_env_exports.sh DOCKER_USER DOCKER_PASS GH_NAME GH_TOKEN MAVEN_REPO JFROG_USER JFROG_PASSWD > ~/generated_bash_env
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - generated_bash_env
   release:
     docker:
       - image: opuscapita/minsk-core-release-manager:1
-        auth:
-          username: $DOCKER_USER
-          password: $DOCKER_PASS
+        <<: *docker_auth
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
       - run:
           name: Executing release script
@@ -23,7 +39,9 @@ workflows:
   version: 2
   release-and-build:
     jobs:
-      - inject-environment
+      - inject-environment:
+          <<: *default-context
       - release:
+          <<: *default-context
           requires:
             - inject-environment
