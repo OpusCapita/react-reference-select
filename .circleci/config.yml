@@ -10,7 +10,16 @@ aliases:
   - &configure-dependency-management
     name: Configure dependency management
     command: configure-npm.sh
+    
+  - &docker_auth
+    auth:
+      username: ${DOCKER_USER}
+      password: ${DOCKER_PASS}
 
+  - &default-context
+    context:
+      - shared-creds
+      
 version: 2.1
 
 orbs:
@@ -20,6 +29,7 @@ jobs:
   init:
     docker:
       - image: opuscapita/minsk-core-machineuser-env:2
+        <<: *docker_auth
     steps:
       - run: generate_bash_env_exports.sh CIRCLE_CI_TOKEN > ~/generated_bash_env
       - persist_to_workspace:
@@ -167,16 +177,19 @@ workflows:
   release-and-build:
     jobs:
       - init:
+          <<: *default-context
           filters:
             tags:
               only: /.*/
       - release:
+          <<: *default-context
           filters:
             branches:
               only: release
           requires:
             - init
       - build:
+          <<: *default-context
           filters:
             branches:
               ignore:
@@ -189,6 +202,7 @@ workflows:
                 token_name: "CIRCLE_CI_TOKEN"
 
       - update-gh-pages:
+          <<: *default-context
           filters:
             branches:
               ignore:
@@ -197,6 +211,7 @@ workflows:
           requires:
             - build
       - build_release:
+          <<: *default-context
           filters:
             tags:
               only: /.*/
