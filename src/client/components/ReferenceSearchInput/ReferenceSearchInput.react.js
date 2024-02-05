@@ -25,7 +25,9 @@ class ReferenceSearchInput extends React.Component {
     disabled: false,
     readOnly: false,
     multiple: false,
-    modalSpecificProps: {}
+    modalSpecificProps: {},
+    sort: '',
+    order: ''
   };
 
   constructor(props) {
