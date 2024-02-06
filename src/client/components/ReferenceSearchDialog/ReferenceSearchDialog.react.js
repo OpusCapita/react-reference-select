@@ -77,7 +77,7 @@ export default class ReferenceSearchDialog extends Component {
     modalSpecificProps: {},
     trimSearchParameters: true,
     sort: '',
-    order: ''
+    order: 'asc'
   };
 
   constructor(props) {
